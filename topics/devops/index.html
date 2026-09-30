@@ -34,12 +34,62 @@
     <div>
       <h1>DevOps и инфраструктура</h1>
       <p class="lead">Docker и multi-stage сборки, Kubernetes, CI/CD, Helm, 12-factor, blue-green и canary, OpenTelemetry, трассировка, метрики и управление секретами.</p>
-      <div class="cat-progress"><div class="bar"><i data-progress="devops"></i></div><span data-progress-text="devops" data-total="0"></span></div>
+      <div class="cat-progress"><div class="bar"><i data-progress="devops"></i></div><span data-progress-text="devops" data-total="10"></span></div>
     </div>
   </header>
   <section class="prose cat-intro"><p>Современный Middle-разработчик сам доводит сервис до продакшена: собирает образ, описывает деплой, настраивает метрики и трассировку. Интервьюер проверяет, что вы понимаете, <strong>как код живёт после <code>git push</code></strong>.</p>
 </section>
-  <ol class="q-list"></ol>
+  <ol class="q-list">
+      <li><a class="q-row" href="docker-dotnet.html" data-qid="devops/docker-dotnet">
+        <span class="q-num">1</span>
+        <span class="q-main"><span class="q-title">Docker: Dockerfile для .NET, multi-stage builds, оптимизация образов?</span><span class="q-sub"> Контейнер упаковывает приложение со всеми зависимостями в неизменяемый образ: одинаково работает на ноутбуке, в CI и в продакшене. Образ собирается из слоёв, каждая инст…</span></span>
+        <span class="q-side"><span class="chip lv-base">Основы</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="kubernetes-basics.html" data-qid="devops/kubernetes-basics">
+        <span class="q-num">2</span>
+        <span class="q-main"><span class="q-title">Kubernetes basics: Pod, Deployment, Service, ConfigMap, Secret?</span><span class="q-sub"> Kubernetes — оркестратор контейнеров: вы описываете желаемое состояние (YAML-манифесты), контроллеры постоянно приводят кластер к нему (перезапуск упавших, масштабирован…</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="ci-cd.html" data-qid="devops/ci-cd">
+        <span class="q-num">3</span>
+        <span class="q-main"><span class="q-title">Как настроить CI/CD для .NET проекта (GitHub Actions, GitLab CI, Azure DevOps)?</span><span class="q-sub"> CI (Continuous Integration) — каждый push/PR автоматически: restore → build → тесты → анализ (линтеры, форматирование, уязвимости, покрытие). Цель — быстро узнать, что и…</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="helm.html" data-qid="devops/helm">
+        <span class="q-num">4</span>
+        <span class="q-main"><span class="q-title">Что такое Helm chart и зачем он нужен?</span><span class="q-sub"> Helm — пакетный менеджер Kubernetes. Chart — пакет: набор шаблонов манифестов (Deployment, Service, Ingress, ConfigMap, HPA...) + файл параметров values.yaml + метаданны…</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="twelve-factor-app.html" data-qid="devops/twelve-factor-app">
+        <span class="q-num">5</span>
+        <span class="q-main"><span class="q-title">12-factor app — принципы применительно к .NET?</span><span class="q-sub"> The Twelve-Factor App (Heroku, 2011) — набор принципов для облачных сервисов: переносимость между окружениями, горизонтальное масштабирование, непрерывный деплой. Ключев…</span></span>
+        <span class="q-side"><span class="chip lv-base">Основы</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="blue-green-canary.html" data-qid="devops/blue-green-canary">
+        <span class="q-num">6</span>
+        <span class="q-main"><span class="q-title">Как реализовать blue-green и canary деплой?</span><span class="q-sub"> Rolling update (по умолчанию в Kubernetes) — поды заменяются постепенно; старая и новая версии работают одновременно; откат — такой же постепенный. Blue-green — два полн…</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="opentelemetry.html" data-qid="devops/opentelemetry">
+        <span class="q-num">7</span>
+        <span class="q-main"><span class="q-title">Что такое OpenTelemetry и как его подключить в .NET?</span><span class="q-sub"> OpenTelemetry (OTel) — открытый вендор-нейтральный стандарт (CNCF) и набор SDK для сбора телеметрии: трассировок (traces), метрик (metrics) и логов (logs). Один способ и…</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="distributed-tracing.html" data-qid="devops/distributed-tracing">
+        <span class="q-num">8</span>
+        <span class="q-main"><span class="q-title">Distributed tracing: TraceId, SpanId, как связывать логи?</span><span class="q-sub"> Трассировка (trace) — полная история одного запроса через все сервисы; состоит из spans — операций с началом, длительностью, атрибутами и статусом (HTTP-обработка, SQL-з…</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="metrics-prometheus-grafana.html" data-qid="devops/metrics-prometheus-grafana">
+        <span class="q-num">9</span>
+        <span class="q-main"><span class="q-title">Метрики: Prometheus + Grafana, .NET Metrics API?</span><span class="q-sub"> Метрика — числовое измерение во времени с набором меток (labels/tags): http_server_request_duration_seconds{route=&quot;/orders&quot;, status=&quot;500&quot;}. Дёшево хранить и агрегировать…</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="secrets-management.html" data-qid="devops/secrets-management">
+        <span class="q-num">10</span>
+        <span class="q-main"><span class="q-title">Секреты: Vault, Azure Key Vault, Kubernetes Secrets — лучшие практики?</span><span class="q-sub"> Секрет — всё, что даёт доступ: пароли БД, API-ключи, строки подключения, сертификаты, ключи подписи JWT, ключи шифрования. Утечка = компрометация системы. Никогда: в код…</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li></ol>
   <nav class="prev-next" aria-label="Соседние разделы">
     <a class="pn prev" href="../../topics/performance/index.html"><span class="pn-dir"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>Предыдущий раздел</span><span class="pn-t">Производительность и диагностика</span></a>
     <a class="pn next" href="../../topics/security/index.html"><span class="pn-dir">Следующий раздел<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></span><span class="pn-t">Безопасность</span></a>
