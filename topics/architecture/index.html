@@ -34,12 +34,97 @@
     <div>
       <h1>Архитектура и паттерны</h1>
       <p class="lead">SOLID, слоистая и чистая архитектура, CQRS, MediatR, DDD, Event Sourcing, микросервисы, Saga, Outbox, отказоустойчивость и паттерны GoF.</p>
-      <div class="cat-progress"><div class="bar"><i data-progress="architecture"></i></div><span data-progress-text="architecture" data-total="0"></span></div>
+      <div class="cat-progress"><div class="bar"><i data-progress="architecture"></i></div><span data-progress-text="architecture" data-total="17"></span></div>
     </div>
   </header>
   <section class="prose cat-intro"><p>Архитектурные вопросы проверяют умение <strong>обосновывать решения</strong>. Здесь почти не бывает единственно правильного ответа — важно назвать компромиссы: что мы получаем, чем платим и в каком контексте решение оправдано.</p>
 </section>
-  <ol class="q-list"></ol>
+  <ol class="q-list">
+      <li><a class="q-row" href="solid.html" data-qid="architecture/solid">
+        <span class="q-num">1</span>
+        <span class="q-main"><span class="q-title">SOLID: расшифровка, реальные примеры нарушений на .NET?</span><span class="q-sub"> S — Single Responsibility: у класса одна причина для изменения (один «владелец» требований). Нарушение — «божественный» OrderService на 3000 строк. O — Open/Closed: откр…</span></span>
+        <span class="q-side"><span class="chip lv-base">Основы</span><span class="q-min">8 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="dry-kiss-yagni.html" data-qid="architecture/dry-kiss-yagni">
+        <span class="q-num">2</span>
+        <span class="q-main"><span class="q-title">DRY, KISS, YAGNI — в чём смысл и где грань?</span><span class="q-sub"> DRY (Don't Repeat Yourself) — каждое знание (бизнес-правило, формула, решение) должно иметь одно авторитетное представление в системе. Речь о дублировании знаний, а не с…</span></span>
+        <span class="q-side"><span class="chip lv-base">Основы</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="layered-architecture.html" data-qid="architecture/layered-architecture">
+        <span class="q-num">3</span>
+        <span class="q-main"><span class="q-title">Слоистая архитектура: Presentation → Application → Domain → Infrastructure?</span><span class="q-sub"> Код делится на слои по ответственности: Presentation (API, UI — принять запрос, вернуть ответ), Application (сценарии использования, оркестрация, транзакции), Domain (би…</span></span>
+        <span class="q-side"><span class="chip lv-base">Основы</span><span class="q-min">5 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="clean-vs-onion.html" data-qid="architecture/clean-vs-onion">
+        <span class="q-num">4</span>
+        <span class="q-main"><span class="q-title">Clean Architecture vs Onion Architecture — отличия?</span><span class="q-sub"> Onion (Jeffrey Palermo, 2008), Hexagonal / Ports &amp; Adapters (Alistair Cockburn, 2005) и Clean (Robert Martin, 2012) — вариации одной идеи: бизнес-логика в центре, инфрас…</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="cqrs.html" data-qid="architecture/cqrs">
+        <span class="q-num">5</span>
+        <span class="q-main"><span class="q-title">CQRS: Command/Query разделение, зачем и когда?</span><span class="q-sub"> CQS (Бертран Мейер) — на уровне методов: метод либо изменяет состояние (command), либо возвращает данные (query), но не то и другое сразу. CQRS (Command Query Responsibi…</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="mediator-mediatr.html" data-qid="architecture/mediator-mediatr">
+        <span class="q-num">6</span>
+        <span class="q-main"><span class="q-title">Mediator pattern (MediatR) — как работает, плюсы и минусы?</span><span class="q-sub"> Паттерн Mediator — объекты общаются не напрямую, а через посредника, что уменьшает связанность «многие-ко-многим». MediatR — популярная .NET-библиотека: mediator.Send(re…</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">5 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="repository-unit-of-work.html" data-qid="architecture/repository-unit-of-work">
+        <span class="q-num">7</span>
+        <span class="q-main"><span class="q-title">Repository + Unit of Work pattern — смысл и критика?</span><span class="q-sub"> Repository — абстракция коллекции доменных объектов: «дай заказ по id», «сохрани заказ». Скрывает детали хранения от бизнес-логики. Unit of Work — отслеживает изменения …</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="ddd-building-blocks.html" data-qid="architecture/ddd-building-blocks">
+        <span class="q-num">8</span>
+        <span class="q-main"><span class="q-title">Domain-Driven Design: Entity, Value Object, Aggregate, Domain Event?</span><span class="q-sub"> DDD — подход к сложным доменам: модель кода отражает язык и правила бизнеса. Стратегическая часть: Ubiquitous Language (единый язык с экспертами), Bounded Context (грани…</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">8 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="event-sourcing.html" data-qid="architecture/event-sourcing">
+        <span class="q-num">9</span>
+        <span class="q-main"><span class="q-title">Event Sourcing — что это и когда применять?</span><span class="q-sub"> Event Sourcing: вместо хранения текущего состояния храним последовательность событий, которые к нему привели (AccountOpened, MoneyDeposited, MoneyWithdrawn). Текущее сос…</span></span>
+        <span class="q-side"><span class="chip lv-adv">Middle+</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="microservices-vs-monolith.html" data-qid="architecture/microservices-vs-monolith">
+        <span class="q-num">10</span>
+        <span class="q-main"><span class="q-title">Microservices vs Monolith — когда что выбирать?</span><span class="q-sub"> Монолит — одно развёртываемое приложение с общей БД. Просто разрабатывать, тестировать, деплоить и отлаживать; транзакции ACID «бесплатно». Проблемы начинаются с ростом:…</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="api-gateway.html" data-qid="architecture/api-gateway">
+        <span class="q-num">11</span>
+        <span class="q-main"><span class="q-title">API Gateway pattern — зачем нужен?</span><span class="q-sub"> API Gateway — единая точка входа для внешних клиентов в систему микросервисов. Клиент знает один адрес, а шлюз маршрутизирует запросы к нужным сервисам. Типичные функции…</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="saga-pattern.html" data-qid="architecture/saga-pattern">
+        <span class="q-num">12</span>
+        <span class="q-main"><span class="q-title">Saga pattern для распределённых транзакций (Choreography vs Orchestration)?</span><span class="q-sub"> Проблема: бизнес-операция затрагивает несколько сервисов со своими БД (заказ → резерв на складе → оплата → доставка). Одной ACID-транзакции нет, 2PC плохо масштабируется…</span></span>
+        <span class="q-side"><span class="chip lv-adv">Middle+</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="outbox-pattern.html" data-qid="architecture/outbox-pattern">
+        <span class="q-num">13</span>
+        <span class="q-main"><span class="q-title">Outbox pattern — зачем нужен при работе с очередями и БД?</span><span class="q-sub"> Проблема dual write: нужно изменить БД и отправить сообщение в брокер. Это две разные системы — атомарно не получится: упадёт между шагами → либо данные есть, а события …</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="resilience-patterns.html" data-qid="architecture/resilience-patterns">
+        <span class="q-num">14</span>
+        <span class="q-main"><span class="q-title">Circuit Breaker, Retry, Bulkhead — паттерны отказоустойчивости?</span><span class="q-sub"> В распределённой системе зависимости будут отказывать: сеть, перегрузка, деплой. Задача — не допустить каскадного отказа и восстанавливаться автоматически. Timeout — не …</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="event-driven-architecture.html" data-qid="architecture/event-driven-architecture">
+        <span class="q-num">15</span>
+        <span class="q-main"><span class="q-title">Что такое Event-Driven Architecture?</span><span class="q-sub"> EDA — архитектура, где компоненты взаимодействуют через события: факты о произошедшем («заказ оформлен»), которые публикуются без знания о получателях. Производитель и п…</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">5 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="gof-patterns-in-dotnet.html" data-qid="architecture/gof-patterns-in-dotnet">
+        <span class="q-num">16</span>
+        <span class="q-main"><span class="q-title">GoF паттерны, которые реально встречаются в .NET: Factory, Decorator, Strategy, Observer, Proxy?</span><span class="q-sub"> Factory / Factory Method / Abstract Factory — инкапсулируют создание объектов: IHttpClientFactory, ILoggerFactory, DbProviderFactory, фабрики в DI (AddScoped(sp =&gt; ...))…</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="strangler-fig.html" data-qid="architecture/strangler-fig">
+        <span class="q-num">17</span>
+        <span class="q-main"><span class="q-title">Что такое Strangler Fig — постепенная миграция legacy?</span><span class="q-sub"> Strangler Fig (Мартин Фаулер, по аналогии с фикусом-душителем) — постепенная замена legacy-системы: новая система растёт вокруг старой, забирая функциональность по частя…</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li></ol>
   <nav class="prev-next" aria-label="Соседние разделы">
     <a class="pn prev" href="../../topics/databases-sql/index.html"><span class="pn-dir"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>Предыдущий раздел</span><span class="pn-t">Базы данных и SQL</span></a>
     <a class="pn next" href="../../topics/testing/index.html"><span class="pn-dir">Следующий раздел<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></span><span class="pn-t">Тестирование</span></a>
