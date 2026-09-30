@@ -1,0 +1,18 @@
+{
+  "name": "dotnet-questions-for-middle",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Учебный сайт: вопросы и подробные ответы для .NET Middle разработчика",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/check.mjs .",
+    "serve": "npx http-server . -p 8080 -c-1"
+  },
+  "devDependencies": {
+    "highlight.js": "^11.10.0",
+    "marked": "^12.0.0",
+    "mermaid": "^11.4.0",
+    "playwright": "1.56.1"
+  }
+}
