@@ -34,12 +34,52 @@
     <div>
       <h1>Безопасность</h1>
       <p class="lead">OWASP Top 10, SQL-инъекции, XSS и CSRF, JWT, OAuth2 и OpenID Connect, хранение паролей, TLS, защита чувствительных данных и уязвимые зависимости.</p>
-      <div class="cat-progress"><div class="bar"><i data-progress="security"></i></div><span data-progress-text="security" data-total="0"></span></div>
+      <div class="cat-progress"><div class="bar"><i data-progress="security"></i></div><span data-progress-text="security" data-total="8"></span></div>
     </div>
   </header>
   <section class="prose cat-intro"><p>Безопасность — ответственность каждого разработчика, а не отдельной команды. Здесь собраны атаки и механизмы защиты, которые встречаются в каждом веб-сервисе на ASP.NET Core.</p>
 </section>
-  <ol class="q-list"></ol>
+  <ol class="q-list">
+      <li><a class="q-row" href="owasp-top-10.html" data-qid="security/owasp-top-10">
+        <span class="q-num">1</span>
+        <span class="q-main"><span class="q-title">OWASP Top 10 — какие актуальны для .NET приложений?</span><span class="q-sub"> OWASP Top 10 — рейтинг самых критичных рисков веб-приложений (редакция 2021; готовится обновление), основанный на данных реальных уязвимостей. A01 Broken Access Control …</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="sql-injection-xss-csrf.html" data-qid="security/sql-injection-xss-csrf">
+        <span class="q-num">2</span>
+        <span class="q-main"><span class="q-title">SQL Injection, XSS, CSRF — как предотвращать в ASP.NET Core?</span><span class="q-sub"> SQL Injection — пользовательский ввод становится частью SQL-кода. Защита: параметризованные запросы (EF Core LINQ, FromSql($&quot;...&quot;), Dapper-параметры, SqlParameter); нико…</span></span>
+        <span class="q-side"><span class="chip lv-base">Основы</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="jwt.html" data-qid="security/jwt">
+        <span class="q-num">3</span>
+        <span class="q-main"><span class="q-title">JWT: структура, подпись, хранение, refresh токены, отзыв?</span><span class="q-sub"> JWT = header.payload.signature — три части в Base64Url. Header: алгоритм (alg) и тип, ключ (kid). Payload: claims — sub, iss, aud, exp, iat, nbf, jti + свои (role, scope…</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="oauth2-openid-connect.html" data-qid="security/oauth2-openid-connect">
+        <span class="q-num">4</span>
+        <span class="q-main"><span class="q-title">OAuth 2.0 и OpenID Connect: в чём разница, какие flow использовать?</span><span class="q-sub"> OAuth 2.0 — протокол делегированной авторизации: пользователь разрешает приложению (client) доступ к своим ресурсам на resource server, не передавая пароль. Результат — …</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">8 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="password-hashing.html" data-qid="security/password-hashing">
+        <span class="q-num">5</span>
+        <span class="q-main"><span class="q-title">Как хранить пароли: BCrypt, Argon2, PBKDF2 — и почему не SHA-256?</span><span class="q-sub"> Пароли не шифруют (шифрование обратимо — утечёт ключ, утекут все пароли), а хэшируют специальной медленной функцией с солью. Соль — уникальная случайная строка для каждо…</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="https-tls-certificates.html" data-qid="security/https-tls-certificates">
+        <span class="q-num">6</span>
+        <span class="q-main"><span class="q-title">HTTPS, TLS и сертификаты в .NET: как работает и как настроить?</span><span class="q-sub"> TLS обеспечивает три вещи: конфиденциальность (шифрование), целостность (данные не изменены) и аутентификацию сервера (вы говорите именно с bank.uz). HTTPS = HTTP поверх…</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="sensitive-data-logs-api.html" data-qid="security/sensitive-data-logs-api">
+        <span class="q-num">7</span>
+        <span class="q-main"><span class="q-title">Чувствительные данные в логах и ответах API: как не допустить утечки?</span><span class="q-sub"> Чувствительные данные: пароли, токены, API-ключи, строки подключения, номера карт (PCI DSS), паспортные данные, телефоны, email, адреса, медицинские данные — всё, что по…</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="dependency-scanning.html" data-qid="security/dependency-scanning">
+        <span class="q-num">8</span>
+        <span class="q-main"><span class="q-title">Уязвимые зависимости: как находить и обновлять NuGet-пакеты?</span><span class="q-sub"> Код приложения — это на 80–90% чужой код: NuGet-пакеты и их транзитивные зависимости, базовые Docker-образы, сам .NET runtime. Уязвимость в любом из них — уязвимость при…</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li></ol>
   <nav class="prev-next" aria-label="Соседние разделы">
     <a class="pn prev" href="../../topics/devops/index.html"><span class="pn-dir"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>Предыдущий раздел</span><span class="pn-t">DevOps и инфраструктура</span></a>
     <a class="pn next" href="../../topics/teamwork/index.html"><span class="pn-dir">Следующий раздел<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></span><span class="pn-t">Работа в команде и процессы</span></a>
