@@ -34,7 +34,7 @@
     <div>
       <h1>C# и .NET Runtime</h1>
       <p class="lead">Как устроен CLR, память и GC, типы, async/await, LINQ, дженерики, многопоточность и современные возможности C#.</p>
-      <div class="cat-progress"><div class="bar"><i data-progress="csharp-dotnet"></i></div><span data-progress-text="csharp-dotnet" data-total="7"></span></div>
+      <div class="cat-progress"><div class="bar"><i data-progress="csharp-dotnet"></i></div><span data-progress-text="csharp-dotnet" data-total="23"></span></div>
     </div>
   </header>
   <section class="prose cat-intro"><p>Фундамент, на котором стоят все остальные разделы. На собеседовании Middle-разработчика здесь проверяют не синтаксис, а <strong>понимание того, что происходит под капотом</strong>: где живёт объект, когда его соберёт GC, во что компилятор превращает <code>async</code>, почему <code>IQueryable</code> превращается в SQL.</p>
@@ -75,6 +75,86 @@
         <span class="q-num">7</span>
         <span class="q-main"><span class="q-title">Что такое IEnumerable vs IQueryable? Где используется каждый?</span><span class="q-sub"> IEnumerable&lt;T&gt; — последовательность в памяти. LINQ-методы принимают делегаты (Func&lt;T,bool&gt;) и выполняются в вашем процессе (LINQ to Objects). IQueryable&lt;T&gt; — описание за…</span></span>
         <span class="q-side"><span class="chip lv-base">Основы</span><span class="q-min">5 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="linq-deferred-execution-expression-trees.html" data-qid="csharp-dotnet/linq-deferred-execution-expression-trees">
+        <span class="q-num">8</span>
+        <span class="q-main"><span class="q-title">Как работает LINQ: отложенное выполнение, деревья выражений?</span><span class="q-sub"> LINQ-операторы вроде Where, Select, OrderBy не выполняются сразу — они строят цепочку итераторов (или дерево выражений для IQueryable). Выполнение происходит при перечис…</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="generics-constraints-variance.html" data-qid="csharp-dotnet/generics-constraints-variance">
+        <span class="q-num">9</span>
+        <span class="q-main"><span class="q-title">Generics: constraints, covariance/contravariance (in/out)?</span><span class="q-sub"> Generics — параметризованные типы и методы: типобезопасность на этапе компиляции, без приведения типов и без boxing для значимых типов. Ограничения (where T : ...) сообщ…</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="delegates-action-func-predicate.html" data-qid="csharp-dotnet/delegates-action-func-predicate">
+        <span class="q-num">10</span>
+        <span class="q-main"><span class="q-title">Delegates, Action, Func, Predicate — разница и применение?</span><span class="q-sub"> Делегат — типобезопасная ссылка на метод (или несколько методов). Под капотом — класс, наследник MulticastDelegate, хранящий объект-цель (Target) и указатель на метод. A…</span></span>
+        <span class="q-side"><span class="chip lv-base">Основы</span><span class="q-min">5 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="events-multicast-memory-leaks.html" data-qid="csharp-dotnet/events-multicast-memory-leaks">
+        <span class="q-num">11</span>
+        <span class="q-main"><span class="q-title">Что такое events, multicast delegates, утечки памяти через события?</span><span class="q-sub"> event — обёртка над полем-делегатом, которая снаружи разрешает только += и -=. Вызвать событие или перезаписать список подписчиков может только класс-владелец. Делегат с…</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">5 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="span-memory-arraypool.html" data-qid="csharp-dotnet/span-memory-arraypool">
+        <span class="q-num">12</span>
+        <span class="q-main"><span class="q-title">Span&lt;T&gt;, Memory&lt;T&gt;, ArrayPool — зачем и когда?</span><span class="q-sub"> Span&lt;T&gt; — ref struct, «окно» в непрерывную память (массив, стек через stackalloc, нативная память) без копирования и аллокаций. Живёт только на стеке: нельзя в поле клас…</span></span>
+        <span class="q-side"><span class="chip lv-adv">Middle+</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="reflection-vs-source-generators.html" data-qid="csharp-dotnet/reflection-vs-source-generators">
+        <span class="q-num">13</span>
+        <span class="q-main"><span class="q-title">Reflection vs Source Generators — разница, производительность?</span><span class="q-sub"> Reflection — анализ и вызов типов во время выполнения: GetType(), GetProperties(), MethodInfo.Invoke, Activator.CreateInstance. Гибко, но медленно (проверки, boxing, нет…</span></span>
+        <span class="q-side"><span class="chip lv-adv">Middle+</span><span class="q-min">5 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="attributes.html" data-qid="csharp-dotnet/attributes">
+        <span class="q-num">14</span>
+        <span class="q-main"><span class="q-title">Атрибуты: создание, чтение через Reflection, компилируемые атрибуты?</span><span class="q-sub"> Атрибут — декларативные метаданные, прикреплённые к сборке, типу, методу, свойству, параметру. Сам по себе атрибут ничего не делает — его читает кто-то другой: компилято…</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="record-types.html" data-qid="csharp-dotnet/record-types">
+        <span class="q-num">15</span>
+        <span class="q-main"><span class="q-title">Что такое record types и positional records в C# 9+?</span><span class="q-sub"> record (= record class) — ссылочный тип с равенством по значению: два record равны, если равны все их поля. Positional record record Person(string Name, int Age); — комп…</span></span>
+        <span class="q-side"><span class="chip lv-base">Основы</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="pattern-matching.html" data-qid="csharp-dotnet/pattern-matching">
+        <span class="q-num">16</span>
+        <span class="q-main"><span class="q-title">Pattern matching: switch expressions, property patterns, when guards?</span><span class="q-sub"> Pattern matching — проверка «имеет ли значение определённую форму» с одновременным извлечением данных: if (obj is Order { Total: &gt; 1000 } o). Switch expression (C# 8) — …</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">5 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="nullable-reference-types.html" data-qid="csharp-dotnet/nullable-reference-types">
+        <span class="q-num">17</span>
+        <span class="q-main"><span class="q-title">Nullability annotations и nullable reference types в C# 8+?</span><span class="q-sub"> Nullable reference types (NRT) — режим компилятора (&lt;Nullable&gt;enable&lt;/Nullable&gt;), в котором string означает «не может быть null», а string? — «может быть null». Это толь…</span></span>
+        <span class="q-side"><span class="chip lv-base">Основы</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="stackalloc-unsafe.html" data-qid="csharp-dotnet/stackalloc-unsafe">
+        <span class="q-num">18</span>
+        <span class="q-main"><span class="q-title">Что такое stackalloc и unsafe код — когда оправдано?</span><span class="q-sub"> unsafe разрешает указатели (int*), адресную арифметику, fixed, sizeof для любых unmanaged-типов. Требует &lt;AllowUnsafeBlocks&gt;true&lt;/AllowUnsafeBlocks&gt;. Проверки границ и т…</span></span>
+        <span class="q-side"><span class="chip lv-adv">Middle+</span><span class="q-min">5 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="iasyncenumerable.html" data-qid="csharp-dotnet/iasyncenumerable">
+        <span class="q-num">19</span>
+        <span class="q-main"><span class="q-title">Как работает интерфейс IAsyncEnumerable&lt;T&gt;?</span><span class="q-sub"> IAsyncEnumerable&lt;T&gt; (C# 8) — асинхронная последовательность: элементы приходят по одному по мере готовности, а ожидание каждого не блокирует поток. Потребление: await fo…</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">5 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="jit-vs-aot.html" data-qid="csharp-dotnet/jit-vs-aot">
+        <span class="q-num">20</span>
+        <span class="q-main"><span class="q-title">CLR JIT vs AOT компиляция — отличия, NativeAOT?</span><span class="q-sub"> C# компилируется в IL (промежуточный язык). Превратить IL в машинный код можно во время выполнения (JIT) или заранее (AOT). JIT (RyuJIT): компилирует метод при первом вы…</span></span>
+        <span class="q-side"><span class="chip lv-adv">Middle+</span><span class="q-min">5 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="synchronization-primitives.html" data-qid="csharp-dotnet/synchronization-primitives">
+        <span class="q-num">21</span>
+        <span class="q-main"><span class="q-title">Примитивы синхронизации: lock, Monitor, Mutex, SemaphoreSlim, ReaderWriterLockSlim, Interlocked?</span><span class="q-sub"> lock (= Monitor.Enter/Exit в try/finally) — взаимное исключение внутри процесса; быстрый (спин + ожидание), реентерабельный. Нельзя await внутри. В .NET 9 появился тип S…</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="volatile-interlocked-memory-barriers.html" data-qid="csharp-dotnet/volatile-interlocked-memory-barriers">
+        <span class="q-num">22</span>
+        <span class="q-main"><span class="q-title">volatile, Interlocked, Memory Barriers — когда нужны?</span><span class="q-sub"> Компилятор, JIT и процессор могут переупорядочивать операции чтения/записи и кэшировать значения в регистрах — в однопоточном коде это незаметно, в многопоточном ломает …</span></span>
+        <span class="q-side"><span class="chip lv-adv">Middle+</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="concurrent-collections.html" data-qid="csharp-dotnet/concurrent-collections">
+        <span class="q-num">23</span>
+        <span class="q-main"><span class="q-title">ConcurrentDictionary, ConcurrentQueue, ImmutableDictionary — когда что?</span><span class="q-sub"> ConcurrentDictionary&lt;K,V&gt; — потокобезопасный словарь: чтение без блокировок, запись блокирует только один сегмент (stripe). Атомарные GetOrAdd, AddOrUpdate, TryUpdate. Л…</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li></ol>
   <nav class="prev-next" aria-label="Соседние разделы">
     <span></span>
