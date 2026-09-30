@@ -34,12 +34,102 @@
     <div>
       <h1>ASP.NET Core</h1>
       <p class="lead">Конвейер middleware, DI и время жизни сервисов, Minimal API и контроллеры, фильтры, аутентификация, конфигурация, логирование, SignalR и gRPC.</p>
-      <div class="cat-progress"><div class="bar"><i data-progress="aspnet-core"></i></div><span data-progress-text="aspnet-core" data-total="0"></span></div>
+      <div class="cat-progress"><div class="bar"><i data-progress="aspnet-core"></i></div><span data-progress-text="aspnet-core" data-total="18"></span></div>
     </div>
   </header>
   <section class="prose cat-intro"><p>ASP.NET Core — это прежде всего <strong>конвейер обработки запроса</strong> и <strong>контейнер зависимостей</strong>. Если вы уверенно рисуете путь HTTP-запроса от Kestrel до контроллера и обратно и понимаете время жизни сервисов, большинство остальных вопросов раздела становятся частными случаями.</p>
 </section>
-  <ol class="q-list"></ol>
+  <ol class="q-list">
+      <li><a class="q-row" href="request-pipeline-middleware.html" data-qid="aspnet-core/request-pipeline-middleware">
+        <span class="q-num">1</span>
+        <span class="q-main"><span class="q-title">Жизненный цикл HTTP-запроса в ASP.NET Core: middleware pipeline?</span><span class="q-sub"> Запрос принимает Kestrel, создаёт HttpContext и передаёт его в конвейер middleware — цепочку компонентов, каждый из которых может обработать запрос, передать дальше (awa…</span></span>
+        <span class="q-side"><span class="chip lv-base">Основы</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="dependency-injection.html" data-qid="aspnet-core/dependency-injection">
+        <span class="q-num">2</span>
+        <span class="q-main"><span class="q-title">Как работает Dependency Injection встроенный в ASP.NET Core?</span><span class="q-sub"> DI — зависимости передаются объекту снаружи (обычно через конструктор), а не создаются внутри через new. Это даёт слабую связанность, тестируемость и управление временем…</span></span>
+        <span class="q-side"><span class="chip lv-base">Основы</span><span class="q-min">5 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="service-lifetimes.html" data-qid="aspnet-core/service-lifetimes">
+        <span class="q-num">3</span>
+        <span class="q-main"><span class="q-title">Scoped vs Transient vs Singleton — разница и ловушки?</span><span class="q-sub"> Singleton — один экземпляр на всё приложение. Должен быть потокобезопасным. Для: кэшей, клиентов (HttpClient через фабрику), конфигурации, TimeProvider. Scoped — один эк…</span></span>
+        <span class="q-side"><span class="chip lv-base">Основы</span><span class="q-min">5 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="minimal-api-vs-controllers.html" data-qid="aspnet-core/minimal-api-vs-controllers">
+        <span class="q-num">4</span>
+        <span class="q-main"><span class="q-title">Как работают Minimal API vs Controllers?</span><span class="q-sub"> Оба подхода работают поверх endpoint routing и одного конвейера middleware; различается модель описания эндпоинтов. Controllers (MVC): классы-наследники ControllerBase, …</span></span>
+        <span class="q-side"><span class="chip lv-base">Основы</span><span class="q-min">5 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="filters.html" data-qid="aspnet-core/filters">
+        <span class="q-num">5</span>
+        <span class="q-main"><span class="q-title">Что такое Filters: Authorization, Action, Result, Exception — порядок выполнения?</span><span class="q-sub"> Фильтры — точки расширения внутри MVC, вокруг выполнения действия контроллера. В отличие от middleware, они знают о контроллере, действии, аргументах, ModelState и резул…</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="model-binding-validation.html" data-qid="aspnet-core/model-binding-validation">
+        <span class="q-num">6</span>
+        <span class="q-main"><span class="q-title">Model Binding и Validation: DataAnnotations, FluentValidation?</span><span class="q-sub"> Model binding превращает данные HTTP-запроса (маршрут, query, заголовки, форма, JSON-тело) в параметры действия. Источник задаётся атрибутами [FromRoute], [FromQuery], […</span></span>
+        <span class="q-side"><span class="chip lv-base">Основы</span><span class="q-min">5 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="cors.html" data-qid="aspnet-core/cors">
+        <span class="q-num">7</span>
+        <span class="q-main"><span class="q-title">Как настроить CORS и почему это важно?</span><span class="q-sub"> Same-Origin Policy — правило браузера: JavaScript со страницы https://app.example.com не может читать ответы запросов к другому origin (схема + хост + порт), например ht…</span></span>
+        <span class="q-side"><span class="chip lv-base">Основы</span><span class="q-min">5 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="authentication-authorization.html" data-qid="aspnet-core/authentication-authorization">
+        <span class="q-num">8</span>
+        <span class="q-main"><span class="q-title">Authentication vs Authorization: JWT, Cookie, OAuth2 / OIDC?</span><span class="q-sub"> Аутентификация — «кто ты?»: проверка учётных данных/токена и формирование ClaimsPrincipal (HttpContext.User). Ошибка — 401 Unauthorized. Авторизация — «что тебе можно?»:…</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="claims-roles-policies.html" data-qid="aspnet-core/claims-roles-policies">
+        <span class="q-num">9</span>
+        <span class="q-main"><span class="q-title">Что такое ClaimsPrincipal, Identity, Roles vs Policy-based auth?</span><span class="q-sub"> Claim — утверждение о субъекте в виде «тип — значение»: sub=42, email=ann@x.uz, role=Manager, department=Sales. ClaimsIdentity — набор claims, выданный одним источником …</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="kestrel-vs-iis-hosting.html" data-qid="aspnet-core/kestrel-vs-iis-hosting">
+        <span class="q-num">10</span>
+        <span class="q-main"><span class="q-title">Kestrel vs IIS — чем отличаются, как хостировать?</span><span class="q-sub"> Kestrel — встроенный в ASP.NET Core кроссплатформенный веб-сервер. Он есть всегда (кроме in-process режима IIS, где используется IISHttpServer). Быстрый, поддерживает HT…</span></span>
+        <span class="q-side"><span class="chip lv-base">Основы</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="configuration-options.html" data-qid="aspnet-core/configuration-options">
+        <span class="q-num">11</span>
+        <span class="q-main"><span class="q-title">Configuration: appsettings, переменные среды, IOptions&lt;T&gt;, secrets?</span><span class="q-sub"> Конфигурация — набор провайдеров, объединённых в одно дерево «ключ → значение». Порядок по умолчанию: appsettings.json → appsettings.{Environment}.json → User Secrets (D…</span></span>
+        <span class="q-side"><span class="chip lv-base">Основы</span><span class="q-min">5 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="logging-structured-correlation.html" data-qid="aspnet-core/logging-structured-correlation">
+        <span class="q-num">12</span>
+        <span class="q-main"><span class="q-title">Logging: ILogger, Serilog, Structured Logging, correlation ID?</span><span class="q-sub"> ILogger&lt;T&gt; — абстракция логирования .NET; реализации (провайдеры) подключаются отдельно: Console, Debug, EventSource, OpenTelemetry, Serilog, NLog. Структурное логирован…</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="health-checks-probes.html" data-qid="aspnet-core/health-checks-probes">
+        <span class="q-num">13</span>
+        <span class="q-main"><span class="q-title">Health checks, Liveness vs Readiness probes?</span><span class="q-sub"> Health checks — эндпоинты, по которым оркестратор, балансировщик или мониторинг узнают состояние сервиса. В ASP.NET Core: AddHealthChecks() + MapHealthChecks(&quot;/health&quot;),…</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">5 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="signalr.html" data-qid="aspnet-core/signalr">
+        <span class="q-num">14</span>
+        <span class="q-main"><span class="q-title">Как работает SignalR: WebSockets, Long Polling, Server-Sent Events?</span><span class="q-sub"> SignalR — библиотека для двусторонней связи в реальном времени между сервером и клиентами (браузер, .NET, Java, Swift). Абстрагирует транспорт и даёт RPC-модель: сервер …</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="grpc.html" data-qid="aspnet-core/grpc">
+        <span class="q-num">15</span>
+        <span class="q-main"><span class="q-title">gRPC в .NET — Protobuf, streaming, отличие от REST?</span><span class="q-sub"> gRPC — RPC-фреймворк поверх HTTP/2: контракт описывается в .proto-файле, из него генерируются клиент и сервер (C#, Go, Java, ...). Вызов удалённого сервиса выглядит как …</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="rate-limiting.html" data-qid="aspnet-core/rate-limiting">
+        <span class="q-num">16</span>
+        <span class="q-main"><span class="q-title">Rate Limiting в ASP.NET Core 7+?</span><span class="q-sub"> Rate limiting ограничивает число запросов за период, чтобы защитить сервис от перегрузки, злоупотреблений (брутфорс, парсинг) и обеспечить справедливое распределение рес…</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">5 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="output-vs-response-caching.html" data-qid="aspnet-core/output-vs-response-caching">
+        <span class="q-num">17</span>
+        <span class="q-main"><span class="q-title">Output Caching vs Response Caching — отличия?</span><span class="q-sub"> Response Caching (UseResponseCaching) — реализует HTTP-кэширование по стандарту: ориентируется на заголовки Cache-Control, Vary; учитывает заголовки клиента (Cache-Contr…</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="error-handling-problem-details.html" data-qid="aspnet-core/error-handling-problem-details">
+        <span class="q-num">18</span>
+        <span class="q-main"><span class="q-title">Как правильно обрабатывать ошибки: ProblemDetails, middleware, ExceptionHandler?</span><span class="q-sub"> Ошибки обрабатываются централизованно, а не try/catch в каждом контроллере: UseExceptionHandler + IExceptionHandler (.NET 8) — одно место, где исключение превращается в …</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li></ol>
   <nav class="prev-next" aria-label="Соседние разделы">
     <a class="pn prev" href="../../topics/csharp-dotnet/index.html"><span class="pn-dir"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>Предыдущий раздел</span><span class="pn-t">C# и .NET Runtime</span></a>
     <a class="pn next" href="../../topics/ef-core/index.html"><span class="pn-dir">Следующий раздел<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></span><span class="pn-t">Entity Framework Core</span></a>
