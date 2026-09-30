@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "build": "node scripts/build.mjs",
+    "check": "node scripts/check.mjs .",
     "serve": "npx http-server . -p 8080 -c-1"
   },
   "devDependencies": {
