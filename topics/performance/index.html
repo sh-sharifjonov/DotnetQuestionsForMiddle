@@ -34,12 +34,62 @@
     <div>
       <h1>Производительность и диагностика</h1>
       <p class="lead">Профилирование, аллокации и GC-паузы, утечки памяти, thread starvation, CPU- и I/O-bound задачи, кэширование, пулы соединений, HTTP/2 и HTTP/3.</p>
-      <div class="cat-progress"><div class="bar"><i data-progress="performance"></i></div><span data-progress-text="performance" data-total="0"></span></div>
+      <div class="cat-progress"><div class="bar"><i data-progress="performance"></i></div><span data-progress-text="performance" data-total="10"></span></div>
     </div>
   </header>
   <section class="prose cat-intro"><p>Главное правило: <strong>сначала измерь, потом оптимизируй</strong>. В этом разделе — инструменты диагностики и типичные причины деградации .NET-сервисов в продакшене.</p>
 </section>
-  <ol class="q-list"></ol>
+  <ol class="q-list">
+      <li><a class="q-row" href="profiling-tools.html" data-qid="performance/profiling-tools">
+        <span class="q-num">1</span>
+        <span class="q-main"><span class="q-title">Как профилировать .NET приложение: dotnet-trace, PerfView, BenchmarkDotNet?</span><span class="q-sub"> Правило №1: сначала измерь. Интуиция о «медленном месте» ошибается чаще, чем кажется. dotnet-counters — метрики в реальном времени (CPU, GC, потоки пула, исключения, зап…</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="gc-pauses-allocations.html" data-qid="performance/gc-pauses-allocations">
+        <span class="q-num">2</span>
+        <span class="q-main"><span class="q-title">Что такое GC паузы и как минимизировать аллокации?</span><span class="q-sub"> GC-пауза — время, когда сборщик приостанавливает управляемые потоки (фазы пометки и уплотнения). Эфемерные сборки (Gen 0/1) — доли–единицы мс; Gen 2 / LOH — десятки–сотн…</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="memory-leaks.html" data-qid="performance/memory-leaks">
+        <span class="q-num">3</span>
+        <span class="q-main"><span class="q-title">Memory leaks в .NET — типичные причины, как находить?</span><span class="q-sub"> В .NET утечка — это объекты, которые больше не нужны, но остаются достижимыми от корней GC (статик, синглтон, живой поток, таймер), поэтому GC не может их собрать. Плюс …</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="thread-starvation.html" data-qid="performance/thread-starvation">
+        <span class="q-num">4</span>
+        <span class="q-main"><span class="q-title">Thread starvation — как диагностировать в ASP.NET Core?</span><span class="q-sub"> Thread pool starvation — все потоки пула заняты ожиданием (заблокированы), а новые работы (обработка запросов, продолжения await) стоят в очереди. Пул добавляет потоки м…</span></span>
+        <span class="q-side"><span class="chip lv-adv">Middle+</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="cpu-bound-vs-io-bound.html" data-qid="performance/cpu-bound-vs-io-bound">
+        <span class="q-num">5</span>
+        <span class="q-main"><span class="q-title">CPU-bound vs I/O-bound задачи — как правильно распараллеливать?</span><span class="q-sub"> I/O-bound — время уходит на ожидание внешних систем (БД, HTTP, диск, сеть). Решение — асинхронность: async/await, Task.WhenAll для параллельных независимых вызовов. Пото…</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="caching.html" data-qid="performance/caching">
+        <span class="q-num">6</span>
+        <span class="q-main"><span class="q-title">Как работает кэширование: IMemoryCache, IDistributedCache, Redis?</span><span class="q-sub"> Кэш хранит результаты дорогих операций (запросы к БД, вызовы API, вычисления) ближе к месту использования. Эффект: меньше задержка, меньше нагрузка на источник. Цена — у…</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="cache-invalidation.html" data-qid="performance/cache-invalidation">
+        <span class="q-num">7</span>
+        <span class="q-main"><span class="q-title">Cache invalidation стратегии: TTL, eviction, distributed cache consistency?</span><span class="q-sub"> «В информатике есть две сложные вещи: инвалидация кэша и именование» (Фил Карлтон). Инвалидация — решение, когда кэшированное значение перестаёт быть верным. TTL (истече…</span></span>
+        <span class="q-side"><span class="chip lv-adv">Middle+</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="connection-pooling.html" data-qid="performance/connection-pooling">
+        <span class="q-num">8</span>
+        <span class="q-main"><span class="q-title">Что такое connection pooling для БД и HTTP?</span><span class="q-sub"> Установка соединения дорогая: TCP handshake + TLS + аутентификация (для БД ещё и создание серверного процесса/сессии) — единицы–десятки миллисекунд. Пул держит открытые …</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="http2-http3.html" data-qid="performance/http2-http3">
+        <span class="q-num">9</span>
+        <span class="q-main"><span class="q-title">HTTP/2 и HTTP/3 — преимущества для .NET сервисов?</span><span class="q-sub"> HTTP/1.1: текстовый протокол, один запрос за раз на соединение (pipelining на практике не используется) → браузеры открывают 6 соединений на хост, заголовки повторяются …</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="why-minimal-api-faster.html" data-qid="performance/why-minimal-api-faster">
+        <span class="q-num">10</span>
+        <span class="q-main"><span class="q-title">Как работает Minimal API быстрее обычных Controllers?</span><span class="q-sub"> Minimal API и контроллеры используют один и тот же Kestrel, конвейер middleware и endpoint routing. Разница — в том, что происходит после выбора эндпоинта. Контроллеры (…</span></span>
+        <span class="q-side"><span class="chip lv-adv">Middle+</span><span class="q-min">5 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li></ol>
   <nav class="prev-next" aria-label="Соседние разделы">
     <a class="pn prev" href="../../topics/messaging/index.html"><span class="pn-dir"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>Предыдущий раздел</span><span class="pn-t">Очереди и асинхронная обработка</span></a>
     <a class="pn next" href="../../topics/devops/index.html"><span class="pn-dir">Следующий раздел<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></span><span class="pn-t">DevOps и инфраструктура</span></a>
