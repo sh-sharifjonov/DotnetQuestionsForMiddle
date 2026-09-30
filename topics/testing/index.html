@@ -34,12 +34,62 @@
     <div>
       <h1>Тестирование</h1>
       <p class="lead">Пирамида тестов, xUnit/NUnit/MSTest, моки и стабы, интеграционные тесты с WebApplicationFactory и Testcontainers, TDD/BDD, mutation testing.</p>
-      <div class="cat-progress"><div class="bar"><i data-progress="testing"></i></div><span data-progress-text="testing" data-total="0"></span></div>
+      <div class="cat-progress"><div class="bar"><i data-progress="testing"></i></div><span data-progress-text="testing" data-total="10"></span></div>
     </div>
   </header>
   <section class="prose cat-intro"><p>Хорошие тесты — это не процент покрытия, а <strong>уверенность при рефакторинге</strong>. На собеседовании спрашивают, как вы изолируете зависимости, как тестируете работу с базой и HTTP и чем интеграционный тест отличается от unit-теста.</p>
 </section>
-  <ol class="q-list"></ol>
+  <ol class="q-list">
+      <li><a class="q-row" href="testing-pyramid.html" data-qid="testing/testing-pyramid">
+        <span class="q-num">1</span>
+        <span class="q-main"><span class="q-title">Пирамида тестирования: Unit → Integration → E2E?</span><span class="q-sub"> Пирамида (Майк Кон): внизу — много быстрых и дешёвых unit-тестов, в середине — меньше интеграционных, наверху — немного медленных и хрупких E2E. Unit — логика одного кла…</span></span>
+        <span class="q-side"><span class="chip lv-base">Основы</span><span class="q-min">5 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="xunit-nunit-mstest.html" data-qid="testing/xunit-nunit-mstest">
+        <span class="q-num">2</span>
+        <span class="q-main"><span class="q-title">Что такое xUnit, NUnit, MSTest — основные отличия?</span><span class="q-sub"> Все три — полноценные фреймворки для .NET, запускаются через dotnet test, поддерживаются IDE и CI. Выбор чаще определяется привычками команды. xUnit — самый популярный в…</span></span>
+        <span class="q-side"><span class="chip lv-base">Основы</span><span class="q-min">5 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="test-doubles.html" data-qid="testing/test-doubles">
+        <span class="q-num">3</span>
+        <span class="q-main"><span class="q-title">Mock vs Stub vs Fake vs Spy — когда что использовать?</span><span class="q-sub"> Test double — общее название объектов-заменителей реальных зависимостей в тестах (термин Джерарда Месароша). Dummy — заглушка, которую передают, но не используют (параме…</span></span>
+        <span class="q-side"><span class="chip lv-base">Основы</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="webapplicationfactory.html" data-qid="testing/webapplicationfactory">
+        <span class="q-num">4</span>
+        <span class="q-main"><span class="q-title">Как тестировать код с DI: TestServer, WebApplicationFactory?</span><span class="q-sub"> WebApplicationFactory&lt;TEntryPoint&gt; (пакет Microsoft.AspNetCore.Mvc.Testing) поднимает всё приложение в памяти: реальный Program.cs, DI, конфигурацию, middleware, маршрут…</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="testing-ef-core.html" data-qid="testing/testing-ef-core">
+        <span class="q-num">5</span>
+        <span class="q-main"><span class="q-title">Как тестировать EF Core: InMemory vs реальная БД vs Testcontainers?</span><span class="q-sub"> InMemory-провайдер — быстрый, но не реляционный: нет транзакций, FK и уникальных ограничений, SQL-трансляции (запросы выполняются как LINQ-to-Objects), ExecuteUpdate/raw…</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="aaa-pattern.html" data-qid="testing/aaa-pattern">
+        <span class="q-num">6</span>
+        <span class="q-main"><span class="q-title">AAA-паттерн (Arrange-Act-Assert)?</span><span class="q-sub"> AAA — структура теста из трёх частей: Arrange (подготовить объект, зависимости, данные), Act (выполнить одно действие), Assert (проверить результат). Цель — читаемость: …</span></span>
+        <span class="q-side"><span class="chip lv-base">Основы</span><span class="q-min">5 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="mutation-testing.html" data-qid="testing/mutation-testing">
+        <span class="q-num">7</span>
+        <span class="q-main"><span class="q-title">Что такое Mutation Testing?</span><span class="q-sub"> Mutation testing проверяет качество тестов, а не кода: инструмент вносит в код маленькие изменения (мутанты) — меняет &gt; на &gt;=, + на -, true на false, удаляет вызов — и з…</span></span>
+        <span class="q-side"><span class="chip lv-adv">Middle+</span><span class="q-min">4 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="tdd-vs-bdd.html" data-qid="testing/tdd-vs-bdd">
+        <span class="q-num">8</span>
+        <span class="q-main"><span class="q-title">TDD vs BDD — в чём разница, когда применять?</span><span class="q-sub"> TDD (Test-Driven Development) — техника разработки: сначала пишем падающий тест (Red), затем минимальный код, чтобы он прошёл (Green), затем улучшаем код (Refactor). Кор…</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="testing-async-code.html" data-qid="testing/testing-async-code">
+        <span class="q-num">9</span>
+        <span class="q-main"><span class="q-title">Как тестировать асинхронный код в .NET?</span><span class="q-sub"> Тестовые методы — async Task (не async void!), внутри — await. Все фреймворки (xUnit, NUnit, MSTest) ждут завершения Task. Никогда .Result / .Wait() в тестах — риск dead…</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">5 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="code-coverage.html" data-qid="testing/code-coverage">
+        <span class="q-num">10</span>
+        <span class="q-main"><span class="q-title">Code Coverage — что измеряет и что не измеряет?</span><span class="q-sub"> Code coverage — доля кода, выполненного во время тестов. Виды: line (строки), branch (ветки if/switch/&amp;&amp;/?:), method, statement. Инструменты .NET: Coverlet (сбор, --coll…</span></span>
+        <span class="q-side"><span class="chip lv-base">Основы</span><span class="q-min">5 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li></ol>
   <nav class="prev-next" aria-label="Соседние разделы">
     <a class="pn prev" href="../../topics/architecture/index.html"><span class="pn-dir"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>Предыдущий раздел</span><span class="pn-t">Архитектура и паттерны</span></a>
     <a class="pn next" href="../../topics/messaging/index.html"><span class="pn-dir">Следующий раздел<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></span><span class="pn-t">Очереди и асинхронная обработка</span></a>

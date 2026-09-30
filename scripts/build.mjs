@@ -101,7 +101,7 @@ marked.use({
       const hl = lang && hljs.getLanguage(lang)
         ? hljs.highlight(code, { language: lang, ignoreIllegals: true }).value
         : esc(code);
-      const label = { csharp: 'C#', cs: 'C#', sql: 'SQL', bash: 'Shell', yaml: 'YAML', json: 'JSON', dockerfile: 'Dockerfile', protobuf: 'Protobuf', xml: 'XML', http: 'HTTP', text: 'Текст', javascript: 'JavaScript', ini: 'INI', promql: 'PromQL' }[lang] || lang;
+      const label = { csharp: 'C#', cs: 'C#', sql: 'SQL', bash: 'Shell', yaml: 'YAML', json: 'JSON', dockerfile: 'Dockerfile', protobuf: 'Protobuf', xml: 'XML', http: 'HTTP', text: 'Текст', javascript: 'JavaScript', ini: 'INI', promql: 'PromQL', gherkin: 'Gherkin', nginx: 'Nginx', powershell: 'PowerShell', hcl: 'HCL' }[lang] || lang;
       const head = `<div class="code-head"><span>${esc(caption || label || 'Код')}</span><button class="copy" type="button" aria-label="Скопировать код">Копировать</button></div>`;
       return `<div class="code">${head}<pre><code class="hljs lang-${esc(lang)}">${hl}</code></pre></div>`;
     },
