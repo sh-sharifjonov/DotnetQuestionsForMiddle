@@ -34,12 +34,57 @@
     <div>
       <h1>Очереди и асинхронная обработка</h1>
       <p class="lead">Брокеры сообщений (RabbitMQ, Kafka), очереди и топики, гарантии доставки, идемпотентность, MassTransit, DLQ, backpressure, Channels и фоновые сервисы.</p>
-      <div class="cat-progress"><div class="bar"><i data-progress="messaging"></i></div><span data-progress-text="messaging" data-total="0"></span></div>
+      <div class="cat-progress"><div class="bar"><i data-progress="messaging"></i></div><span data-progress-text="messaging" data-total="9"></span></div>
     </div>
   </header>
   <section class="prose cat-intro"><p>Как только сервисов становится больше одного, появляются сообщения. Ключевая мысль раздела: <strong>сеть ненадёжна, сообщения дублируются и теряются</strong> — и система должна быть спроектирована с учётом этого.</p>
 </section>
-  <ol class="q-list"></ol>
+  <ol class="q-list">
+      <li><a class="q-row" href="message-brokers.html" data-qid="messaging/message-brokers">
+        <span class="q-num">1</span>
+        <span class="q-main"><span class="q-title">Для чего нужны очереди сообщений: RabbitMQ, Kafka, Azure Service Bus?</span><span class="q-sub"> Брокер сообщений — посредник, который принимает сообщения от производителей, надёжно хранит их и доставляет потребителям. Отправитель и получатель не обязаны работать од…</span></span>
+        <span class="q-side"><span class="chip lv-base">Основы</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="queue-vs-topic.html" data-qid="messaging/queue-vs-topic">
+        <span class="q-num">2</span>
+        <span class="q-main"><span class="q-title">Разница между очередью (Queue) и топиком (Topic/Exchange)?</span><span class="q-sub"> Очередь (point-to-point) — каждое сообщение обрабатывает ровно один потребитель из группы (competing consumers). Модель для команд и задач: «отправь письмо», «сгенерируй…</span></span>
+        <span class="q-side"><span class="chip lv-base">Основы</span><span class="q-min">5 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="delivery-guarantees.html" data-qid="messaging/delivery-guarantees">
+        <span class="q-num">3</span>
+        <span class="q-main"><span class="q-title">At-least-once vs At-most-once vs Exactly-once delivery?</span><span class="q-sub"> At-most-once — «не больше одного раза»: сообщение может потеряться, но не будет дублей. Реализация: подтвердить (ack/commit offset) до обработки или вообще без подтвержд…</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="idempotency.html" data-qid="messaging/idempotency">
+        <span class="q-num">4</span>
+        <span class="q-main"><span class="q-title">Идемпотентность — что это и как обеспечивать?</span><span class="q-sub"> Идемпотентная операция — повторное выполнение с теми же входными данными даёт тот же результат и не создаёт дополнительных побочных эффектов: f(f(x)) = f(x). Зачем: в ра…</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="masstransit.html" data-qid="messaging/masstransit">
+        <span class="q-num">5</span>
+        <span class="q-main"><span class="q-title">Как работает MassTransit или другой .NET-клиент для брокеров?</span><span class="q-sub"> MassTransit — фреймворк сообщений для .NET поверх транспорта (RabbitMQ, Azure Service Bus, Amazon SQS, Kafka-rider, in-memory для тестов). Скрывает низкоуровневые детали…</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="dead-letter-queue.html" data-qid="messaging/dead-letter-queue">
+        <span class="q-num">6</span>
+        <span class="q-main"><span class="q-title">Dead Letter Queue — зачем нужна?</span><span class="q-sub"> Dead Letter Queue (DLQ) — отдельная очередь для сообщений, которые не удалось обработать после всех попыток, истёк TTL, превышен размер/лимит доставок или сообщение откл…</span></span>
+        <span class="q-side"><span class="chip lv-base">Основы</span><span class="q-min">5 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="backpressure.html" data-qid="messaging/backpressure">
+        <span class="q-num">7</span>
+        <span class="q-main"><span class="q-title">Что такое Backpressure?</span><span class="q-sub"> Backpressure (противодавление) — механизм, с помощью которого медленный потребитель сигнализирует быстрому производителю притормозить, чтобы система не переполнилась. Бе…</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="channels.html" data-qid="messaging/channels">
+        <span class="q-num">8</span>
+        <span class="q-main"><span class="q-title">Channels в .NET (System.Threading.Channels) — для чего?</span><span class="q-sub"> System.Threading.Channels — высокопроизводительные асинхронные очереди в памяти для паттерна producer-consumer внутри процесса. Channel&lt;T&gt; состоит из ChannelWriter&lt;T&gt; (W…</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">5 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="background-services.html" data-qid="messaging/background-services">
+        <span class="q-num">9</span>
+        <span class="q-main"><span class="q-title">Background Services: IHostedService, BackgroundService?</span><span class="q-sub"> IHostedService — интерфейс фонового компонента, которым управляет Generic Host: StartAsync при старте приложения и StopAsync при остановке. Регистрация — AddHostedServic…</span></span>
+        <span class="q-side"><span class="chip lv-base">Основы</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li></ol>
   <nav class="prev-next" aria-label="Соседние разделы">
     <a class="pn prev" href="../../topics/testing/index.html"><span class="pn-dir"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>Предыдущий раздел</span><span class="pn-t">Тестирование</span></a>
     <a class="pn next" href="../../topics/performance/index.html"><span class="pn-dir">Следующий раздел<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></span><span class="pn-t">Производительность и диагностика</span></a>
