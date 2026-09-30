@@ -93,6 +93,7 @@ marked.use({
       const lang = info.split(/\s+/)[0] || '';
       const caption = info.slice(lang.length).trim();
       if (lang === 'mermaid') {
+        code = code.replace(/(&[a-zA-Z]+|&#\d+|#\d+)?;/g, (m, ent) => (ent ? m : '#59;'));            // ';' в mermaid разделяет операторы — экранируем
         const key = sha(code);
         ctx.diagrams.push({ key, code, file: ctx.file });
         return `<!--MERMAID:${key}:${Buffer.from(caption).toString('base64')}-->`;
