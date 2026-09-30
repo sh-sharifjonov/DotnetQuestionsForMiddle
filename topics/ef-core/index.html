@@ -34,12 +34,77 @@
     <div>
       <h1>Entity Framework Core</h1>
       <p class="lead">DbContext и Change Tracker, миграции, стратегии загрузки, N+1, транзакции, наследование, raw SQL, интерсепторы и конкурентный доступ.</p>
-      <div class="cat-progress"><div class="bar"><i data-progress="ef-core"></i></div><span data-progress-text="ef-core" data-total="0"></span></div>
+      <div class="cat-progress"><div class="bar"><i data-progress="ef-core"></i></div><span data-progress-text="ef-core" data-total="13"></span></div>
     </div>
   </header>
   <section class="prose cat-intro"><p>EF Core — самый частый источник проблем с производительностью в .NET-сервисах. Интервьюер хочет услышать, что вы понимаете, <strong>какой SQL генерируется</strong> из вашего LINQ, <strong>сколько запросов</strong> уходит в базу и <strong>что хранится в памяти</strong> контекста.</p>
 </section>
-  <ol class="q-list"></ol>
+  <ol class="q-list">
+      <li><a class="q-row" href="dbcontext-unit-of-work-change-tracker.html" data-qid="ef-core/dbcontext-unit-of-work-change-tracker">
+        <span class="q-num">1</span>
+        <span class="q-main"><span class="q-title">Как работает DbContext: Unit of Work, Identity Map, Change Tracker?</span><span class="q-sub"> DbContext — сессия работы с БД: запросы, отслеживание изменений, сохранение. Лёгкий, не потокобезопасный, живёт недолго (обычно Scoped — один на HTTP-запрос). Unit of Wo…</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="code-first-database-first.html" data-qid="ef-core/code-first-database-first">
+        <span class="q-num">2</span>
+        <span class="q-main"><span class="q-title">Code First vs Database First vs Model First?</span><span class="q-sub"> Code First — источник истины — C#-классы и конфигурация. Схема БД генерируется и эволюционирует через миграции. Стандарт для новых проектов на EF Core. Database First — …</span></span>
+        <span class="q-side"><span class="chip lv-base">Основы</span><span class="q-min">5 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="migrations.html" data-qid="ef-core/migrations">
+        <span class="q-num">3</span>
+        <span class="q-main"><span class="q-title">Миграции: создание, применение, откат, squash?</span><span class="q-sub"> Миграция — C#-класс с методами Up (применить) и Down (откатить), описывающий изменение схемы. Создаётся командой dotnet ef migrations add Name сравнением текущей модели …</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="loading-strategies.html" data-qid="ef-core/loading-strategies">
+        <span class="q-num">4</span>
+        <span class="q-main"><span class="q-title">Lazy Loading vs Eager Loading vs Explicit Loading?</span><span class="q-sub"> Eager loading — связанные данные загружаются сразу вместе с основной сущностью через Include / ThenInclude (JOIN или отдельные запросы при AsSplitQuery). Предсказуемо, к…</span></span>
+        <span class="q-side"><span class="chip lv-base">Основы</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="n-plus-one.html" data-qid="ef-core/n-plus-one">
+        <span class="q-num">5</span>
+        <span class="q-main"><span class="q-title">N+1 проблема — как обнаружить и решить?</span><span class="q-sub"> N+1: один запрос загружает список из N записей, затем для каждой записи выполняется ещё по запросу за связанными данными. Итого N+1 запросов вместо 1–2. Причины в EF Cor…</span></span>
+        <span class="q-side"><span class="chip lv-base">Основы</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="asnotracking.html" data-qid="ef-core/asnotracking">
+        <span class="q-num">6</span>
+        <span class="q-main"><span class="q-title">Как работает AsNoTracking и когда его использовать?</span><span class="q-sub"> AsNoTracking() говорит EF Core не регистрировать загруженные сущности в Change Tracker: не создаются EntityEntry, снимки исходных значений, нет Identity Map. Результат: …</span></span>
+        <span class="q-side"><span class="chip lv-base">Основы</span><span class="q-min">5 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="transactions.html" data-qid="ef-core/transactions">
+        <span class="q-num">7</span>
+        <span class="q-main"><span class="q-title">Транзакции в EF Core: SaveChanges, BeginTransaction, Ambient transactions?</span><span class="q-sub"> SaveChanges сам оборачивает все накопленные изменения в одну транзакцию — для большинства сценариев явная транзакция не нужна. Database.BeginTransactionAsync() — явная т…</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="fluent-api-vs-data-annotations.html" data-qid="ef-core/fluent-api-vs-data-annotations">
+        <span class="q-num">8</span>
+        <span class="q-main"><span class="q-title">Конфигурация через Fluent API vs Data Annotations?</span><span class="q-sub"> Модель EF Core строится из трёх источников с растущим приоритетом: соглашения (conventions) → Data Annotations (атрибуты на классах) → Fluent API (OnModelCreating). Flue…</span></span>
+        <span class="q-side"><span class="chip lv-base">Основы</span><span class="q-min">5 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="owned-types-inheritance.html" data-qid="ef-core/owned-types-inheritance">
+        <span class="q-num">9</span>
+        <span class="q-main"><span class="q-title">Owned Types, Table Splitting, TPH/TPT/TPC наследование?</span><span class="q-sub"> Owned type (OwnsOne/OwnsMany) — тип без собственной идентичности, принадлежащий сущности-владельцу. Идеален для Value Objects DDD (Address, Money). По умолчанию хранится…</span></span>
+        <span class="q-side"><span class="chip lv-adv">Middle+</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="raw-sql.html" data-qid="ef-core/raw-sql">
+        <span class="q-num">10</span>
+        <span class="q-main"><span class="q-title">Raw SQL, FromSql, ExecuteSql — когда уходить от LINQ?</span><span class="q-sub"> FromSql($&quot;...&quot;) — запрос, возвращающий сущности (можно продолжить LINQ: Where, Include, OrderBy — EF обернёт SQL в подзапрос). Интерполяция автоматически превращается в …</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="interceptors-query-filters.html" data-qid="ef-core/interceptors-query-filters">
+        <span class="q-num">11</span>
+        <span class="q-main"><span class="q-title">Как работает Interceptors и Query Filters в EF Core?</span><span class="q-sub"> Interceptors — перехватчики операций EF Core: выполнение команд (DbCommandInterceptor), сохранение (SaveChangesInterceptor), соединения (DbConnectionInterceptor), транза…</span></span>
+        <span class="q-side"><span class="chip lv-adv">Middle+</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="query-optimization.html" data-qid="ef-core/query-optimization">
+        <span class="q-num">12</span>
+        <span class="q-main"><span class="q-title">Оптимизация запросов: compiled queries, split queries, projection?</span><span class="q-sub"> Сначала измерить: логирование SQL, ToQueryString(), план выполнения (EXPLAIN ANALYZE), трассировка. Большинство проблем — в SQL и индексах, а не в EF. Проекция (Select в…</span></span>
+        <span class="q-side"><span class="chip lv-adv">Middle+</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li><a class="q-row" href="concurrency-control.html" data-qid="ef-core/concurrency-control">
+        <span class="q-num">13</span>
+        <span class="q-main"><span class="q-title">Конкурентный доступ: Optimistic vs Pessimistic Concurrency?</span><span class="q-sub"> Проблема: два пользователя читают одну запись, оба меняют и сохраняют — второй затирает изменения первого (lost update). Optimistic concurrency — «конфликты редки»: не б…</span></span>
+        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li></ol>
   <nav class="prev-next" aria-label="Соседние разделы">
     <a class="pn prev" href="../../topics/aspnet-core/index.html"><span class="pn-dir"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>Предыдущий раздел</span><span class="pn-t">ASP.NET Core</span></a>
     <a class="pn next" href="../../topics/databases-sql/index.html"><span class="pn-dir">Следующий раздел<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></span><span class="pn-t">Базы данных и SQL</span></a>
