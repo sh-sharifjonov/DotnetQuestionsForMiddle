@@ -15,24 +15,24 @@ tags: [rate limiting, token bucket, sliding window, fixed window, concurrency li
 ## Алгоритмы
 
 ```mermaid Четыре алгоритма ограничения
-flowchart TB
-    subgraph FW["Fixed Window: 100 запросов в минуту"]
-        direction TB
-        F1["10:00–10:01: счётчик 0 → 100"] --> F2["10:01 сброс в 0"]
-        F3["Проблема: 100 запросов в 10:00:59<br/>+ 100 в 10:01:00 = 200 за 2 секунды"]:::warn
-    end
-    subgraph SW["Sliding Window: окно из сегментов"]
-        direction TB
-        S1["окно 60 с = 6 сегментов по 10 с"] --> S2["сегменты «уходят» по одному —<br/>всплеск на границе сглажен"]:::good
+flowchart LR
+    subgraph CL["Concurrency: не более 10 одновременно"]
+        direction LR
+        C1["счётчик активных запросов"] --> C2["освобождается по завершении запроса"]
     end
     subgraph TKB["Token Bucket: ведро на 20 токенов"]
-        direction TB
+        direction LR
         T1["каждые 10 с +5 токенов"] --> T2["запрос забирает токен,<br/>нет токенов — отказ или очередь"]
         T3["разрешает всплески до ёмкости ведра"]:::good
     end
-    subgraph CL["Concurrency: не более 10 одновременно"]
-        direction TB
-        C1["счётчик активных запросов"] --> C2["освобождается по завершении запроса"]
+    subgraph SW["Sliding Window: окно из сегментов"]
+        direction LR
+        S1["окно 60 с = 6 сегментов по 10 с"] --> S2["сегменты «уходят» по одному —<br/>всплеск на границе сглажен"]:::good
+    end
+    subgraph FW["Fixed Window: 100 запросов в минуту"]
+        direction LR
+        F1["10:00–10:01: счётчик 0 → 100"] --> F2["10:01 сброс в 0"]
+        F3["Проблема: 100 запросов в 10:00:59<br/>+ 100 в 10:01:00 = 200 за 2 секунды"]:::warn
     end
 ```
 

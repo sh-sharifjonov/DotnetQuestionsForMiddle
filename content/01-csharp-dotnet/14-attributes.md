@@ -42,7 +42,7 @@ public void Create() { }
 ```
 
 ```mermaid Кто и когда читает атрибуты
-flowchart LR
+flowchart TD
     A["[Атрибут] в исходном коде"] --> C["Компилятор Roslyn"]
     C --> M["Метаданные сборки<br/>(таблица CustomAttribute)"]
     C -- "[Obsolete], [CallerMemberName],<br/>[Conditional]" --> W["Предупреждения,<br/>подстановка значений"]

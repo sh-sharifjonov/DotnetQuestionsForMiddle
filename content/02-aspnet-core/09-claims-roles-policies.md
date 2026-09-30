@@ -70,7 +70,7 @@ public class ReportsController : ControllerBase { }
 ## Политики
 
 ```mermaid Как работает политика
-flowchart LR
+flowchart TD
     A["[Authorize(Policy = 'RefundUpTo1000')]"] --> P["Политика<br/>RefundUpTo1000"]
     P --> R1["Требование:<br/>аутентифицирован"]
     P --> R2["Требование:<br/>MaxRefundRequirement(1000)"]

@@ -33,20 +33,20 @@ app.MapGet("/ids", (SingletonOp s1, SingletonOp s2, ScopedOp sc1, ScopedOp sc2, 
 
 ```mermaid Экземпляры при двух параллельных запросах
 flowchart TB
-    subgraph App["Корневой контейнер (приложение)"]
-        S["Singleton: Cache (один на всех)"]:::accent
-    end
     subgraph R1["Scope: запрос 1"]
         direction TB
         SC1["Scoped: AppDbContext №1"]
         T1a["Transient: Validator №1"]
         T1b["Transient: Validator №2"]
+        SC1 ~~~ T1a ~~~ T1b
     end
     subgraph R2["Scope: запрос 2"]
         direction TB
         SC2["Scoped: AppDbContext №2"]
         T2a["Transient: Validator №3"]
+        SC2 ~~~ T2a
     end
+    S["Singleton: Cache — один на всё приложение"]:::accent
     R1 --> S
     R2 --> S
 ```

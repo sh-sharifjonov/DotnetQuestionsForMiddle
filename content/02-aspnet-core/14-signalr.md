@@ -17,22 +17,22 @@ tags: [signalr, websockets, long polling, sse, real-time, hub, backplane]
 HTTP построен на модели «запрос → ответ»: сервер не может сам отправить данные клиенту. Для чатов, уведомлений, дашбордов, совместного редактирования, статусов заказов нужен **push** от сервера.
 
 ```mermaid Способы получать обновления от сервера
-flowchart TB
-    subgraph P["Polling"]
-        direction TB
-        P1["GET /updates каждые 5 с"] --> P2["в основном пустые ответы,<br/>задержка до 5 с"]:::warn
-    end
-    subgraph LP["Long Polling"]
-        direction TB
-        L1["GET висит до появления данных"] --> L2["ответ → сразу новый запрос"]
+flowchart LR
+    subgraph WS["WebSockets"]
+        direction LR
+        W1["Upgrade HTTP → WebSocket"] --> W2["полный дуплекс,<br/>минимальные накладные расходы"]:::good
     end
     subgraph SSE["Server-Sent Events"]
-        direction TB
+        direction LR
         S1["один долгий HTTP-ответ,<br/>сервер пишет события"] --> S2["только сервер → клиент"]
     end
-    subgraph WS["WebSockets"]
-        direction TB
-        W1["Upgrade HTTP → WebSocket"] --> W2["полный дуплекс,<br/>минимальные накладные расходы"]:::good
+    subgraph LP["Long Polling"]
+        direction LR
+        L1["GET висит до появления данных"] --> L2["ответ → сразу новый запрос"]
+    end
+    subgraph P["Polling"]
+        direction LR
+        P1["GET /updates каждые 5 с"] --> P2["в основном пустые ответы,<br/>задержка до 5 с"]:::warn
     end
 ```
 

@@ -27,17 +27,17 @@ IAsyncEnumerable<Order> GetAllAsync();
 
 ```mermaid Три способа вернуть последовательность
 flowchart TB
-    subgraph T["Task&lt;List&lt;T&gt;&gt;"]
+    subgraph A["IAsyncEnumerable&lt;T&gt;"]
         direction TB
-        T1["ждём все 1 000 000 строк"] --> T2["весь список в памяти"]:::bad --> T3["обработка"]
+        A1["строка 1 → обработка"] --> A2["await: поток свободен"]:::good --> A3["строка 2 → обработка ..."]
     end
     subgraph E["IEnumerable&lt;T&gt;"]
         direction TB
         E1["строка 1"] --> E2["поток БЛОКИРОВАН<br/>пока ждёт строку 2"]:::warn --> E3["строка 2 ..."]
     end
-    subgraph A["IAsyncEnumerable&lt;T&gt;"]
+    subgraph T["Task&lt;List&lt;T&gt;&gt;"]
         direction TB
-        A1["строка 1 → обработка"] --> A2["await: поток свободен"]:::good --> A3["строка 2 → обработка ..."]
+        T1["ждём все 1 000 000 строк"] --> T2["весь список в памяти"]:::bad --> T3["обработка"]
     end
 ```
 

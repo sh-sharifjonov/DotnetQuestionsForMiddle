@@ -28,13 +28,13 @@ var list2 = e.ToList();
 
 ```mermaid Где выполняется фильтрация
 flowchart TB
-    subgraph IQ["IQueryable&lt;Order&gt;"]
-        direction TB
-        A1["Where(o => o.Total > 1000)"] --> A2["Expression tree"] --> A3["EF Core: трансляция в SQL"] --> A4[("БД: WHERE Total > 1000<br/>вернула 50 строк")]:::good
-    end
     subgraph IE["IEnumerable&lt;Order&gt;"]
         direction TB
         B1[("БД: SELECT *<br/>вернула 1 000 000 строк")]:::bad --> B2["Материализация<br/>1 000 000 объектов"]:::bad --> B3["Where в памяти<br/>осталось 50"]
+    end
+    subgraph IQ["IQueryable&lt;Order&gt;"]
+        direction TB
+        A1["Where(o => o.Total > 1000)"] --> A2["Expression tree"] --> A3["EF Core: трансляция в SQL"] --> A4[("БД: WHERE Total > 1000<br/>вернула 50 строк")]:::good
     end
 ```
 

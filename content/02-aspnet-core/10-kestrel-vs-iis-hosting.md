@@ -15,26 +15,26 @@ tags: [kestrel, iis, reverse proxy, nginx, yarp, хостинг, in-process]
 ## Варианты размещения
 
 ```mermaid Типичные схемы хостинга
-flowchart TB
-    subgraph A["1. Kestrel напрямую"]
-        direction TB
-        C1(["Клиент"]) -- HTTPS --> K1["Kestrel"]
+flowchart LR
+    subgraph E["4. Kubernetes"]
+        direction LR
+        C4(["Клиент"]) -- HTTPS --> ING["Ingress / Gateway"]
+        ING -- HTTP --> P1["Pod: Kestrel :8080"]
+        ING -- HTTP --> P2["Pod: Kestrel :8080"]
+    end
+    subgraph D["3. IIS in-process"]
+        direction LR
+        C3(["Клиент"]) -- HTTPS --> W["IIS: w3wp.exe<br/>ANCM + приложение<br/>в одном процессе"]
     end
     subgraph B["2. За reverse proxy"]
-        direction TB
+        direction LR
         C2(["Клиент"]) -- HTTPS --> N["Nginx / YARP / LB<br/>TLS, лимиты, балансировка"]
         N -- HTTP --> K2["Kestrel #1"]
         N -- HTTP --> K3["Kestrel #2"]
     end
-    subgraph D["3. IIS in-process"]
-        direction TB
-        C3(["Клиент"]) -- HTTPS --> W["IIS: w3wp.exe<br/>ANCM + приложение<br/>в одном процессе"]
-    end
-    subgraph E["4. Kubernetes"]
-        direction TB
-        C4(["Клиент"]) -- HTTPS --> ING["Ingress / Gateway"]
-        ING -- HTTP --> P1["Pod: Kestrel :8080"]
-        ING -- HTTP --> P2["Pod: Kestrel :8080"]
+    subgraph A["1. Kestrel напрямую"]
+        direction LR
+        C1(["Клиент"]) -- HTTPS --> K1["Kestrel"]
     end
 ```
 

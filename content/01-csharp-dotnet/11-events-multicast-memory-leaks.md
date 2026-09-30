@@ -48,7 +48,7 @@ t.Changed += (s, e) => Console.WriteLine(e.Value);   // OK
 ## Multicast delegate
 
 ```mermaid Список вызова multicast-делегата
-flowchart LR
+flowchart TD
     E["event Changed"] --> D["MulticastDelegate<br/>_invocationList"]
     D --> H1["1. Logger.OnChanged"]
     D --> H2["2. Dashboard.Update"]

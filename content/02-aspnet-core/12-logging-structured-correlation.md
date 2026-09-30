@@ -48,7 +48,7 @@ _logger.LogInformation("Order {OrderId} placed by {UserId} for {Total}", order.I
 ## Архитектура логирования в .NET
 
 ```mermaid От ILogger до хранилища
-flowchart LR
+flowchart TD
     C["Ваш код<br/>ILogger&lt;OrderService&gt;"] --> LF["ILoggerFactory<br/>фильтры уровней по категориям"]
     LF --> P1["Console provider"]
     LF --> P2["OpenTelemetry provider"]

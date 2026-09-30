@@ -282,9 +282,9 @@ async function renderDiagrams(all) {
           startOnLoad: false, securityLevel: 'loose', theme: cfg.theme, themeVariables: cfg.themeVariables,
           flowchart: { curve: 'basis', padding: 12, htmlLabels: true, useMaxWidth: true },
           sequence: {
-            useMaxWidth: true, mirrorActors: false, actorMargin: 50, boxMargin: 8, noteMargin: 10, messageMargin: 34,
+            useMaxWidth: true, mirrorActors: false, actorMargin: 30, boxMargin: 8, noteMargin: 10, messageMargin: 34,
             actorFontFamily: cfg.themeVariables.fontFamily, noteFontFamily: cfg.themeVariables.fontFamily, messageFontFamily: cfg.themeVariables.fontFamily,
-            actorFontSize: 15, noteFontSize: 14, messageFontSize: 14, wrap: true, width: 170,
+            actorFontSize: 15, noteFontSize: 14, messageFontSize: 14, wrap: true, width: 150,
           },
           class: { useMaxWidth: true }, state: { useMaxWidth: true }, er: { useMaxWidth: true },
         });
@@ -307,12 +307,15 @@ async function renderDiagrams(all) {
   return result;
 }
 
+const wideDiagrams = [];
 function injectDiagrams(html, svgs) {
   return html.replace(/<!--MERMAID:([0-9a-f]+):([A-Za-z0-9+/=]*)-->/g, (_, key, cap64) => {
     const caption = Buffer.from(cap64, 'base64').toString('utf8');
     const light = svgs.get(`${key}:light`);
     const dark = svgs.get(`${key}:dark`);
     // не даём широким схемам ужиматься сильнее чем до 72% — дальше горизонтальная прокрутка
+    const w = +(light.match(/style="max-width: ([\d.]+)px;"/) || [0, 0])[1];
+    if (w > 1100) wideDiagrams.push(`${Math.round(w)}px: ${caption || key}`);
     const size = (svg) => svg.replace(/style="max-width: ([\d.]+)px;"/, (m, w) => `style="max-width:${w}px;min-width:${Math.round(+w * 0.72)}px"`);
     return `<figure class="diagram"><div class="dg dg-light">${size(light)}</div><div class="dg dg-dark">${size(dark)}</div>${caption ? `<figcaption>${esc(caption)}</figcaption>` : ''}</figure>`;
   });
@@ -566,6 +569,7 @@ const index = flat.map(({ cat, q }) => ({
 const cstats = cats.map((c) => ({ slug: c.slug, total: c.questions.length }));
 pages.push({ file: 'assets/search-index.js', html: `window.SITE_INDEX=${JSON.stringify(index)};\nwindow.SITE_CATS=${JSON.stringify(cstats)};\n` });
 
+if (wideDiagrams.length) console.warn(`Широкие диаграммы (>1100px):\n  ${wideDiagrams.join('\n  ')}`);
 checkLinks(pages.filter((p) => p.file.endsWith('.html')));
 for (const p of pages) write(path.join(ROOT, p.file), p.html);
 console.log(`Готово: ${cats.length} разделов, ${flat.length} вопросов, ${allDiagrams.length} диаграмм, ${pages.length} файлов.`);

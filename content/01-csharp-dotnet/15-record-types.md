@@ -50,7 +50,7 @@ public class Person : IEquatable<Person>
 ```
 
 ```mermaid Что получаем «бесплатно» от record
-flowchart TD
+flowchart LR
     R["record Person(string Name, int Age)"] --> C["Первичный конструктор"]
     R --> P["init-свойства Name, Age"]
     R --> E["Equals / GetHashCode / == / !=<br/>по значениям полей"]:::accent

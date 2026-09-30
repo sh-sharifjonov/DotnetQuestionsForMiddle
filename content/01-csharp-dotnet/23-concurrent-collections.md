@@ -18,17 +18,14 @@ tags: [concurrentdictionary, concurrentqueue, immutable, frozendictionary, ко�
 
 ```mermaid Выбор коллекции для многопоточного сценария
 flowchart TD
-    A{"Данные меняются<br/>после создания?"} -- "нет / очень редко" --> B{"Критична скорость<br/>чтения?"}
-    B -- да --> FR["FrozenDictionary / FrozenSet"]:::good
-    B -- нет --> IM["ImmutableDictionary<br/>(+ атомарная замена ссылки)"]
-    A -- да --> C{"Нужен доступ<br/>по ключу?"}
+    A{"Меняется после<br/>создания?"} -- "нет" --> B{"Важна скорость<br/>чтения?"}
+    B -- да --> FR["FrozenDictionary"]:::good
+    B -- нет --> IM["Immutable*"]
+    A -- да --> C{"Доступ<br/>по ключу?"}
     C -- да --> CD["ConcurrentDictionary"]:::good
-    C -- нет --> D{"Producer-consumer<br/>с ожиданием данных?"}
+    C -- нет --> D{"Нужно ждать<br/>данные?"}
     D -- да --> CH["Channel&lt;T&gt;"]:::good
-    D -- нет --> E{"Порядок важен?"}
-    E -- "FIFO" --> CQ["ConcurrentQueue"]
-    E -- "LIFO" --> CS["ConcurrentStack"]
-    E -- "нет" --> CB["ConcurrentBag"]
+    D -- нет --> CQ["ConcurrentQueue /<br/>Stack / Bag"]
 ```
 
 ## ConcurrentDictionary
@@ -36,18 +33,21 @@ flowchart TD
 ### Как устроен
 
 ```mermaid Сегментированные блокировки (lock striping)
-flowchart LR
+flowchart TB
+    L0["lock 0"]:::accent
+    L1["lock 1"]:::accent
+    L2["lock 2"]:::accent
     subgraph Buckets["Массив бакетов"]
-        direction TB
-        B0["бакет 0"] --- B1["бакет 1"] --- B2["бакет 2"] --- B3["бакет 3"] --- B4["бакет 4"] --- B5["бакет 5"]
+        direction LR
+        B0["бакет 0"] ~~~ B1["бакет 1"] ~~~ B2["бакет 2"] ~~~ B3["бакет 3"] ~~~ B4["бакет 4"] ~~~ B5["бакет 5"]
     end
-    L0["lock 0"]:::accent -.-> B0
+    L0 -.-> B0
     L0 -.-> B3
-    L1["lock 1"]:::accent -.-> B1
+    L1 -.-> B1
     L1 -.-> B4
-    L2["lock 2"]:::accent -.-> B2
+    L2 -.-> B2
     L2 -.-> B5
-    R["Чтение TryGetValue"]:::good -- "без блокировок" --> Buckets
+    R["Чтение TryGetValue — без блокировок"]:::good --> Buckets
 ```
 
 - Каждый замок защищает группу бакетов; число замков по умолчанию ≈ числу ядер.

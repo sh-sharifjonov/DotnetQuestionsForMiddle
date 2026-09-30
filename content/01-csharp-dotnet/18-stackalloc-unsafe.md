@@ -38,15 +38,15 @@ finally
 
 ```mermaid Где живёт буфер
 flowchart LR
+    subgraph Heap["Управляемая куча"]
+        direction TB
+        ARR["new byte[128]<br/>объект + заголовок,<br/>работа для GC"]:::warn
+    end
     subgraph Stack["Стек потока (~1 МБ)"]
         direction TB
         F1["Кадр Main()"]
         F2["Кадр Parse()<br/>локальные переменные"]
         SA["stackalloc byte[128]<br/>освобождается при return"]:::good
-    end
-    subgraph Heap["Управляемая куча"]
-        direction TB
-        ARR["new byte[128]<br/>объект + заголовок,<br/>работа для GC"]:::warn
     end
 ```
 

@@ -35,7 +35,7 @@ method.Invoke(instance, new object[] { 0.2m });           // позднее св
 4. **Нет инлайнинга** и оптимизаций JIT.
 
 ```mermaid Когда что работает
-flowchart LR
+flowchart TB
     subgraph Compile["Время компиляции"]
         direction TB
         SRC["Ваш код"] --> RO["Roslyn"]

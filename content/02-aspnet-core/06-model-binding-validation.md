@@ -33,7 +33,7 @@ public IActionResult Create(
 ```
 
 ```mermaid Источники значений для model binding
-flowchart LR
+flowchart TD
     REQ["HTTP-запрос"] --> RT["Route values<br/>/shops/{shopId}"]
     REQ --> QS["Query string<br/>?notify=true"]
     REQ --> HD["Headers"]

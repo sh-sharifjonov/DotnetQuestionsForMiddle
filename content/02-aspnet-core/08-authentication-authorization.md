@@ -15,7 +15,7 @@ tags: [authentication, authorization, jwt, cookie, oauth2, oidc, bearer]
 ## Разница на примере
 
 ```mermaid Аутентификация и авторизация в конвейере
-flowchart LR
+flowchart TD
     R(["Запрос"]) --> AN["UseAuthentication<br/>Кто это?<br/>проверить cookie / токен"]
     AN -- "нет или невалиден" --> ANON["User = анонимный"]
     AN -- "валиден" --> CP["User = ClaimsPrincipal<br/>sub, name, roles, scopes"]
