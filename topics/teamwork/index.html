@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Работа в команде и процессы — .NET Middle · Учебник</title>
+<title>Работа в команде и процессы — .NET Tutorial</title>
 <meta name="description" content="Code review, Git-стратегии, оценка задач, технический долг, менторство, горящие дедлайны и принятие архитектурных решений.">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%228%22%20fill%3D%22%23512bd4%22%2F%3E%3Ctext%20x%3D%2216%22%20y%3D%2221%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2212%22%20font-weight%3D%22700%22%20fill%3D%22%23fff%22%3E.NET%3C%2Ftext%3E%3C%2Fsvg%3E">
@@ -14,7 +14,7 @@
 <a class="skip" href="#main">Перейти к содержимому</a>
 <header class="topbar">
   <div class="topbar-in">
-    <a class="brand" href="../../index.html"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="currentColor"/><text x="16" y="21" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#fff">.NET</text></svg><span>.NET Middle · Учебник</span></a>
+    <a class="brand" href="../../index.html"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="currentColor"/><text x="16" y="21" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#fff">.NET</text></svg><span>.NET Tutorial</span></a>
     <div class="search" role="search">
       <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
       <input id="search" type="search" placeholder="Поиск по вопросам…  ( / )" autocomplete="off" aria-label="Поиск по вопросам">
@@ -34,46 +34,55 @@
     <div>
       <h1>Работа в команде и процессы</h1>
       <p class="lead">Code review, Git-стратегии, оценка задач, технический долг, менторство, горящие дедлайны и принятие архитектурных решений.</p>
-      <div class="cat-progress"><div class="bar"><i data-progress="teamwork"></i></div><span data-progress-text="teamwork" data-total="7"></span></div>
+      <div class="cat-progress"><div class="bar"><i data-progress="teamwork"></i></div><span data-progress-text="teamwork" data-total="8"></span></div>
     </div>
   </header>
-  <section class="prose cat-intro"><p>Middle отличается от Junior не только техническими знаниями, но и <strong>самостоятельностью и влиянием на команду</strong>. Эти вопросы — про коммуникацию, компромиссы и ответственность.</p>
+  <section class="prose cat-intro"><p>Чем выше уровень, тем больше вопросов не про код, а про <strong>самостоятельность и влияние на команду</strong>: Junior — Git и работа с задачами, Middle — code review и оценка, Senior — технический долг, менторинг и архитектурные решения.</p>
 </section>
+  <div class="lv-filter" role="group" aria-label="Фильтр по уровню">
+    <button type="button" class="lv-btn on" data-lv-filter="all">Все <b>8</b></button>
+    <button type="button" class="lv-btn lv-junior" data-lv-filter="junior">Junior <b>4</b></button><button type="button" class="lv-btn lv-middle" data-lv-filter="middle">Middle <b>1</b></button><button type="button" class="lv-btn lv-senior" data-lv-filter="senior">Senior <b>3</b></button>
+  </div>
   <ol class="q-list">
-      <li><a class="q-row" href="code-review.html" data-qid="teamwork/code-review">
+      <li data-level="junior"><a class="q-row" href="git-basics.html" data-qid="teamwork/git-basics">
         <span class="q-num">1</span>
-        <span class="q-main"><span class="q-title">Code review: как проводить и как принимать замечания?</span><span class="q-sub"> Цели ревью (по убыванию важности): найти ошибки и риски (корректность, безопасность, данные, производительность), сохранить поддерживаемость кода, распространить знания …</span></span>
-        <span class="q-side"><span class="chip lv-base">Основы</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+        <span class="q-main"><span class="q-title">Git для разработчика: commit, branch, merge, rebase, конфликты и pull request?</span><span class="q-sub"> Git — распределённая система контроля версий: у каждого разработчика полная копия истории. Три области: рабочая директория → git add → индекс (staging) → git commit → ло…</span></span>
+        <span class="q-side"><span class="chip lv-junior">Junior</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
-      <li><a class="q-row" href="git-flow-vs-trunk-based.html" data-qid="teamwork/git-flow-vs-trunk-based">
+      <li data-level="junior"><a class="q-row" href="code-review.html" data-qid="teamwork/code-review">
         <span class="q-num">2</span>
-        <span class="q-main"><span class="q-title">Git flow vs GitHub flow vs trunk-based development: что выбрать?</span><span class="q-sub"> Git flow: долгоживущие ветки main (релизы) и develop (интеграция), плюс feature/*, release/*, hotfix/*. Подходит для версионируемых релизов (коробочный продукт, мобильны…</span></span>
-        <span class="q-side"><span class="chip lv-base">Основы</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+        <span class="q-main"><span class="q-title">Code review: как проводить и как принимать замечания?</span><span class="q-sub"> Цели ревью (по убыванию важности): найти ошибки и риски (корректность, безопасность, данные, производительность), сохранить поддерживаемость кода, распространить знания …</span></span>
+        <span class="q-side"><span class="chip lv-junior">Junior</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
-      <li><a class="q-row" href="estimation.html" data-qid="teamwork/estimation">
+      <li data-level="junior"><a class="q-row" href="git-flow-vs-trunk-based.html" data-qid="teamwork/git-flow-vs-trunk-based">
         <span class="q-num">3</span>
-        <span class="q-main"><span class="q-title">Оценка задач: story points, T-shirt sizes, planning poker — как оценивать и не ошибаться?</span><span class="q-sub"> Оценка — это прогноз с неопределённостью, а не обещание. Хорошая оценка честно показывает диапазон и риски: «3–5 дней, если API партнёра работает как в документации». St…</span></span>
-        <span class="q-side"><span class="chip lv-base">Основы</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+        <span class="q-main"><span class="q-title">Git flow vs GitHub flow vs trunk-based development: что выбрать?</span><span class="q-sub"> Git flow: долгоживущие ветки main (релизы) и develop (интеграция), плюс feature/*, release/*, hotfix/*. Подходит для версионируемых релизов (коробочный продукт, мобильны…</span></span>
+        <span class="q-side"><span class="chip lv-junior">Junior</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
-      <li><a class="q-row" href="technical-debt.html" data-qid="teamwork/technical-debt">
+      <li data-level="junior"><a class="q-row" href="estimation.html" data-qid="teamwork/estimation">
         <span class="q-num">4</span>
-        <span class="q-main"><span class="q-title">Технический долг: что это и как объяснить бизнесу необходимость рефакторинга?</span><span class="q-sub"> Технический долг — метафора Уорда Каннингема: быстрое решение сейчас — это «заём», за который потом платятся проценты в виде замедления разработки, багов и инцидентов. Д…</span></span>
-        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+        <span class="q-main"><span class="q-title">Оценка задач: story points, T-shirt sizes, planning poker — как оценивать и не ошибаться?</span><span class="q-sub"> Оценка — это прогноз с неопределённостью, а не обещание. Хорошая оценка честно показывает диапазон и риски: «3–5 дней, если API партнёра работает как в документации». St…</span></span>
+        <span class="q-side"><span class="chip lv-junior">Junior</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
-      <li><a class="q-row" href="mentoring-interviews.html" data-qid="teamwork/mentoring-interviews">
+      <li data-level="senior"><a class="q-row" href="technical-debt.html" data-qid="teamwork/technical-debt">
         <span class="q-num">5</span>
-        <span class="q-main"><span class="q-title">Менторинг джунов и проведение технических собеседований</span><span class="q-sub"> Менторинг — помочь человеку стать самостоятельным, а не решать задачи за него. Главные инструменты: вопросы вместо готовых ответов, задачи растущей сложности, регулярная…</span></span>
-        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+        <span class="q-main"><span class="q-title">Технический долг: что это и как объяснить бизнесу необходимость рефакторинга?</span><span class="q-sub"> Технический долг — метафора Уорда Каннингема: быстрое решение сейчас — это «заём», за который потом платятся проценты в виде замедления разработки, багов и инцидентов. Д…</span></span>
+        <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
-      <li><a class="q-row" href="deadline-pressure.html" data-qid="teamwork/deadline-pressure">
+      <li data-level="senior"><a class="q-row" href="mentoring-interviews.html" data-qid="teamwork/mentoring-interviews">
         <span class="q-num">6</span>
+        <span class="q-main"><span class="q-title">Менторинг джунов и проведение технических собеседований</span><span class="q-sub"> Менторинг — помочь человеку стать самостоятельным, а не решать задачи за него. Главные инструменты: вопросы вместо готовых ответов, задачи растущей сложности, регулярная…</span></span>
+        <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li data-level="middle"><a class="q-row" href="deadline-pressure.html" data-qid="teamwork/deadline-pressure">
+        <span class="q-num">7</span>
         <span class="q-main"><span class="q-title">Горящий дедлайн: что делать, если не успеваете?</span><span class="q-sub"> Главное правило: сообщить рано. Проблема, о которой узнали за 2 недели, — управляемый риск; за день до срока — провал и потеря доверия. Железный треугольник: объём (scop…</span></span>
         <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
-      <li><a class="q-row" href="architecture-decisions-adr-rfc.html" data-qid="teamwork/architecture-decisions-adr-rfc">
-        <span class="q-num">7</span>
+      <li data-level="senior"><a class="q-row" href="architecture-decisions-adr-rfc.html" data-qid="teamwork/architecture-decisions-adr-rfc">
+        <span class="q-num">8</span>
         <span class="q-main"><span class="q-title">Архитектурные решения в команде: RFC, ADR и как договариваться?</span><span class="q-sub"> Архитектурные решения (выбор БД, брокера, способа интеграции, границ сервисов) дорого менять — их принимают осознанно, обсуждают и документируют. RFC / Design Doc — доку…</span></span>
-        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+        <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li></ol>
   <nav class="prev-next" aria-label="Соседние разделы">
     <a class="pn prev" href="../../topics/security/index.html"><span class="pn-dir"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>Предыдущий раздел</span><span class="pn-t">Безопасность</span></a>
@@ -82,8 +91,8 @@
 </main>
 <footer class="site-footer">
   <div class="footer-in">
-    <span>.NET Middle · Учебник — подготовка к собеседованию .NET Middle разработчика</span>
-    <a href="https://github.com/sh-sharifjonov/DotnetQuestionsForMiddle">Исходники на GitHub</a>
+    <span>.NET Tutorial — вопросы и ответы по .NET от Junior до Senior</span>
+    <a href="https://github.com/sh-sharifjonov/dotnet-tutorial">Исходники на GitHub</a>
   </div>
 </footer>
 <script src="../../assets/search-index.js" defer></script>
