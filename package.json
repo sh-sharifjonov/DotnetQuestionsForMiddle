@@ -1,8 +1,8 @@
 {
-  "name": "dotnet-questions-for-middle",
+  "name": "dotnet-tutorial",
   "version": "2.0.0",
   "private": true,
-  "description": "Учебный сайт: вопросы и подробные ответы для .NET Middle разработчика",
+  "description": "Учебник .NET от Junior до Senior: вопросы и подробные ответы с диаграммами",
   "type": "module",
   "scripts": {
     "build": "node scripts/build.mjs",
