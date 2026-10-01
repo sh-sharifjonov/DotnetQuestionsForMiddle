@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DevOps и инфраструктура — .NET Middle · Учебник</title>
+<title>DevOps и инфраструктура — .NET Tutorial</title>
 <meta name="description" content="Docker и multi-stage сборки, Kubernetes, CI/CD, Helm, 12-factor, blue-green и canary, OpenTelemetry, трассировка, метрики и управление секретами.">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%228%22%20fill%3D%22%23512bd4%22%2F%3E%3Ctext%20x%3D%2216%22%20y%3D%2221%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2212%22%20font-weight%3D%22700%22%20fill%3D%22%23fff%22%3E.NET%3C%2Ftext%3E%3C%2Fsvg%3E">
@@ -14,7 +14,7 @@
 <a class="skip" href="#main">Перейти к содержимому</a>
 <header class="topbar">
   <div class="topbar-in">
-    <a class="brand" href="../../index.html"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="currentColor"/><text x="16" y="21" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#fff">.NET</text></svg><span>.NET Middle · Учебник</span></a>
+    <a class="brand" href="../../index.html"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="currentColor"/><text x="16" y="21" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#fff">.NET</text></svg><span>.NET Tutorial</span></a>
     <div class="search" role="search">
       <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
       <input id="search" type="search" placeholder="Поиск по вопросам…  ( / )" autocomplete="off" aria-label="Поиск по вопросам">
@@ -37,55 +37,59 @@
       <div class="cat-progress"><div class="bar"><i data-progress="devops"></i></div><span data-progress-text="devops" data-total="10"></span></div>
     </div>
   </header>
-  <section class="prose cat-intro"><p>Современный Middle-разработчик сам доводит сервис до продакшена: собирает образ, описывает деплой, настраивает метрики и трассировку. Интервьюер проверяет, что вы понимаете, <strong>как код живёт после <code>git push</code></strong>.</p>
+  <section class="prose cat-intro"><p>Современный разработчик уже с уровня Middle сам доводит сервис до продакшена: собирает образ, описывает деплой, настраивает метрики и трассировку. Интервьюер проверяет, что вы понимаете, <strong>как код живёт после <code>git push</code></strong>.</p>
 </section>
+  <div class="lv-filter" role="group" aria-label="Фильтр по уровню">
+    <button type="button" class="lv-btn on" data-lv-filter="all">Все <b>10</b></button>
+    <button type="button" class="lv-btn lv-junior" data-lv-filter="junior">Junior <b>2</b></button><button type="button" class="lv-btn lv-middle" data-lv-filter="middle">Middle <b>8</b></button>
+  </div>
   <ol class="q-list">
-      <li><a class="q-row" href="docker-dotnet.html" data-qid="devops/docker-dotnet">
+      <li data-level="junior"><a class="q-row" href="docker-dotnet.html" data-qid="devops/docker-dotnet">
         <span class="q-num">1</span>
         <span class="q-main"><span class="q-title">Docker: Dockerfile для .NET, multi-stage builds, оптимизация образов?</span><span class="q-sub"> Контейнер упаковывает приложение со всеми зависимостями в неизменяемый образ: одинаково работает на ноутбуке, в CI и в продакшене. Образ собирается из слоёв, каждая инст…</span></span>
-        <span class="q-side"><span class="chip lv-base">Основы</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+        <span class="q-side"><span class="chip lv-junior">Junior</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
-      <li><a class="q-row" href="kubernetes-basics.html" data-qid="devops/kubernetes-basics">
+      <li data-level="middle"><a class="q-row" href="kubernetes-basics.html" data-qid="devops/kubernetes-basics">
         <span class="q-num">2</span>
         <span class="q-main"><span class="q-title">Kubernetes basics: Pod, Deployment, Service, ConfigMap, Secret?</span><span class="q-sub"> Kubernetes — оркестратор контейнеров: вы описываете желаемое состояние (YAML-манифесты), контроллеры постоянно приводят кластер к нему (перезапуск упавших, масштабирован…</span></span>
         <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
-      <li><a class="q-row" href="ci-cd.html" data-qid="devops/ci-cd">
+      <li data-level="middle"><a class="q-row" href="ci-cd.html" data-qid="devops/ci-cd">
         <span class="q-num">3</span>
         <span class="q-main"><span class="q-title">Как настроить CI/CD для .NET проекта (GitHub Actions, GitLab CI, Azure DevOps)?</span><span class="q-sub"> CI (Continuous Integration) — каждый push/PR автоматически: restore → build → тесты → анализ (линтеры, форматирование, уязвимости, покрытие). Цель — быстро узнать, что и…</span></span>
         <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
-      <li><a class="q-row" href="helm.html" data-qid="devops/helm">
+      <li data-level="middle"><a class="q-row" href="helm.html" data-qid="devops/helm">
         <span class="q-num">4</span>
         <span class="q-main"><span class="q-title">Что такое Helm chart и зачем он нужен?</span><span class="q-sub"> Helm — пакетный менеджер Kubernetes. Chart — пакет: набор шаблонов манифестов (Deployment, Service, Ingress, ConfigMap, HPA...) + файл параметров values.yaml + метаданны…</span></span>
         <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
-      <li><a class="q-row" href="twelve-factor-app.html" data-qid="devops/twelve-factor-app">
+      <li data-level="junior"><a class="q-row" href="twelve-factor-app.html" data-qid="devops/twelve-factor-app">
         <span class="q-num">5</span>
         <span class="q-main"><span class="q-title">12-factor app — принципы применительно к .NET?</span><span class="q-sub"> The Twelve-Factor App (Heroku, 2011) — набор принципов для облачных сервисов: переносимость между окружениями, горизонтальное масштабирование, непрерывный деплой. Ключев…</span></span>
-        <span class="q-side"><span class="chip lv-base">Основы</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+        <span class="q-side"><span class="chip lv-junior">Junior</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
-      <li><a class="q-row" href="blue-green-canary.html" data-qid="devops/blue-green-canary">
+      <li data-level="middle"><a class="q-row" href="blue-green-canary.html" data-qid="devops/blue-green-canary">
         <span class="q-num">6</span>
         <span class="q-main"><span class="q-title">Как реализовать blue-green и canary деплой?</span><span class="q-sub"> Rolling update (по умолчанию в Kubernetes) — поды заменяются постепенно; старая и новая версии работают одновременно; откат — такой же постепенный. Blue-green — два полн…</span></span>
         <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
-      <li><a class="q-row" href="opentelemetry.html" data-qid="devops/opentelemetry">
+      <li data-level="middle"><a class="q-row" href="opentelemetry.html" data-qid="devops/opentelemetry">
         <span class="q-num">7</span>
         <span class="q-main"><span class="q-title">Что такое OpenTelemetry и как его подключить в .NET?</span><span class="q-sub"> OpenTelemetry (OTel) — открытый вендор-нейтральный стандарт (CNCF) и набор SDK для сбора телеметрии: трассировок (traces), метрик (metrics) и логов (logs). Один способ и…</span></span>
         <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
-      <li><a class="q-row" href="distributed-tracing.html" data-qid="devops/distributed-tracing">
+      <li data-level="middle"><a class="q-row" href="distributed-tracing.html" data-qid="devops/distributed-tracing">
         <span class="q-num">8</span>
         <span class="q-main"><span class="q-title">Distributed tracing: TraceId, SpanId, как связывать логи?</span><span class="q-sub"> Трассировка (trace) — полная история одного запроса через все сервисы; состоит из spans — операций с началом, длительностью, атрибутами и статусом (HTTP-обработка, SQL-з…</span></span>
         <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
-      <li><a class="q-row" href="metrics-prometheus-grafana.html" data-qid="devops/metrics-prometheus-grafana">
+      <li data-level="middle"><a class="q-row" href="metrics-prometheus-grafana.html" data-qid="devops/metrics-prometheus-grafana">
         <span class="q-num">9</span>
         <span class="q-main"><span class="q-title">Метрики: Prometheus + Grafana, .NET Metrics API?</span><span class="q-sub"> Метрика — числовое измерение во времени с набором меток (labels/tags): http_server_request_duration_seconds{route=&quot;/orders&quot;, status=&quot;500&quot;}. Дёшево хранить и агрегировать…</span></span>
         <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
-      <li><a class="q-row" href="secrets-management.html" data-qid="devops/secrets-management">
+      <li data-level="middle"><a class="q-row" href="secrets-management.html" data-qid="devops/secrets-management">
         <span class="q-num">10</span>
         <span class="q-main"><span class="q-title">Секреты: Vault, Azure Key Vault, Kubernetes Secrets — лучшие практики?</span><span class="q-sub"> Секрет — всё, что даёт доступ: пароли БД, API-ключи, строки подключения, сертификаты, ключи подписи JWT, ключи шифрования. Утечка = компрометация системы. Никогда: в код…</span></span>
         <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
@@ -97,7 +101,7 @@
 </main>
 <footer class="site-footer">
   <div class="footer-in">
-    <span>.NET Middle · Учебник — подготовка к собеседованию .NET Middle разработчика</span>
+    <span>.NET Tutorial — вопросы и ответы по .NET от Junior до Senior</span>
     <a href="https://github.com/sh-sharifjonov/DotnetQuestionsForMiddle">Исходники на GitHub</a>
   </div>
 </footer>

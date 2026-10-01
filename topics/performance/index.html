@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Производительность и диагностика — .NET Middle · Учебник</title>
+<title>Производительность и диагностика — .NET Tutorial</title>
 <meta name="description" content="Профилирование, аллокации и GC-паузы, утечки памяти, thread starvation, CPU- и I/O-bound задачи, кэширование, пулы соединений, HTTP/2 и HTTP/3.">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%228%22%20fill%3D%22%23512bd4%22%2F%3E%3Ctext%20x%3D%2216%22%20y%3D%2221%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2212%22%20font-weight%3D%22700%22%20fill%3D%22%23fff%22%3E.NET%3C%2Ftext%3E%3C%2Fsvg%3E">
@@ -14,7 +14,7 @@
 <a class="skip" href="#main">Перейти к содержимому</a>
 <header class="topbar">
   <div class="topbar-in">
-    <a class="brand" href="../../index.html"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="currentColor"/><text x="16" y="21" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#fff">.NET</text></svg><span>.NET Middle · Учебник</span></a>
+    <a class="brand" href="../../index.html"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="currentColor"/><text x="16" y="21" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#fff">.NET</text></svg><span>.NET Tutorial</span></a>
     <div class="search" role="search">
       <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
       <input id="search" type="search" placeholder="Поиск по вопросам…  ( / )" autocomplete="off" aria-label="Поиск по вопросам">
@@ -39,56 +39,60 @@
   </header>
   <section class="prose cat-intro"><p>Главное правило: <strong>сначала измерь, потом оптимизируй</strong>. В этом разделе — инструменты диагностики и типичные причины деградации .NET-сервисов в продакшене.</p>
 </section>
+  <div class="lv-filter" role="group" aria-label="Фильтр по уровню">
+    <button type="button" class="lv-btn on" data-lv-filter="all">Все <b>10</b></button>
+    <button type="button" class="lv-btn lv-middle" data-lv-filter="middle">Middle <b>7</b></button><button type="button" class="lv-btn lv-senior" data-lv-filter="senior">Senior <b>3</b></button>
+  </div>
   <ol class="q-list">
-      <li><a class="q-row" href="profiling-tools.html" data-qid="performance/profiling-tools">
+      <li data-level="middle"><a class="q-row" href="profiling-tools.html" data-qid="performance/profiling-tools">
         <span class="q-num">1</span>
         <span class="q-main"><span class="q-title">Как профилировать .NET приложение: dotnet-trace, PerfView, BenchmarkDotNet?</span><span class="q-sub"> Правило №1: сначала измерь. Интуиция о «медленном месте» ошибается чаще, чем кажется. dotnet-counters — метрики в реальном времени (CPU, GC, потоки пула, исключения, зап…</span></span>
         <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
-      <li><a class="q-row" href="gc-pauses-allocations.html" data-qid="performance/gc-pauses-allocations">
+      <li data-level="middle"><a class="q-row" href="gc-pauses-allocations.html" data-qid="performance/gc-pauses-allocations">
         <span class="q-num">2</span>
         <span class="q-main"><span class="q-title">Что такое GC паузы и как минимизировать аллокации?</span><span class="q-sub"> GC-пауза — время, когда сборщик приостанавливает управляемые потоки (фазы пометки и уплотнения). Эфемерные сборки (Gen 0/1) — доли–единицы мс; Gen 2 / LOH — десятки–сотн…</span></span>
         <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
-      <li><a class="q-row" href="memory-leaks.html" data-qid="performance/memory-leaks">
+      <li data-level="middle"><a class="q-row" href="memory-leaks.html" data-qid="performance/memory-leaks">
         <span class="q-num">3</span>
         <span class="q-main"><span class="q-title">Memory leaks в .NET — типичные причины, как находить?</span><span class="q-sub"> В .NET утечка — это объекты, которые больше не нужны, но остаются достижимыми от корней GC (статик, синглтон, живой поток, таймер), поэтому GC не может их собрать. Плюс …</span></span>
         <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
-      <li><a class="q-row" href="thread-starvation.html" data-qid="performance/thread-starvation">
+      <li data-level="senior"><a class="q-row" href="thread-starvation.html" data-qid="performance/thread-starvation">
         <span class="q-num">4</span>
         <span class="q-main"><span class="q-title">Thread starvation — как диагностировать в ASP.NET Core?</span><span class="q-sub"> Thread pool starvation — все потоки пула заняты ожиданием (заблокированы), а новые работы (обработка запросов, продолжения await) стоят в очереди. Пул добавляет потоки м…</span></span>
-        <span class="q-side"><span class="chip lv-adv">Middle+</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+        <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
-      <li><a class="q-row" href="cpu-bound-vs-io-bound.html" data-qid="performance/cpu-bound-vs-io-bound">
+      <li data-level="middle"><a class="q-row" href="cpu-bound-vs-io-bound.html" data-qid="performance/cpu-bound-vs-io-bound">
         <span class="q-num">5</span>
         <span class="q-main"><span class="q-title">CPU-bound vs I/O-bound задачи — как правильно распараллеливать?</span><span class="q-sub"> I/O-bound — время уходит на ожидание внешних систем (БД, HTTP, диск, сеть). Решение — асинхронность: async/await, Task.WhenAll для параллельных независимых вызовов. Пото…</span></span>
         <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
-      <li><a class="q-row" href="caching.html" data-qid="performance/caching">
+      <li data-level="middle"><a class="q-row" href="caching.html" data-qid="performance/caching">
         <span class="q-num">6</span>
         <span class="q-main"><span class="q-title">Как работает кэширование: IMemoryCache, IDistributedCache, Redis?</span><span class="q-sub"> Кэш хранит результаты дорогих операций (запросы к БД, вызовы API, вычисления) ближе к месту использования. Эффект: меньше задержка, меньше нагрузка на источник. Цена — у…</span></span>
         <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
-      <li><a class="q-row" href="cache-invalidation.html" data-qid="performance/cache-invalidation">
+      <li data-level="senior"><a class="q-row" href="cache-invalidation.html" data-qid="performance/cache-invalidation">
         <span class="q-num">7</span>
         <span class="q-main"><span class="q-title">Cache invalidation стратегии: TTL, eviction, distributed cache consistency?</span><span class="q-sub"> «В информатике есть две сложные вещи: инвалидация кэша и именование» (Фил Карлтон). Инвалидация — решение, когда кэшированное значение перестаёт быть верным. TTL (истече…</span></span>
-        <span class="q-side"><span class="chip lv-adv">Middle+</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+        <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
-      <li><a class="q-row" href="connection-pooling.html" data-qid="performance/connection-pooling">
+      <li data-level="middle"><a class="q-row" href="connection-pooling.html" data-qid="performance/connection-pooling">
         <span class="q-num">8</span>
         <span class="q-main"><span class="q-title">Что такое connection pooling для БД и HTTP?</span><span class="q-sub"> Установка соединения дорогая: TCP handshake + TLS + аутентификация (для БД ещё и создание серверного процесса/сессии) — единицы–десятки миллисекунд. Пул держит открытые …</span></span>
         <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
-      <li><a class="q-row" href="http2-http3.html" data-qid="performance/http2-http3">
+      <li data-level="middle"><a class="q-row" href="http2-http3.html" data-qid="performance/http2-http3">
         <span class="q-num">9</span>
         <span class="q-main"><span class="q-title">HTTP/2 и HTTP/3 — преимущества для .NET сервисов?</span><span class="q-sub"> HTTP/1.1: текстовый протокол, один запрос за раз на соединение (pipelining на практике не используется) → браузеры открывают 6 соединений на хост, заголовки повторяются …</span></span>
         <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
-      <li><a class="q-row" href="why-minimal-api-faster.html" data-qid="performance/why-minimal-api-faster">
+      <li data-level="senior"><a class="q-row" href="why-minimal-api-faster.html" data-qid="performance/why-minimal-api-faster">
         <span class="q-num">10</span>
         <span class="q-main"><span class="q-title">Как работает Minimal API быстрее обычных Controllers?</span><span class="q-sub"> Minimal API и контроллеры используют один и тот же Kestrel, конвейер middleware и endpoint routing. Разница — в том, что происходит после выбора эндпоинта. Контроллеры (…</span></span>
-        <span class="q-side"><span class="chip lv-adv">Middle+</span><span class="q-min">5 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+        <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">5 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li></ol>
   <nav class="prev-next" aria-label="Соседние разделы">
     <a class="pn prev" href="../../topics/messaging/index.html"><span class="pn-dir"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>Предыдущий раздел</span><span class="pn-t">Очереди и асинхронная обработка</span></a>
@@ -97,7 +101,7 @@
 </main>
 <footer class="site-footer">
   <div class="footer-in">
-    <span>.NET Middle · Учебник — подготовка к собеседованию .NET Middle разработчика</span>
+    <span>.NET Tutorial — вопросы и ответы по .NET от Junior до Senior</span>
     <a href="https://github.com/sh-sharifjonov/DotnetQuestionsForMiddle">Исходники на GitHub</a>
   </div>
 </footer>

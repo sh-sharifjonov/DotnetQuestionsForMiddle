@@ -13,7 +13,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const CONTENT = path.join(ROOT, 'content');
 const OUT_TOPICS = path.join(ROOT, 'topics');
 const CACHE = path.join(ROOT, '.cache', 'mermaid');
-const SITE_NAME = '.NET Middle · Учебник';
+const SITE_NAME = '.NET Tutorial';
 
 // ---------- утилиты ----------
 const esc = (s) => String(s)
@@ -53,6 +53,8 @@ const ICONS = {
   docker: '<path d="M22 12.5a1.5 1.5 0 0 1-1.5 1.5H3.5A1.5 1.5 0 0 1 2 12.5V9a1 1 0 0 1 1-1h18a1 1 0 0 1 1 1v3.5z"/><path d="M8 8V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3"/><path d="M13 8V6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2"/>',
   shield: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
   users: '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
+  book: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M9 7h7M9 11h5"/>',
+  network: '<rect x="9" y="2" width="6" height="5" rx="1"/><rect x="2" y="17" width="6" height="5" rx="1"/><rect x="16" y="17" width="6" height="5" rx="1"/><path d="M12 7v5M5 17v-3h14v3"/>',
 };
 const icon = (name, cls = 'icon') => `<svg class="${cls}" viewBox="0 0 24 24" aria-hidden="true">${ICONS[name] || ICONS.csharp}</svg>`;
 const UI = {
@@ -69,10 +71,12 @@ const UI = {
 };
 
 const LEVELS = {
-  base: { label: 'Основы', cls: 'lv-base' },
-  middle: { label: 'Middle', cls: 'lv-middle' },
-  advanced: { label: 'Middle+', cls: 'lv-adv' },
+  junior: { label: 'Junior', cls: 'lv-junior', title: 'Junior', desc: 'Фундамент: синтаксис и типы C#, ООП, коллекции, исключения, LINQ, основы ASP.NET Core, SQL и Git. То, без чего не пройти первое собеседование.' },
+  middle: { label: 'Middle', cls: 'lv-middle', title: 'Middle', desc: 'Как всё устроено внутри: async/await, GC, DI, EF Core, индексы и транзакции, архитектурные паттерны, очереди, тестирование, Docker и наблюдаемость.' },
+  senior: { label: 'Senior', cls: 'lv-senior', title: 'Senior', desc: 'Глубина и масштаб: внутренности runtime, производительность, распределённые системы, system design, надёжность, архитектурные решения и лидерство.' },
 };
+const LEVEL_ALIASES = { base: 'junior', advanced: 'senior' };
+const LEVEL_KEYS = Object.keys(LEVELS);
 
 // ---------- markdown ----------
 let ctx = null; // состояние текущей страницы
@@ -168,6 +172,12 @@ function renderMarkdown(src) {
   return html;
 }
 
+function normLevel(lv, file) {
+  const v = LEVEL_ALIASES[lv] || lv || 'middle';
+  if (!LEVELS[v]) throw new Error(`Неизвестный уровень "${lv}" в ${file}`);
+  return v;
+}
+
 // ---------- загрузка контента ----------
 function loadContent() {
   const cats = [];
@@ -187,7 +197,7 @@ function loadContent() {
       if (!ctx.tldr) throw new Error(`Нет блока :::tldr в ${file}`);
       const words = stripTags(body).split(/\s+/).length;
       cat.questions.push({
-        slug, file, title: meta.title, level: meta.level || 'middle', tags: meta.tags || [],
+        slug, file, title: meta.title, level: normLevel(meta.level, file), tags: meta.tags || [],
         html, tldr: ctx.tldr, headings: ctx.headings, diagrams: ctx.diagrams,
         minutes: Math.max(2, Math.round(words / 170)),
       });
@@ -355,7 +365,7 @@ ${extraHead}</head>
 ${body}
 <footer class="site-footer">
   <div class="footer-in">
-    <span>${esc(SITE_NAME)} — подготовка к собеседованию .NET Middle разработчика</span>
+    <span>${esc(SITE_NAME)} — вопросы и ответы по .NET от Junior до Senior</span>
     <a href="https://github.com/sh-sharifjonov/DotnetQuestionsForMiddle">Исходники на GitHub</a>
   </div>
 </footer>
@@ -368,7 +378,7 @@ ${body}
 
 const qUrl = (cat, q) => `topics/${cat.slug}/${q.slug}.html`;
 const cUrl = (cat) => `topics/${cat.slug}/index.html`;
-const levelChip = (lv) => { const l = LEVELS[lv] || LEVELS.middle; return `<span class="chip ${l.cls}">${l.label}</span>`; };
+const levelChip = (lv) => { const l = LEVELS[lv]; return `<span class="chip ${l.cls}">${l.label}</span>`; };
 
 function questionPage(cats, cat, q, idx, flat, flatIdx) {
   const base = '../../';
@@ -413,14 +423,21 @@ function questionPage(cats, cat, q, idx, flat, flatIdx) {
   return layout({ title: `${q.title} — ${SITE_NAME}`, description: stripTags(q.tldr).slice(0, 180), base, body, bodyClass: 'page-question' });
 }
 
-function categoryPage(cats, cat, ci) {
-  const base = '../../';
-  const items = cat.questions.map((q, i) => `
-      <li><a class="q-row" href="${q.slug}.html" data-qid="${cat.slug}/${q.slug}">
-        <span class="q-num">${i + 1}</span>
+const levelCounts = (qs) => LEVEL_KEYS.map((lv) => [lv, qs.filter((q) => q.level === lv).length]);
+const levelFilter = (qs) => `<div class="lv-filter" role="group" aria-label="Фильтр по уровню">
+    <button type="button" class="lv-btn on" data-lv-filter="all">Все <b>${qs.length}</b></button>
+    ${levelCounts(qs).filter(([, n]) => n).map(([lv, n]) => `<button type="button" class="lv-btn ${LEVELS[lv].cls}" data-lv-filter="${lv}">${LEVELS[lv].label} <b>${n}</b></button>`).join('')}
+  </div>`;
+const qRow = (cat, q, num, href) => `
+      <li data-level="${q.level}"><a class="q-row" href="${href}" data-qid="${cat.slug}/${q.slug}">
+        <span class="q-num">${num}</span>
         <span class="q-main"><span class="q-title">${esc(q.title)}</span><span class="q-sub">${esc(stripTags(q.tldr).replace(/\s+/g, ' ').slice(0, 170))}…</span></span>
         <span class="q-side">${levelChip(q.level)}<span class="q-min">${q.minutes} мин</span><span class="done-mark">${UI.check}</span></span>
-      </a></li>`).join('');
+      </a></li>`;
+
+function categoryPage(cats, cat, ci) {
+  const base = '../../';
+  const items = cat.questions.map((q, i) => qRow(cat, q, i + 1, `${q.slug}.html`)).join('');
   const prev = cats[ci - 1];
   const next = cats[ci + 1];
   const body = `
@@ -435,6 +452,7 @@ function categoryPage(cats, cat, ci) {
     </div>
   </header>
   ${cat.intro ? `<section class="prose cat-intro">${marked.parse(cat.intro)}</section>` : ''}
+  ${levelFilter(cat.questions)}
   <ol class="q-list">${items}</ol>
   <nav class="prev-next" aria-label="Соседние разделы">
     ${prev ? `<a class="pn prev" href="${base}${cUrl(prev)}"><span class="pn-dir">${UI.left}Предыдущий раздел</span><span class="pn-t">${esc(prev.title)}</span></a>` : '<span></span>'}
@@ -444,6 +462,37 @@ function categoryPage(cats, cat, ci) {
   return layout({ title: `${cat.title} — ${SITE_NAME}`, description: cat.description, base, body, bodyClass: 'page-category' });
 }
 
+const lvUrl = (lv) => `levels/${lv}.html`;
+
+function levelPage(cats, lv) {
+  const base = '../';
+  const L = LEVELS[lv];
+  let n = 0;
+  const groups = cats.map((cat) => {
+    const qs = cat.questions.filter((q) => q.level === lv);
+    if (!qs.length) return '';
+    return `
+  <section class="lv-group" style="--cat:${cat.color}">
+    <h2><a href="${base}${cUrl(cat)}">${icon(cat.icon, 'icon sm')}${esc(cat.title)}</a><span class="lv-group-n">${qs.length}</span></h2>
+    <ol class="q-list">${qs.map((q) => qRow(cat, q, ++n, `${base}${qUrl(cat, q)}`)).join('')}</ol>
+  </section>`;
+  }).join('');
+  const others = LEVEL_KEYS.filter((x) => x !== lv).map((x) => `<a class="btn-secondary" href="${x}.html">Трек ${LEVELS[x].label} →</a>`).join('');
+  const body = `
+<main id="main" class="page level-page">
+  <nav class="crumbs" aria-label="Навигация"><a href="${base}index.html">Главная</a><span>/</span><span>Трек ${L.label}</span></nav>
+  <header class="page-head">
+    <span class="chip ${L.cls}">Уровень ${L.label}</span>
+    <h1>Трек ${L.title}: ${n} ${plural(n, 'вопрос', 'вопроса', 'вопросов')}</h1>
+    <p class="lead">${esc(L.desc)}</p>
+    <div class="cat-progress"><div class="bar"><i data-lv-progress="${lv}"></i></div><span data-lv-progress-text="${lv}"></span></div>
+  </header>
+  ${groups}
+  <div class="lv-others">${others}</div>
+</main>`;
+  return layout({ title: `Трек ${L.title} — ${SITE_NAME}`, description: L.desc, base, body, bodyClass: 'page-level' });
+}
+
 function indexPage(cats, stats) {
   const base = '';
   const cards = cats.map((c, i) => `
@@ -451,27 +500,44 @@ function indexPage(cats, stats) {
       <div class="cat-card-top"><span class="cat-icon">${icon(c.icon)}</span><span class="cat-n">${String(i + 1).padStart(2, '0')}</span></div>
       <h3>${esc(c.title)}</h3>
       <p>${esc(c.description)}</p>
+      <div class="cat-lv">${levelCounts(c.questions).filter(([, k]) => k).map(([lv, k]) => `<span class="chip ${LEVELS[lv].cls}">${LEVELS[lv].label} ${k}</span>`).join('')}</div>
       <div class="cat-card-foot"><span>${c.questions.length} ${plural(c.questions.length, 'вопрос', 'вопроса', 'вопросов')}</span><div class="bar"><i data-progress="${c.slug}"></i></div><span data-progress-text="${c.slug}" data-total="${c.questions.length}" data-short="1"></span></div>
     </a>`).join('');
+  const all = cats.flatMap((c) => c.questions);
+  const tracks = LEVEL_KEYS.map((lv, i) => {
+    const k = all.filter((q) => q.level === lv).length;
+    return `
+    <a class="track ${LEVELS[lv].cls}" href="${lvUrl(lv)}">
+      <span class="track-step">Шаг ${i + 1}</span>
+      <h3>${LEVELS[lv].title}</h3>
+      <p>${esc(LEVELS[lv].desc)}</p>
+      <div class="track-foot"><span>${k} ${plural(k, 'вопрос', 'вопроса', 'вопросов')}</span><div class="bar"><i data-lv-progress="${lv}"></i></div><span data-lv-progress-text="${lv}" data-short="1"></span></div>
+    </a>`;
+  }).join('<span class="track-arrow" aria-hidden="true">→</span>');
   const body = `
 <main id="main" class="page home">
   <section class="hero">
     <div class="hero-text">
-      <span class="eyebrow">Учебник для подготовки к собеседованию</span>
-      <h1>Вопросы для <span class="grad">.NET Middle</span> разработчика</h1>
-      <p class="lead">${stats.questions} вопросов с подробными разборами: как это работает под капотом, схемы и диаграммы, примеры кода на C#, типичные ошибки и вопросы «на засыпку», которые задают интервьюеры.</p>
+      <span class="eyebrow">.NET Tutorial · вопросы и подробные ответы</span>
+      <h1>Изучаем <span class="grad">.NET</span> от Junior до Senior</h1>
+      <p class="lead">${stats.questions} тем с разборами «как это работает под капотом»: диаграммы, примеры кода на C#, типичные ошибки и вопросы интервьюеров. Идите по треку своего уровня или изучайте разделы целиком.</p>
       <div class="hero-actions">
-        <a class="btn-primary" href="${cUrl(cats[0])}">Начать с первого раздела</a>
+        <a class="btn-primary" href="${lvUrl('junior')}">Начать с Junior</a>
         <a class="btn-secondary" href="trainer.html">${UI.cards}Тренажёр-карточки</a>
         <a class="btn-link" id="continue-link" href="#" hidden>Продолжить изучение →</a>
       </div>
     </div>
     <div class="hero-stats">
-      <div class="stat"><b>${stats.questions}</b><span>вопросов</span></div>
+      <div class="stat"><b>${stats.questions}</b><span>тем</span></div>
       <div class="stat"><b>${cats.length}</b><span>разделов</span></div>
       <div class="stat"><b>${stats.diagrams}</b><span>диаграмм</span></div>
       <div class="stat progress-stat"><b data-total-progress>0%</b><span>изучено</span><div class="bar"><i data-progress="*"></i></div></div>
     </div>
+  </section>
+
+  <section class="tracks-sec">
+    <h2>Треки по уровням</h2>
+    <div class="tracks">${tracks}</div>
   </section>
 
   <section class="how">
@@ -489,12 +555,13 @@ function indexPage(cats, stats) {
     <div class="cat-grid">${cards}</div>
   </section>
 </main>`;
-  return layout({ title: `Вопросы для .NET Middle разработчика — ${SITE_NAME}`, description: `${stats.questions} вопросов для собеседования .NET Middle с подробными ответами, диаграммами и примерами кода.`, base, body, bodyClass: 'page-home' });
+  return layout({ title: `.NET Tutorial — вопросы и ответы от Junior до Senior`, description: `${stats.questions} тем по .NET от Junior до Senior с подробными ответами, диаграммами и примерами кода.`, base, body, bodyClass: 'page-home' });
 }
 
 function trainerPage(cats) {
   const base = '';
   const opts = cats.map((c) => `<label class="tr-cat" style="--cat:${c.color}"><input type="checkbox" value="${c.slug}" checked><span>${esc(c.title)}</span></label>`).join('');
+  const lvOpts = LEVEL_KEYS.map((lv) => `<label class="tr-cat"><input type="checkbox" value="${lv}" checked><span class="chip ${LEVELS[lv].cls}">${LEVELS[lv].label}</span></label>`).join('');
   const body = `
 <main id="main" class="page trainer">
   <nav class="crumbs" aria-label="Навигация"><a href="index.html">Главная</a><span>/</span><span>Тренажёр</span></nav>
@@ -502,6 +569,7 @@ function trainerPage(cats) {
     <h1>Тренажёр-карточки</h1>
     <p class="lead">Сначала попробуйте ответить вслух, затем откройте краткий ответ. «Знаю» — карточка уходит из колоды, «Повторить» — вернётся позже.</p>
   </header>
+  <div class="tr-levels" role="group" aria-label="Уровни">${lvOpts}</div>
   <details class="tr-filter"><summary>Разделы для тренировки</summary><div class="tr-cats">${opts}</div>
     <label class="tr-cat only-new"><input type="checkbox" id="tr-only-new"><span>Только неизученные</span></label></details>
   <div class="tr-stats"><span>В колоде: <b id="tr-left">0</b></span><span>Знаю: <b id="tr-known">0</b></span><span>Повторить: <b id="tr-again">0</b></span></div>
@@ -518,7 +586,7 @@ function trainerPage(cats) {
   </section>
   <button class="btn-link" id="tr-restart" type="button">Перемешать колоду заново</button>
 </main>`;
-  return layout({ title: `Тренажёр — ${SITE_NAME}`, description: 'Карточки для повторения вопросов .NET Middle.', base, body, bodyClass: 'page-trainer' });
+  return layout({ title: `Тренажёр — ${SITE_NAME}`, description: 'Карточки для повторения вопросов по .NET от Junior до Senior.', base, body, bodyClass: 'page-trainer' });
 }
 
 const plural = (n, one, few, many) => {
@@ -552,6 +620,7 @@ const svgs = await renderDiagrams(uniq);
 const flat = cats.flatMap((cat) => cat.questions.map((q) => ({ cat, q })));
 const pages = [];
 fs.rmSync(OUT_TOPICS, { recursive: true, force: true });
+fs.rmSync(path.join(ROOT, 'levels'), { recursive: true, force: true });
 cats.forEach((cat, ci) => {
   pages.push({ file: cUrl(cat), html: categoryPage(cats, cat, ci) });
   cat.questions.forEach((q, i) => {
@@ -562,6 +631,7 @@ cats.forEach((cat, ci) => {
 const stats = { questions: flat.length, diagrams: allDiagrams.length };
 pages.push({ file: 'index.html', html: indexPage(cats, stats) });
 pages.push({ file: 'trainer.html', html: trainerPage(cats) });
+for (const lv of LEVEL_KEYS) pages.push({ file: lvUrl(lv), html: levelPage(cats, lv) });
 
 const index = flat.map(({ cat, q }) => ({
   id: `${cat.slug}/${q.slug}`, u: qUrl(cat, q), t: q.title, c: cat.title, cs: cat.slug, col: cat.color,

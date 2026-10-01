@@ -36,6 +36,18 @@
     var pctAll = totalAll ? Math.round(doneAll / totalAll * 100) : 0;
     document.querySelectorAll('[data-progress="*"]').forEach(function (el) { el.style.width = pctAll + '%'; });
     document.querySelectorAll('[data-total-progress]').forEach(function (el) { el.textContent = pctAll + '%'; });
+    var lvTotals = {}, lvDone = {};
+    (window.SITE_INDEX || []).forEach(function (x) {
+      lvTotals[x.lv] = (lvTotals[x.lv] || 0) + 1;
+      if (learned.has(x.id)) lvDone[x.lv] = (lvDone[x.lv] || 0) + 1;
+    });
+    Object.keys(lvTotals).forEach(function (lv) {
+      var t = lvTotals[lv], d = lvDone[lv] || 0, pct = Math.round(d / t * 100);
+      document.querySelectorAll('[data-lv-progress="' + lv + '"]').forEach(function (el) { el.style.width = pct + '%'; });
+      document.querySelectorAll('[data-lv-progress-text="' + lv + '"]').forEach(function (el) {
+        el.textContent = el.hasAttribute('data-short') ? d + '/' + t : 'Изучено ' + d + ' из ' + t;
+      });
+    });
     document.querySelectorAll('[data-qid]').forEach(function (el) {
       el.classList.toggle('is-done', learned.has(el.getAttribute('data-qid')));
     });
@@ -64,6 +76,18 @@
   var cont = document.getElementById('continue-link');
   var last = load('dnq-last', null);
   if (cont && last && last.u) { cont.href = base + last.u; cont.textContent = 'Продолжить: ' + last.t.slice(0, 48) + (last.t.length > 48 ? '…' : '') + ' →'; cont.hidden = false; }
+
+  // ---------- фильтр по уровню на странице раздела ----------
+  var lvBtns = Array.prototype.slice.call(document.querySelectorAll('[data-lv-filter]'));
+  function applyLevel(lv) {
+    lvBtns.forEach(function (b) { b.classList.toggle('on', b.getAttribute('data-lv-filter') === lv); b.setAttribute('aria-pressed', b.getAttribute('data-lv-filter') === lv ? 'true' : 'false'); });
+    document.querySelectorAll('.q-list > li[data-level]').forEach(function (li) { li.hidden = lv !== 'all' && li.getAttribute('data-level') !== lv; });
+  }
+  if (lvBtns.length) {
+    lvBtns.forEach(function (b) { b.addEventListener('click', function () { var lv = b.getAttribute('data-lv-filter'); save('dnq-level', lv); applyLevel(lv); }); });
+    var savedLv = load('dnq-level', 'all');
+    applyLevel(lvBtns.some(function (b) { return b.getAttribute('data-lv-filter') === savedLv; }) ? savedLv : 'all');
+  }
 
   // ---------- копирование кода ----------
   document.addEventListener('click', function (e) {
@@ -199,14 +223,18 @@
     var elLeft = document.getElementById('tr-left'), elKnown = document.getElementById('tr-known'), elAgain = document.getElementById('tr-again');
     var boxes = Array.prototype.slice.call(document.querySelectorAll('.tr-cats input'));
     var onlyNew = document.getElementById('tr-only-new');
+    var lvBoxes = Array.prototype.slice.call(document.querySelectorAll('.tr-levels input'));
+    var savedLvs = load('dnq-trainer-levels', null);
+    if (savedLvs) lvBoxes.forEach(function (b) { b.checked = savedLvs.indexOf(b.value) >= 0; });
     var saved = load('dnq-trainer-cats', null);
     if (saved) boxes.forEach(function (b) { b.checked = saved.indexOf(b.value) >= 0; });
     var deck = [], cur = null, known = 0, again = 0;
     function shuffle(a) { for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
     function build() {
       var cats = boxes.filter(function (b) { return b.checked; }).map(function (b) { return b.value; });
-      save('dnq-trainer-cats', cats);
-      deck = shuffle(all.filter(function (x) { return cats.indexOf(x.cs) >= 0 && !(onlyNew.checked && learned.has(x.id)); }));
+      var lvs = lvBoxes.filter(function (b) { return b.checked; }).map(function (b) { return b.value; });
+      save('dnq-trainer-cats', cats); save('dnq-trainer-levels', lvs);
+      deck = shuffle(all.filter(function (x) { return cats.indexOf(x.cs) >= 0 && lvs.indexOf(x.lv) >= 0 && !(onlyNew.checked && learned.has(x.id)); }));
       known = 0; again = 0; next();
     }
     function stats() { elLeft.textContent = deck.length + (cur ? 1 : 0); elKnown.textContent = known; elAgain.textContent = again; }
@@ -224,7 +252,7 @@
     function know() { if (!cur) return; known++; learned.add(cur.id); persist(); next(); }
     function repeat() { if (!cur) return; again++; deck.splice(Math.min(deck.length, 3 + Math.floor(Math.random() * 4)), 0, cur); cur = null; next(); }
     btnShow.addEventListener('click', show); btnKnow.addEventListener('click', know); btnAgain.addEventListener('click', repeat);
-    boxes.concat(onlyNew).forEach(function (b) { b.addEventListener('change', build); });
+    boxes.concat(lvBoxes, onlyNew).forEach(function (b) { b.addEventListener('change', build); });
     document.getElementById('tr-restart').addEventListener('click', build);
     document.addEventListener('keydown', function (e) {
       if ((e.target.tagName || '').toLowerCase() === 'input') return;

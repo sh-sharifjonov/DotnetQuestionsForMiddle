@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Основы C# и .NET — .NET Tutorial</title>
+<meta name="description" content="Платформа .NET, типы и переменные, строки, ООП, классы и интерфейсы, исключения, коллекции, методы, LINQ, структура проекта и dotnet CLI.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%228%22%20fill%3D%22%23512bd4%22%2F%3E%3Ctext%20x%3D%2216%22%20y%3D%2221%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2212%22%20font-weight%3D%22700%22%20fill%3D%22%23fff%22%3E.NET%3C%2Ftext%3E%3C%2Fsvg%3E">
+<script>(function(){try{var t=localStorage.getItem('theme');if(t!=='light'&&t!=='dark')t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','light');}})();</script>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body class="page-category" data-base="../../">
+<a class="skip" href="#main">Перейти к содержимому</a>
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="../../index.html"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="currentColor"/><text x="16" y="21" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#fff">.NET</text></svg><span>.NET Tutorial</span></a>
+    <div class="search" role="search">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input id="search" type="search" placeholder="Поиск по вопросам…  ( / )" autocomplete="off" aria-label="Поиск по вопросам">
+      <div class="search-results" id="search-results" hidden></div>
+    </div>
+    <nav class="top-actions">
+      <a class="btn-ghost" href="../../trainer.html" title="Тренажёр: карточки для повторения"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="14" height="14" rx="2"/><path d="M7 6V4.5A1.5 1.5 0 0 1 8.5 3H19.5A1.5 1.5 0 0 1 21 4.5v11a1.5 1.5 0 0 1-1.5 1.5H17"/></svg><span class="hide-sm">Тренажёр</span></a>
+      <button class="btn-ghost icon-only" id="theme-toggle" type="button" aria-label="Переключить тему"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="page" style="--cat:#16a34a">
+  <nav class="crumbs" aria-label="Навигация"><a href="../../index.html">Главная</a><span>/</span><span>Основы C# и .NET</span></nav>
+  <header class="cat-hero">
+    <div class="cat-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M9 7h7M9 11h5"/></svg></div>
+    <div>
+      <h1>Основы C# и .NET</h1>
+      <p class="lead">Платформа .NET, типы и переменные, строки, ООП, классы и интерфейсы, исключения, коллекции, методы, LINQ, структура проекта и dotnet CLI.</p>
+      <div class="cat-progress"><div class="bar"><i data-progress="csharp-basics"></i></div><span data-progress-text="csharp-basics" data-total="17"></span></div>
+    </div>
+  </header>
+  <section class="prose cat-intro"><p>Фундамент, с которого начинается любое собеседование на <strong>Junior</strong>. Здесь нет «магии под капотом» — только то, что нужно уверенно понимать, чтобы писать корректный код на C# каждый день. Более глубокие вопросы про runtime, async и память — в следующем разделе.</p>
+</section>
+  <div class="lv-filter" role="group" aria-label="Фильтр по уровню">
+    <button type="button" class="lv-btn on" data-lv-filter="all">Все <b>17</b></button>
+    <button type="button" class="lv-btn lv-junior" data-lv-filter="junior">Junior <b>17</b></button>
+  </div>
+  <ol class="q-list">
+      <li data-level="junior"><a class="q-row" href="dotnet-platform.html" data-qid="csharp-basics/dotnet-platform">
+        <span class="q-num">1</span>
+        <span class="q-main"><span class="q-title">Что такое .NET: CLR, CIL, JIT, BCL, SDK и Runtime?</span><span class="q-sub"> .NET — платформа для разработки: языки (C#, F#, VB), среда выполнения (CLR), библиотеки (BCL) и инструменты (SDK, dotnet CLI). Кроссплатформенна: Windows, Linux, macOS. …</span></span>
+        <span class="q-side"><span class="chip lv-junior">Junior</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li data-level="junior"><a class="q-row" href="types-variables.html" data-qid="csharp-basics/types-variables">
+        <span class="q-num">2</span>
+        <span class="q-main"><span class="q-title">Типы данных в C#: int, double, decimal, bool, char, var, const и readonly?</span><span class="q-sub"> C# — статически типизированный язык: тип каждой переменной известен при компиляции. Встроенные типы — псевдонимы типов .NET: int = System.Int32, string = System.String. …</span></span>
+        <span class="q-side"><span class="chip lv-junior">Junior</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li data-level="junior"><a class="q-row" href="strings.html" data-qid="csharp-basics/strings">
+        <span class="q-num">3</span>
+        <span class="q-main"><span class="q-title">Строки в C#: неизменяемость, StringBuilder, интерполяция, сравнение?</span><span class="q-sub"> string — ссылочный тип, но ведёт себя как значение: он неизменяем (immutable). Любая «модификация» (+, Replace, ToUpper) создаёт новую строку, исходная не меняется. Конк…</span></span>
+        <span class="q-side"><span class="chip lv-junior">Junior</span><span class="q-min">5 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li data-level="junior"><a class="q-row" href="oop-principles.html" data-qid="csharp-basics/oop-principles">
+        <span class="q-num">4</span>
+        <span class="q-main"><span class="q-title">Четыре принципа ООП на примерах C#: инкапсуляция, наследование, полиморфизм, абстракция</span><span class="q-sub"> Инкапсуляция — объект скрывает своё внутреннее состояние и даёт менять его только через методы, которые сохраняют правила (инварианты). В C#: private поля, публичные мет…</span></span>
+        <span class="q-side"><span class="chip lv-junior">Junior</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li data-level="junior"><a class="q-row" href="class-abstract-interface.html" data-qid="csharp-basics/class-abstract-interface">
+        <span class="q-num">5</span>
+        <span class="q-main"><span class="q-title">Класс, абстрактный класс, интерфейс и struct — в чём разница и что выбрать?</span><span class="q-sub"> Класс — шаблон объекта с данными и поведением. Можно создать экземпляр (new), наследовать (один базовый класс). Абстрактный класс (abstract) — незавершённый базовый клас…</span></span>
+        <span class="q-side"><span class="chip lv-junior">Junior</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li data-level="junior"><a class="q-row" href="access-modifiers-static-sealed.html" data-qid="csharp-basics/access-modifiers-static-sealed">
+        <span class="q-num">6</span>
+        <span class="q-main"><span class="q-title">Модификаторы доступа, static, sealed, partial — что означают и когда использовать?</span><span class="q-sub"> Модификаторы доступа определяют, кто видит член или тип: public (все), private (только этот тип — по умолчанию для членов), protected (тип и наследники), internal (вся с…</span></span>
+        <span class="q-side"><span class="chip lv-junior">Junior</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li data-level="junior"><a class="q-row" href="virtual-override-new-overload.html" data-qid="csharp-basics/virtual-override-new-overload">
+        <span class="q-num">7</span>
+        <span class="q-main"><span class="q-title">virtual, override, new и перегрузка методов: в чём разница?</span><span class="q-sub"> Перегрузка (overload) — несколько методов с одним именем и разными параметрами в одном типе. Выбор делает компилятор по типам аргументов. Переопределение (virtual + over…</span></span>
+        <span class="q-side"><span class="chip lv-junior">Junior</span><span class="q-min">5 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li data-level="junior"><a class="q-row" href="constructors-properties.html" data-qid="csharp-basics/constructors-properties">
+        <span class="q-num">8</span>
+        <span class="q-main"><span class="q-title">Конструкторы и свойства: порядок инициализации, init, required, primary constructors?</span><span class="q-sub"> Конструктор создаёт объект в корректном состоянии. Можно иметь несколько (перегрузка), вызывать друг друга через : this(...) и конструктор базового класса через : base(.…</span></span>
+        <span class="q-side"><span class="chip lv-junior">Junior</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li data-level="junior"><a class="q-row" href="exceptions.html" data-qid="csharp-basics/exceptions">
+        <span class="q-num">9</span>
+        <span class="q-main"><span class="q-title">Исключения в C#: try/catch/finally, throw vs throw ex, свои исключения?</span><span class="q-sub"> Исключение — объект, описывающий ошибку, которую код не может обработать на месте. Выброс (throw) прерывает выполнение и раскручивает стек вызовов до ближайшего подходящ…</span></span>
+        <span class="q-side"><span class="chip lv-junior">Junior</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li data-level="junior"><a class="q-row" href="collections.html" data-qid="csharp-basics/collections">
+        <span class="q-num">10</span>
+        <span class="q-main"><span class="q-title">Коллекции: Array, List, Dictionary, HashSet, Queue, Stack — что выбрать и какая сложность?</span><span class="q-sub"> Array T[] — фиксированный размер, быстрый доступ по индексу O(1). List&lt;T&gt; — динамический массив: добавление в конец амортизированно O(1), вставка/удаление в середине O(n…</span></span>
+        <span class="q-side"><span class="chip lv-junior">Junior</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li data-level="junior"><a class="q-row" href="equality-gethashcode.html" data-qid="csharp-basics/equality-gethashcode">
+        <span class="q-num">11</span>
+        <span class="q-main"><span class="q-title">Сравнение объектов: ==, Equals, ReferenceEquals и GetHashCode?</span><span class="q-sub"> Два вида равенства: ссылочное (это один и тот же объект в памяти) и по значению (объекты содержат одинаковые данные). Для классов по умолчанию == и Equals сравнивают ссы…</span></span>
+        <span class="q-side"><span class="chip lv-junior">Junior</span><span class="q-min">5 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li data-level="junior"><a class="q-row" href="method-parameters.html" data-qid="csharp-basics/method-parameters">
+        <span class="q-num">12</span>
+        <span class="q-main"><span class="q-title">Параметры методов: передача по значению и по ссылке, ref, out, in, params?</span><span class="q-sub"> В C# всё передаётся по значению по умолчанию: метод получает копию аргумента. Для значимых типов копируется само значение, для ссылочных — копия ссылки (на тот же объект…</span></span>
+        <span class="q-side"><span class="chip lv-junior">Junior</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li data-level="junior"><a class="q-row" href="linq-basics.html" data-qid="csharp-basics/linq-basics">
+        <span class="q-num">13</span>
+        <span class="q-main"><span class="q-title">LINQ для начинающих: Where, Select, OrderBy, GroupBy, First vs Single, Any vs Count?</span><span class="q-sub"> LINQ (Language Integrated Query) — единый набор операторов для запросов к коллекциям, БД (EF Core), XML. Работает с любым IEnumerable&lt;T&gt;. Основные операторы: Where (филь…</span></span>
+        <span class="q-side"><span class="chip lv-junior">Junior</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li data-level="junior"><a class="q-row" href="lambdas-extension-methods.html" data-qid="csharp-basics/lambdas-extension-methods">
+        <span class="q-num">14</span>
+        <span class="q-main"><span class="q-title">Лямбда-выражения, замыкания и методы расширения?</span><span class="q-sub"> Лямбда — анонимная функция, записанная кратко: x =&gt; x * 2, (a, b) =&gt; a + b, () =&gt; Console.WriteLine(&quot;Hi&quot;). Присваивается делегату (Func&lt;int, int&gt;, Action) или дереву выр…</span></span>
+        <span class="q-side"><span class="chip lv-junior">Junior</span><span class="q-min">5 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li data-level="junior"><a class="q-row" href="enums-tuples-structs.html" data-qid="csharp-basics/enums-tuples-structs">
+        <span class="q-num">15</span>
+        <span class="q-main"><span class="q-title">Enum, кортежи, деконструкция и record — когда что использовать?</span><span class="q-sub"> enum — именованный набор целочисленных констант (OrderStatus.Paid). По умолчанию тип int, значения 0, 1, 2… Делает код читаемым и типобезопасным по сравнению с «магическ…</span></span>
+        <span class="q-side"><span class="chip lv-junior">Junior</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li data-level="junior"><a class="q-row" href="big-o-complexity.html" data-qid="csharp-basics/big-o-complexity">
+        <span class="q-num">16</span>
+        <span class="q-main"><span class="q-title">Сложность алгоритмов (Big O): что нужно знать разработчику на практике?</span><span class="q-sub"> Big O описывает, как растёт время (или память) алгоритма с ростом объёма данных n, отбрасывая константы: важна форма роста, а не точные миллисекунды. Основные классы: O(…</span></span>
+        <span class="q-side"><span class="chip lv-junior">Junior</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li data-level="junior"><a class="q-row" href="project-structure-dotnet-cli.html" data-qid="csharp-basics/project-structure-dotnet-cli">
+        <span class="q-num">17</span>
+        <span class="q-main"><span class="q-title">Структура .NET-решения: solution, csproj, NuGet, dotnet CLI, Debug и Release?</span><span class="q-sub"> Solution (.sln / .slnx) — контейнер для нескольких проектов. Проект (.csproj) — описание сборки на MSBuild: целевая платформа (&lt;TargetFramework&gt;net10.0&lt;/TargetFramework&gt;…</span></span>
+        <span class="q-side"><span class="chip lv-junior">Junior</span><span class="q-min">5 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li></ol>
+  <nav class="prev-next" aria-label="Соседние разделы">
+    <span></span>
+    <a class="pn next" href="../../topics/csharp-dotnet/index.html"><span class="pn-dir">Следующий раздел<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></span><span class="pn-t">C# и .NET углублённо</span></a>
+  </nav>
+</main>
+<footer class="site-footer">
+  <div class="footer-in">
+    <span>.NET Tutorial — вопросы и ответы по .NET от Junior до Senior</span>
+    <a href="https://github.com/sh-sharifjonov/DotnetQuestionsForMiddle">Исходники на GitHub</a>
+  </div>
+</footer>
+<script src="../../assets/search-index.js" defer></script>
+<script src="../../assets/app.js" defer></script>
+</body>
+</html>

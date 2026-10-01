@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Базы данных и SQL — .NET Middle · Учебник</title>
+<title>Базы данных и SQL — .NET Tutorial</title>
 <meta name="description" content="ACID и уровни изоляции, индексы и B-Tree, планы запросов, нормализация, JOIN-ы, оконные функции, deadlock-и, репликация и шардирование.">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%228%22%20fill%3D%22%23512bd4%22%2F%3E%3Ctext%20x%3D%2216%22%20y%3D%2221%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2212%22%20font-weight%3D%22700%22%20fill%3D%22%23fff%22%3E.NET%3C%2Ftext%3E%3C%2Fsvg%3E">
@@ -14,7 +14,7 @@
 <a class="skip" href="#main">Перейти к содержимому</a>
 <header class="topbar">
   <div class="topbar-in">
-    <a class="brand" href="../../index.html"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="currentColor"/><text x="16" y="21" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#fff">.NET</text></svg><span>.NET Middle · Учебник</span></a>
+    <a class="brand" href="../../index.html"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="currentColor"/><text x="16" y="21" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#fff">.NET</text></svg><span>.NET Tutorial</span></a>
     <div class="search" role="search">
       <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
       <input id="search" type="search" placeholder="Поиск по вопросам…  ( / )" autocomplete="off" aria-label="Поиск по вопросам">
@@ -34,91 +34,100 @@
     <div>
       <h1>Базы данных и SQL</h1>
       <p class="lead">ACID и уровни изоляции, индексы и B-Tree, планы запросов, нормализация, JOIN-ы, оконные функции, deadlock-и, репликация и шардирование.</p>
-      <div class="cat-progress"><div class="bar"><i data-progress="databases-sql"></i></div><span data-progress-text="databases-sql" data-total="16"></span></div>
+      <div class="cat-progress"><div class="bar"><i data-progress="databases-sql"></i></div><span data-progress-text="databases-sql" data-total="17"></span></div>
     </div>
   </header>
-  <section class="prose cat-intro"><p>Middle-разработчик должен уметь не только написать запрос, но и <strong>объяснить, почему он медленный</strong>: прочитать план выполнения, подобрать индекс, понять, какой уровень изоляции нужен и откуда взялся deadlock.</p>
+  <section class="prose cat-intro"><p>Junior должен уверенно писать запросы и JOIN-ы. Middle — уметь <strong>объяснить, почему он медленный</strong>: прочитать план выполнения, подобрать индекс, понять, какой уровень изоляции нужен и откуда взялся deadlock.</p>
 </section>
+  <div class="lv-filter" role="group" aria-label="Фильтр по уровню">
+    <button type="button" class="lv-btn on" data-lv-filter="all">Все <b>17</b></button>
+    <button type="button" class="lv-btn lv-junior" data-lv-filter="junior">Junior <b>5</b></button><button type="button" class="lv-btn lv-middle" data-lv-filter="middle">Middle <b>7</b></button><button type="button" class="lv-btn lv-senior" data-lv-filter="senior">Senior <b>5</b></button>
+  </div>
   <ol class="q-list">
-      <li><a class="q-row" href="acid.html" data-qid="databases-sql/acid">
+      <li data-level="junior"><a class="q-row" href="sql-basics.html" data-qid="databases-sql/sql-basics">
         <span class="q-num">1</span>
-        <span class="q-main"><span class="q-title">ACID — что означает каждое свойство, как обеспечивается в SQL?</span><span class="q-sub"> Atomicity (атомарность) — транзакция выполняется целиком или никак. Обеспечивается журналом (WAL/transaction log) и механизмом отката (undo / версии строк). Consistency …</span></span>
-        <span class="q-side"><span class="chip lv-base">Основы</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+        <span class="q-main"><span class="q-title">Основы SQL: SELECT, WHERE, GROUP BY, HAVING, ORDER BY и порядок выполнения запроса?</span><span class="q-sub"> Реляционная БД хранит данные в таблицах (строки и столбцы). Первичный ключ (PK) однозначно идентифицирует строку, внешний ключ (FK) ссылается на строку другой таблицы и …</span></span>
+        <span class="q-side"><span class="chip lv-junior">Junior</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
-      <li><a class="q-row" href="isolation-levels.html" data-qid="databases-sql/isolation-levels">
+      <li data-level="junior"><a class="q-row" href="acid.html" data-qid="databases-sql/acid">
         <span class="q-num">2</span>
+        <span class="q-main"><span class="q-title">ACID — что означает каждое свойство, как обеспечивается в SQL?</span><span class="q-sub"> Atomicity (атомарность) — транзакция выполняется целиком или никак. Обеспечивается журналом (WAL/transaction log) и механизмом отката (undo / версии строк). Consistency …</span></span>
+        <span class="q-side"><span class="chip lv-junior">Junior</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li data-level="middle"><a class="q-row" href="isolation-levels.html" data-qid="databases-sql/isolation-levels">
+        <span class="q-num">3</span>
         <span class="q-main"><span class="q-title">Уровни изоляции транзакций: Read Uncommitted → Serializable, аномалии?</span><span class="q-sub"> Аномалии параллельных транзакций: dirty read (чтение незафиксированного), non-repeatable read (повторное чтение строки даёт другое значение), phantom read (повторный зап…</span></span>
         <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
-      <li><a class="q-row" href="indexes-clustered-covering.html" data-qid="databases-sql/indexes-clustered-covering">
-        <span class="q-num">3</span>
+      <li data-level="middle"><a class="q-row" href="indexes-clustered-covering.html" data-qid="databases-sql/indexes-clustered-covering">
+        <span class="q-num">4</span>
         <span class="q-main"><span class="q-title">Индексы: Clustered vs Non-Clustered, Covering Index, когда не помогают?</span><span class="q-sub"> Индекс — отдельная упорядоченная структура (обычно B-Tree), позволяющая найти строки без полного сканирования таблицы. Ускоряет чтение, замедляет запись и занимает место…</span></span>
         <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
-      <li><a class="q-row" href="explain-query-plan.html" data-qid="databases-sql/explain-query-plan">
-        <span class="q-num">4</span>
+      <li data-level="middle"><a class="q-row" href="explain-query-plan.html" data-qid="databases-sql/explain-query-plan">
+        <span class="q-num">5</span>
         <span class="q-main"><span class="q-title">EXPLAIN / Query Plan — как читать и оптимизировать?</span><span class="q-sub"> План выполнения — дерево операций, которое выбрал оптимизатор на основе статистики и оценок стоимости. EXPLAIN показывает план и оценки, EXPLAIN ANALYZE — выполняет запр…</span></span>
         <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
-      <li><a class="q-row" href="normalization.html" data-qid="databases-sql/normalization">
-        <span class="q-num">5</span>
-        <span class="q-main"><span class="q-title">Нормализация: 1NF-3NF-BCNF, денормализация — когда оправдана?</span><span class="q-sub"> Нормализация — организация данных так, чтобы каждый факт хранился в одном месте. Цель — избежать аномалий: вставки, обновления, удаления. 1NF — атомарные значения, нет п…</span></span>
-        <span class="q-side"><span class="chip lv-base">Основы</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
-      </a></li>
-      <li><a class="q-row" href="joins.html" data-qid="databases-sql/joins">
+      <li data-level="junior"><a class="q-row" href="normalization.html" data-qid="databases-sql/normalization">
         <span class="q-num">6</span>
-        <span class="q-main"><span class="q-title">JOIN-ы: INNER, LEFT, RIGHT, FULL OUTER, CROSS, самосоединение?</span><span class="q-sub"> INNER JOIN — только пары строк, у которых условие соединения выполнено (пересечение). LEFT JOIN — все строки левой таблицы + совпадения справа; нет совпадения → NULL в п…</span></span>
-        <span class="q-side"><span class="chip lv-base">Основы</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+        <span class="q-main"><span class="q-title">Нормализация: 1NF-3NF-BCNF, денормализация — когда оправдана?</span><span class="q-sub"> Нормализация — организация данных так, чтобы каждый факт хранился в одном месте. Цель — избежать аномалий: вставки, обновления, удаления. 1NF — атомарные значения, нет п…</span></span>
+        <span class="q-side"><span class="chip lv-junior">Junior</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
-      <li><a class="q-row" href="window-functions.html" data-qid="databases-sql/window-functions">
+      <li data-level="junior"><a class="q-row" href="joins.html" data-qid="databases-sql/joins">
         <span class="q-num">7</span>
+        <span class="q-main"><span class="q-title">JOIN-ы: INNER, LEFT, RIGHT, FULL OUTER, CROSS, самосоединение?</span><span class="q-sub"> INNER JOIN — только пары строк, у которых условие соединения выполнено (пересечение). LEFT JOIN — все строки левой таблицы + совпадения справа; нет совпадения → NULL в п…</span></span>
+        <span class="q-side"><span class="chip lv-junior">Junior</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li data-level="middle"><a class="q-row" href="window-functions.html" data-qid="databases-sql/window-functions">
+        <span class="q-num">8</span>
         <span class="q-main"><span class="q-title">Window Functions: ROW_NUMBER, RANK, LAG, LEAD, PARTITION BY?</span><span class="q-sub"> Оконная функция вычисляет значение для каждой строки на основе набора связанных строк («окна»), не схлопывая строки, в отличие от GROUP BY. Синтаксис: функция() OVER (PA…</span></span>
         <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
-      <li><a class="q-row" href="cte-subqueries-temp-tables.html" data-qid="databases-sql/cte-subqueries-temp-tables">
-        <span class="q-num">8</span>
+      <li data-level="middle"><a class="q-row" href="cte-subqueries-temp-tables.html" data-qid="databases-sql/cte-subqueries-temp-tables">
+        <span class="q-num">9</span>
         <span class="q-main"><span class="q-title">CTE (WITH) vs подзапросы vs временные таблицы — разница?</span><span class="q-sub"> Подзапрос — запрос внутри запроса (в WHERE, FROM, SELECT). Бывает коррелированным (зависит от строки внешнего запроса) и некоррелированным. CTE (WITH name AS (...)) — им…</span></span>
         <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
-      <li><a class="q-row" href="deadlocks.html" data-qid="databases-sql/deadlocks">
-        <span class="q-num">9</span>
+      <li data-level="middle"><a class="q-row" href="deadlocks.html" data-qid="databases-sql/deadlocks">
+        <span class="q-num">10</span>
         <span class="q-main"><span class="q-title">Deadlocks — почему возникают и как избежать?</span><span class="q-sub"> Deadlock — две (или больше) транзакции ждут друг друга по кругу: T1 держит ресурс A и ждёт B, T2 держит B и ждёт A. Сами они никогда не завершатся. СУБД обнаруживает цик…</span></span>
         <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
-      <li><a class="q-row" href="replication-sharding-partitioning.html" data-qid="databases-sql/replication-sharding-partitioning">
-        <span class="q-num">10</span>
-        <span class="q-main"><span class="q-title">Репликация vs Шардирование vs Партиционирование?</span><span class="q-sub"> Репликация — копии одних и тех же данных на нескольких серверах. Цели: отказоустойчивость (failover) и масштабирование чтения (read replicas). Запись обычно идёт в один …</span></span>
-        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
-      </a></li>
-      <li><a class="q-row" href="sql-vs-nosql.html" data-qid="databases-sql/sql-vs-nosql">
+      <li data-level="senior"><a class="q-row" href="replication-sharding-partitioning.html" data-qid="databases-sql/replication-sharding-partitioning">
         <span class="q-num">11</span>
-        <span class="q-main"><span class="q-title">Разница между SQL и NoSQL: когда выбирать каждый?</span><span class="q-sub"> SQL (реляционные): данные в таблицах со строгой схемой, связи через внешние ключи, мощный язык запросов с JOIN-ами и агрегатами, ACID-транзакции. PostgreSQL, SQL Server,…</span></span>
-        <span class="q-side"><span class="chip lv-base">Основы</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+        <span class="q-main"><span class="q-title">Репликация vs Шардирование vs Партиционирование?</span><span class="q-sub"> Репликация — копии одних и тех же данных на нескольких серверах. Цели: отказоустойчивость (failover) и масштабирование чтения (read replicas). Запись обычно идёт в один …</span></span>
+        <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
-      <li><a class="q-row" href="cap-theorem.html" data-qid="databases-sql/cap-theorem">
+      <li data-level="junior"><a class="q-row" href="sql-vs-nosql.html" data-qid="databases-sql/sql-vs-nosql">
         <span class="q-num">12</span>
-        <span class="q-main"><span class="q-title">Что такое CAP-теорема применительно к БД?</span><span class="q-sub"> CAP: распределённая система при сетевом разделении (Partition) должна выбрать между Consistency (все узлы отвечают актуальными данными или отказывают) и Availability (ка…</span></span>
-        <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+        <span class="q-main"><span class="q-title">Разница между SQL и NoSQL: когда выбирать каждый?</span><span class="q-sub"> SQL (реляционные): данные в таблицах со строгой схемой, связи через внешние ключи, мощный язык запросов с JOIN-ами и агрегатами, ACID-транзакции. PostgreSQL, SQL Server,…</span></span>
+        <span class="q-side"><span class="chip lv-junior">Junior</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
-      <li><a class="q-row" href="index-types.html" data-qid="databases-sql/index-types">
+      <li data-level="senior"><a class="q-row" href="cap-theorem.html" data-qid="databases-sql/cap-theorem">
         <span class="q-num">13</span>
+        <span class="q-main"><span class="q-title">Что такое CAP-теорема применительно к БД?</span><span class="q-sub"> CAP: распределённая система при сетевом разделении (Partition) должна выбрать между Consistency (все узлы отвечают актуальными данными или отказывают) и Availability (ка…</span></span>
+        <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li data-level="middle"><a class="q-row" href="index-types.html" data-qid="databases-sql/index-types">
+        <span class="q-num">14</span>
         <span class="q-main"><span class="q-title">Виды индексов: Clustered, Non-Clustered, Unique, Filtered, Partial, Composite, Full-Text?</span><span class="q-sub"> Clustered — определяет физический порядок строк, один на таблицу (SQL Server, InnoDB). Non-clustered — отдельная структура со ссылками на строки, много на таблицу. Uniqu…</span></span>
         <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
-      <li><a class="q-row" href="btree-internals.html" data-qid="databases-sql/btree-internals">
-        <span class="q-num">14</span>
-        <span class="q-main"><span class="q-title">Как работает B-Tree индекс под капотом?</span><span class="q-sub"> В СУБД используется B+-дерево: сбалансированное дерево из страниц (обычно 8 КБ), где все значения хранятся в листьях, а внутренние узлы содержат только ключи-разделители…</span></span>
-        <span class="q-side"><span class="chip lv-adv">Middle+</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
-      </a></li>
-      <li><a class="q-row" href="postgresql-special-indexes.html" data-qid="databases-sql/postgresql-special-indexes">
+      <li data-level="senior"><a class="q-row" href="btree-internals.html" data-qid="databases-sql/btree-internals">
         <span class="q-num">15</span>
-        <span class="q-main"><span class="q-title">Hash индексы, GIN, GiST, BRIN — специализированные индексы PostgreSQL?</span><span class="q-sub"> B-Tree (по умолчанию) — равенство, диапазоны, сортировка. Подходит в 90% случаев. Hash — только =; компактнее B-Tree для длинных ключей. С PostgreSQL 10 журналируется и …</span></span>
-        <span class="q-side"><span class="chip lv-adv">Middle+</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+        <span class="q-main"><span class="q-title">Как работает B-Tree индекс под капотом?</span><span class="q-sub"> В СУБД используется B+-дерево: сбалансированное дерево из страниц (обычно 8 КБ), где все значения хранятся в листьях, а внутренние узлы содержат только ключи-разделители…</span></span>
+        <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
-      <li><a class="q-row" href="statistics-analyze-vacuum.html" data-qid="databases-sql/statistics-analyze-vacuum">
+      <li data-level="senior"><a class="q-row" href="postgresql-special-indexes.html" data-qid="databases-sql/postgresql-special-indexes">
         <span class="q-num">16</span>
+        <span class="q-main"><span class="q-title">Hash индексы, GIN, GiST, BRIN — специализированные индексы PostgreSQL?</span><span class="q-sub"> B-Tree (по умолчанию) — равенство, диапазоны, сортировка. Подходит в 90% случаев. Hash — только =; компактнее B-Tree для длинных ключей. С PostgreSQL 10 журналируется и …</span></span>
+        <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li data-level="senior"><a class="q-row" href="statistics-analyze-vacuum.html" data-qid="databases-sql/statistics-analyze-vacuum">
+        <span class="q-num">17</span>
         <span class="q-main"><span class="q-title">Статистика в PostgreSQL/SQL Server, ANALYZE, auto-vacuum?</span><span class="q-sub"> Статистика — сводка о распределении данных в столбцах: число строк, доля NULL, число различных значений, самые частые значения (MCV), гистограмма, корреляция с физически…</span></span>
-        <span class="q-side"><span class="chip lv-adv">Middle+</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+        <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li></ol>
   <nav class="prev-next" aria-label="Соседние разделы">
     <a class="pn prev" href="../../topics/ef-core/index.html"><span class="pn-dir"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>Предыдущий раздел</span><span class="pn-t">Entity Framework Core</span></a>
@@ -127,7 +136,7 @@
 </main>
 <footer class="site-footer">
   <div class="footer-in">
-    <span>.NET Middle · Учебник — подготовка к собеседованию .NET Middle разработчика</span>
+    <span>.NET Tutorial — вопросы и ответы по .NET от Junior до Senior</span>
     <a href="https://github.com/sh-sharifjonov/DotnetQuestionsForMiddle">Исходники на GitHub</a>
   </div>
 </footer>

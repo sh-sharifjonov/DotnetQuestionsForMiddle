@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Очереди и асинхронная обработка — .NET Middle · Учебник</title>
+<title>Очереди и асинхронная обработка — .NET Tutorial</title>
 <meta name="description" content="Брокеры сообщений (RabbitMQ, Kafka), очереди и топики, гарантии доставки, идемпотентность, MassTransit, DLQ, backpressure, Channels и фоновые сервисы.">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%228%22%20fill%3D%22%23512bd4%22%2F%3E%3Ctext%20x%3D%2216%22%20y%3D%2221%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2212%22%20font-weight%3D%22700%22%20fill%3D%22%23fff%22%3E.NET%3C%2Ftext%3E%3C%2Fsvg%3E">
@@ -14,7 +14,7 @@
 <a class="skip" href="#main">Перейти к содержимому</a>
 <header class="topbar">
   <div class="topbar-in">
-    <a class="brand" href="../../index.html"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="currentColor"/><text x="16" y="21" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#fff">.NET</text></svg><span>.NET Middle · Учебник</span></a>
+    <a class="brand" href="../../index.html"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="currentColor"/><text x="16" y="21" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#fff">.NET</text></svg><span>.NET Tutorial</span></a>
     <div class="search" role="search">
       <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
       <input id="search" type="search" placeholder="Поиск по вопросам…  ( / )" autocomplete="off" aria-label="Поиск по вопросам">
@@ -39,51 +39,55 @@
   </header>
   <section class="prose cat-intro"><p>Как только сервисов становится больше одного, появляются сообщения. Ключевая мысль раздела: <strong>сеть ненадёжна, сообщения дублируются и теряются</strong> — и система должна быть спроектирована с учётом этого.</p>
 </section>
+  <div class="lv-filter" role="group" aria-label="Фильтр по уровню">
+    <button type="button" class="lv-btn on" data-lv-filter="all">Все <b>9</b></button>
+    <button type="button" class="lv-btn lv-junior" data-lv-filter="junior">Junior <b>4</b></button><button type="button" class="lv-btn lv-middle" data-lv-filter="middle">Middle <b>5</b></button>
+  </div>
   <ol class="q-list">
-      <li><a class="q-row" href="message-brokers.html" data-qid="messaging/message-brokers">
+      <li data-level="junior"><a class="q-row" href="message-brokers.html" data-qid="messaging/message-brokers">
         <span class="q-num">1</span>
         <span class="q-main"><span class="q-title">Для чего нужны очереди сообщений: RabbitMQ, Kafka, Azure Service Bus?</span><span class="q-sub"> Брокер сообщений — посредник, который принимает сообщения от производителей, надёжно хранит их и доставляет потребителям. Отправитель и получатель не обязаны работать од…</span></span>
-        <span class="q-side"><span class="chip lv-base">Основы</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+        <span class="q-side"><span class="chip lv-junior">Junior</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
-      <li><a class="q-row" href="queue-vs-topic.html" data-qid="messaging/queue-vs-topic">
+      <li data-level="junior"><a class="q-row" href="queue-vs-topic.html" data-qid="messaging/queue-vs-topic">
         <span class="q-num">2</span>
         <span class="q-main"><span class="q-title">Разница между очередью (Queue) и топиком (Topic/Exchange)?</span><span class="q-sub"> Очередь (point-to-point) — каждое сообщение обрабатывает ровно один потребитель из группы (competing consumers). Модель для команд и задач: «отправь письмо», «сгенерируй…</span></span>
-        <span class="q-side"><span class="chip lv-base">Основы</span><span class="q-min">5 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+        <span class="q-side"><span class="chip lv-junior">Junior</span><span class="q-min">5 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
-      <li><a class="q-row" href="delivery-guarantees.html" data-qid="messaging/delivery-guarantees">
+      <li data-level="middle"><a class="q-row" href="delivery-guarantees.html" data-qid="messaging/delivery-guarantees">
         <span class="q-num">3</span>
         <span class="q-main"><span class="q-title">At-least-once vs At-most-once vs Exactly-once delivery?</span><span class="q-sub"> At-most-once — «не больше одного раза»: сообщение может потеряться, но не будет дублей. Реализация: подтвердить (ack/commit offset) до обработки или вообще без подтвержд…</span></span>
         <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
-      <li><a class="q-row" href="idempotency.html" data-qid="messaging/idempotency">
+      <li data-level="middle"><a class="q-row" href="idempotency.html" data-qid="messaging/idempotency">
         <span class="q-num">4</span>
         <span class="q-main"><span class="q-title">Идемпотентность — что это и как обеспечивать?</span><span class="q-sub"> Идемпотентная операция — повторное выполнение с теми же входными данными даёт тот же результат и не создаёт дополнительных побочных эффектов: f(f(x)) = f(x). Зачем: в ра…</span></span>
         <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
-      <li><a class="q-row" href="masstransit.html" data-qid="messaging/masstransit">
+      <li data-level="middle"><a class="q-row" href="masstransit.html" data-qid="messaging/masstransit">
         <span class="q-num">5</span>
         <span class="q-main"><span class="q-title">Как работает MassTransit или другой .NET-клиент для брокеров?</span><span class="q-sub"> MassTransit — фреймворк сообщений для .NET поверх транспорта (RabbitMQ, Azure Service Bus, Amazon SQS, Kafka-rider, in-memory для тестов). Скрывает низкоуровневые детали…</span></span>
         <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
-      <li><a class="q-row" href="dead-letter-queue.html" data-qid="messaging/dead-letter-queue">
+      <li data-level="junior"><a class="q-row" href="dead-letter-queue.html" data-qid="messaging/dead-letter-queue">
         <span class="q-num">6</span>
         <span class="q-main"><span class="q-title">Dead Letter Queue — зачем нужна?</span><span class="q-sub"> Dead Letter Queue (DLQ) — отдельная очередь для сообщений, которые не удалось обработать после всех попыток, истёк TTL, превышен размер/лимит доставок или сообщение откл…</span></span>
-        <span class="q-side"><span class="chip lv-base">Основы</span><span class="q-min">5 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+        <span class="q-side"><span class="chip lv-junior">Junior</span><span class="q-min">5 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
-      <li><a class="q-row" href="backpressure.html" data-qid="messaging/backpressure">
+      <li data-level="middle"><a class="q-row" href="backpressure.html" data-qid="messaging/backpressure">
         <span class="q-num">7</span>
         <span class="q-main"><span class="q-title">Что такое Backpressure?</span><span class="q-sub"> Backpressure (противодавление) — механизм, с помощью которого медленный потребитель сигнализирует быстрому производителю притормозить, чтобы система не переполнилась. Бе…</span></span>
         <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
-      <li><a class="q-row" href="channels.html" data-qid="messaging/channels">
+      <li data-level="middle"><a class="q-row" href="channels.html" data-qid="messaging/channels">
         <span class="q-num">8</span>
         <span class="q-main"><span class="q-title">Channels в .NET (System.Threading.Channels) — для чего?</span><span class="q-sub"> System.Threading.Channels — высокопроизводительные асинхронные очереди в памяти для паттерна producer-consumer внутри процесса. Channel&lt;T&gt; состоит из ChannelWriter&lt;T&gt; (W…</span></span>
         <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">5 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
-      <li><a class="q-row" href="background-services.html" data-qid="messaging/background-services">
+      <li data-level="junior"><a class="q-row" href="background-services.html" data-qid="messaging/background-services">
         <span class="q-num">9</span>
         <span class="q-main"><span class="q-title">Background Services: IHostedService, BackgroundService?</span><span class="q-sub"> IHostedService — интерфейс фонового компонента, которым управляет Generic Host: StartAsync при старте приложения и StopAsync при остановке. Регистрация — AddHostedServic…</span></span>
-        <span class="q-side"><span class="chip lv-base">Основы</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+        <span class="q-side"><span class="chip lv-junior">Junior</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li></ol>
   <nav class="prev-next" aria-label="Соседние разделы">
     <a class="pn prev" href="../../topics/testing/index.html"><span class="pn-dir"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>Предыдущий раздел</span><span class="pn-t">Тестирование</span></a>
@@ -92,7 +96,7 @@
 </main>
 <footer class="site-footer">
   <div class="footer-in">
-    <span>.NET Middle · Учебник — подготовка к собеседованию .NET Middle разработчика</span>
+    <span>.NET Tutorial — вопросы и ответы по .NET от Junior до Senior</span>
     <a href="https://github.com/sh-sharifjonov/DotnetQuestionsForMiddle">Исходники на GitHub</a>
   </div>
 </footer>
