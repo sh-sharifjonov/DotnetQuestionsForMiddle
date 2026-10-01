@@ -34,15 +34,15 @@
     <div>
       <h1>C# и .NET углублённо</h1>
       <p class="lead">Как устроен CLR, память и GC, типы, async/await, LINQ, дженерики, многопоточность и современные возможности C#.</p>
-      <div class="cat-progress"><div class="bar"><i data-progress="csharp-dotnet"></i></div><span data-progress-text="csharp-dotnet" data-total="23"></span></div>
+      <div class="cat-progress"><div class="bar"><i data-progress="csharp-dotnet"></i></div><span data-progress-text="csharp-dotnet" data-total="25"></span></div>
     </div>
   </header>
   <section class="prose cat-intro"><p>Продолжение «Основ C#». Здесь проверяют уже не синтаксис, а <strong>понимание того, что происходит под капотом</strong>: где живёт объект, когда его соберёт GC, во что компилятор превращает <code>async</code>, почему <code>IQueryable</code> превращается в SQL.</p>
 <p><strong>Рекомендуемый порядок:</strong> платформа → память и GC → типы → async/await → коллекции и LINQ → делегаты и события → производительность (Span) → многопоточность.</p>
 </section>
   <div class="lv-filter" role="group" aria-label="Фильтр по уровню">
-    <button type="button" class="lv-btn on" data-lv-filter="all">Все <b>23</b></button>
-    <button type="button" class="lv-btn lv-junior" data-lv-filter="junior">Junior <b>7</b></button><button type="button" class="lv-btn lv-middle" data-lv-filter="middle">Middle <b>11</b></button><button type="button" class="lv-btn lv-senior" data-lv-filter="senior">Senior <b>5</b></button>
+    <button type="button" class="lv-btn on" data-lv-filter="all">Все <b>25</b></button>
+    <button type="button" class="lv-btn lv-junior" data-lv-filter="junior">Junior <b>7</b></button><button type="button" class="lv-btn lv-middle" data-lv-filter="middle">Middle <b>11</b></button><button type="button" class="lv-btn lv-senior" data-lv-filter="senior">Senior <b>7</b></button>
   </div>
   <ol class="q-list">
       <li data-level="junior"><a class="q-row" href="framework-vs-core.html" data-qid="csharp-dotnet/framework-vs-core">
@@ -159,6 +159,16 @@
         <span class="q-num">23</span>
         <span class="q-main"><span class="q-title">ConcurrentDictionary, ConcurrentQueue, ImmutableDictionary — когда что?</span><span class="q-sub"> ConcurrentDictionary&lt;K,V&gt; — потокобезопасный словарь: чтение без блокировок, запись блокирует только один сегмент (stripe). Атомарные GetOrAdd, AddOrUpdate, TryUpdate. Л…</span></span>
         <span class="q-side"><span class="chip lv-middle">Middle</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li data-level="senior"><a class="q-row" href="executioncontext-asynclocal.html" data-qid="csharp-dotnet/executioncontext-asynclocal">
+        <span class="q-num">24</span>
+        <span class="q-main"><span class="q-title">ExecutionContext, AsyncLocal и SynchronizationContext: как контекст «течёт» через await?</span><span class="q-sub"> ExecutionContext — «окружение» логического потока выполнения: значения AsyncLocal&lt;T&gt;, контекст безопасности, культура (через AsyncLocal). Он захватывается при await, Tas…</span></span>
+        <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li data-level="senior"><a class="q-row" href="object-memory-layout.html" data-qid="csharp-dotnet/object-memory-layout">
+        <span class="q-num">25</span>
+        <span class="q-main"><span class="q-title">Как объект устроен в памяти: заголовок, MethodTable, выравнивание, размер объектов и массивов?</span><span class="q-sub"> Каждый объект ссылочного типа в куче (64-бит) имеет накладные расходы 16 байт: object header (8 байт: sync block index, хэш-код, биты GC и блокировок) и указатель на Met…</span></span>
+        <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li></ol>
   <nav class="prev-next" aria-label="Соседние разделы">
     <a class="pn prev" href="../../topics/csharp-basics/index.html"><span class="pn-dir"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>Предыдущий раздел</span><span class="pn-t">Основы C# и .NET</span></a>

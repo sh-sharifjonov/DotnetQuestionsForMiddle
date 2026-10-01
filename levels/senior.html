@@ -31,13 +31,13 @@
   <nav class="crumbs" aria-label="Навигация"><a href="../index.html">Главная</a><span>/</span><span>Трек Senior</span></nav>
   <header class="page-head">
     <span class="chip lv-senior">Уровень Senior</span>
-    <h1>Трек Senior: 23 вопроса</h1>
+    <h1>Трек Senior: 37 вопросов</h1>
     <p class="lead">Глубина и масштаб: внутренности runtime, производительность, распределённые системы, system design, надёжность, архитектурные решения и лидерство.</p>
     <div class="cat-progress"><div class="bar"><i data-lv-progress="senior"></i></div><span data-lv-progress-text="senior"></span></div>
   </header>
   
   <section class="lv-group" style="--cat:#512bd4">
-    <h2><a href="../topics/csharp-dotnet/index.html"><svg class="icon sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a5 5 0 1 0 0 8"/><path d="M12 5v14"/><path d="M7 12h10"/></svg>C# и .NET углублённо</a><span class="lv-group-n">5</span></h2>
+    <h2><a href="../topics/csharp-dotnet/index.html"><svg class="icon sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a5 5 0 1 0 0 8"/><path d="M12 5v14"/><path d="M7 12h10"/></svg>C# и .NET углублённо</a><span class="lv-group-n">7</span></h2>
     <ol class="q-list">
       <li data-level="senior"><a class="q-row" href="../topics/csharp-dotnet/span-memory-arraypool.html" data-qid="csharp-dotnet/span-memory-arraypool">
         <span class="q-num">1</span>
@@ -63,23 +63,33 @@
         <span class="q-num">5</span>
         <span class="q-main"><span class="q-title">volatile, Interlocked, Memory Barriers — когда нужны?</span><span class="q-sub"> Компилятор, JIT и процессор могут переупорядочивать операции чтения/записи и кэшировать значения в регистрах — в однопоточном коде это незаметно, в многопоточном ломает …</span></span>
         <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li data-level="senior"><a class="q-row" href="../topics/csharp-dotnet/executioncontext-asynclocal.html" data-qid="csharp-dotnet/executioncontext-asynclocal">
+        <span class="q-num">6</span>
+        <span class="q-main"><span class="q-title">ExecutionContext, AsyncLocal и SynchronizationContext: как контекст «течёт» через await?</span><span class="q-sub"> ExecutionContext — «окружение» логического потока выполнения: значения AsyncLocal&lt;T&gt;, контекст безопасности, культура (через AsyncLocal). Он захватывается при await, Tas…</span></span>
+        <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li data-level="senior"><a class="q-row" href="../topics/csharp-dotnet/object-memory-layout.html" data-qid="csharp-dotnet/object-memory-layout">
+        <span class="q-num">7</span>
+        <span class="q-main"><span class="q-title">Как объект устроен в памяти: заголовок, MethodTable, выравнивание, размер объектов и массивов?</span><span class="q-sub"> Каждый объект ссылочного типа в куче (64-бит) имеет накладные расходы 16 байт: object header (8 байт: sync block index, хэш-код, биты GC и блокировок) и указатель на Met…</span></span>
+        <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li></ol>
   </section>
   <section class="lv-group" style="--cat:#c2410c">
     <h2><a href="../topics/ef-core/index.html"><svg class="icon sm" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.66 3.58 3 8 3s8-1.34 8-3V6"/><path d="M4 12v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/></svg>Entity Framework Core</a><span class="lv-group-n">3</span></h2>
     <ol class="q-list">
       <li data-level="senior"><a class="q-row" href="../topics/ef-core/owned-types-inheritance.html" data-qid="ef-core/owned-types-inheritance">
-        <span class="q-num">6</span>
+        <span class="q-num">8</span>
         <span class="q-main"><span class="q-title">Owned Types, Table Splitting, TPH/TPT/TPC наследование?</span><span class="q-sub"> Owned type (OwnsOne/OwnsMany) — тип без собственной идентичности, принадлежащий сущности-владельцу. Идеален для Value Objects DDD (Address, Money). По умолчанию хранится…</span></span>
         <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
       <li data-level="senior"><a class="q-row" href="../topics/ef-core/interceptors-query-filters.html" data-qid="ef-core/interceptors-query-filters">
-        <span class="q-num">7</span>
+        <span class="q-num">9</span>
         <span class="q-main"><span class="q-title">Как работает Interceptors и Query Filters в EF Core?</span><span class="q-sub"> Interceptors — перехватчики операций EF Core: выполнение команд (DbCommandInterceptor), сохранение (SaveChangesInterceptor), соединения (DbConnectionInterceptor), транза…</span></span>
         <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
       <li data-level="senior"><a class="q-row" href="../topics/ef-core/query-optimization.html" data-qid="ef-core/query-optimization">
-        <span class="q-num">8</span>
+        <span class="q-num">10</span>
         <span class="q-main"><span class="q-title">Оптимизация запросов: compiled queries, split queries, projection?</span><span class="q-sub"> Сначала измерить: логирование SQL, ToQueryString(), план выполнения (EXPLAIN ANALYZE), трассировка. Большинство проблем — в SQL и индексах, а не в EF. Проекция (Select в…</span></span>
         <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li></ol>
@@ -88,27 +98,27 @@
     <h2><a href="../topics/databases-sql/index.html"><svg class="icon sm" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><line x1="4" y1="10" x2="20" y2="10"/><line x1="10" y1="4" x2="10" y2="20"/></svg>Базы данных и SQL</a><span class="lv-group-n">5</span></h2>
     <ol class="q-list">
       <li data-level="senior"><a class="q-row" href="../topics/databases-sql/replication-sharding-partitioning.html" data-qid="databases-sql/replication-sharding-partitioning">
-        <span class="q-num">9</span>
+        <span class="q-num">11</span>
         <span class="q-main"><span class="q-title">Репликация vs Шардирование vs Партиционирование?</span><span class="q-sub"> Репликация — копии одних и тех же данных на нескольких серверах. Цели: отказоустойчивость (failover) и масштабирование чтения (read replicas). Запись обычно идёт в один …</span></span>
         <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
       <li data-level="senior"><a class="q-row" href="../topics/databases-sql/cap-theorem.html" data-qid="databases-sql/cap-theorem">
-        <span class="q-num">10</span>
+        <span class="q-num">12</span>
         <span class="q-main"><span class="q-title">Что такое CAP-теорема применительно к БД?</span><span class="q-sub"> CAP: распределённая система при сетевом разделении (Partition) должна выбрать между Consistency (все узлы отвечают актуальными данными или отказывают) и Availability (ка…</span></span>
         <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
       <li data-level="senior"><a class="q-row" href="../topics/databases-sql/btree-internals.html" data-qid="databases-sql/btree-internals">
-        <span class="q-num">11</span>
+        <span class="q-num">13</span>
         <span class="q-main"><span class="q-title">Как работает B-Tree индекс под капотом?</span><span class="q-sub"> В СУБД используется B+-дерево: сбалансированное дерево из страниц (обычно 8 КБ), где все значения хранятся в листьях, а внутренние узлы содержат только ключи-разделители…</span></span>
         <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
       <li data-level="senior"><a class="q-row" href="../topics/databases-sql/postgresql-special-indexes.html" data-qid="databases-sql/postgresql-special-indexes">
-        <span class="q-num">12</span>
+        <span class="q-num">14</span>
         <span class="q-main"><span class="q-title">Hash индексы, GIN, GiST, BRIN — специализированные индексы PostgreSQL?</span><span class="q-sub"> B-Tree (по умолчанию) — равенство, диапазоны, сортировка. Подходит в 90% случаев. Hash — только =; компактнее B-Tree для длинных ключей. С PostgreSQL 10 журналируется и …</span></span>
         <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
       <li data-level="senior"><a class="q-row" href="../topics/databases-sql/statistics-analyze-vacuum.html" data-qid="databases-sql/statistics-analyze-vacuum">
-        <span class="q-num">13</span>
+        <span class="q-num">15</span>
         <span class="q-main"><span class="q-title">Статистика в PostgreSQL/SQL Server, ANALYZE, auto-vacuum?</span><span class="q-sub"> Статистика — сводка о распределении данных в столбцах: число строк, доля NULL, число различных значений, самые частые значения (MCV), гистограмма, корреляция с физически…</span></span>
         <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li></ol>
@@ -117,26 +127,90 @@
     <h2><a href="../topics/architecture/index.html"><svg class="icon sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V10a7 7 0 1 1 14 0v11"/><path d="M9 21v-4a3 3 0 0 1 6 0v4"/></svg>Архитектура и паттерны</a><span class="lv-group-n">3</span></h2>
     <ol class="q-list">
       <li data-level="senior"><a class="q-row" href="../topics/architecture/event-sourcing.html" data-qid="architecture/event-sourcing">
-        <span class="q-num">14</span>
+        <span class="q-num">16</span>
         <span class="q-main"><span class="q-title">Event Sourcing — что это и когда применять?</span><span class="q-sub"> Event Sourcing: вместо хранения текущего состояния храним последовательность событий, которые к нему привели (AccountOpened, MoneyDeposited, MoneyWithdrawn). Текущее сос…</span></span>
         <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
       <li data-level="senior"><a class="q-row" href="../topics/architecture/microservices-vs-monolith.html" data-qid="architecture/microservices-vs-monolith">
-        <span class="q-num">15</span>
+        <span class="q-num">17</span>
         <span class="q-main"><span class="q-title">Microservices vs Monolith — когда что выбирать?</span><span class="q-sub"> Монолит — одно развёртываемое приложение с общей БД. Просто разрабатывать, тестировать, деплоить и отлаживать; транзакции ACID «бесплатно». Проблемы начинаются с ростом:…</span></span>
         <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
       <li data-level="senior"><a class="q-row" href="../topics/architecture/saga-pattern.html" data-qid="architecture/saga-pattern">
-        <span class="q-num">16</span>
+        <span class="q-num">18</span>
         <span class="q-main"><span class="q-title">Saga pattern для распределённых транзакций (Choreography vs Orchestration)?</span><span class="q-sub"> Проблема: бизнес-операция затрагивает несколько сервисов со своими БД (заказ → резерв на складе → оплата → доставка). Одной ACID-транзакции нет, 2PC плохо масштабируется…</span></span>
         <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li></ol>
+  </section>
+  <section class="lv-group" style="--cat:#0e7490">
+    <h2><a href="../topics/system-design/index.html"><svg class="icon sm" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="2" width="6" height="5" rx="1"/><rect x="2" y="17" width="6" height="5" rx="1"/><rect x="16" y="17" width="6" height="5" rx="1"/><path d="M12 7v5M5 17v-3h14v3"/></svg>System Design и распределённые системы</a><span class="lv-group-n">12</span></h2>
+    <ol class="q-list">
+      <li data-level="senior"><a class="q-row" href="../topics/system-design/system-design-interview.html" data-qid="system-design/system-design-interview">
+        <span class="q-num">19</span>
+        <span class="q-main"><span class="q-title">Как проходить system design интервью: требования, оценки, архитектура, компромиссы?</span><span class="q-sub"> System design интервью проверяет не «правильный ответ», а ход мысли: умение уточнить задачу, оценить масштаб, предложить простую рабочую архитектуру, найти узкие места и…</span></span>
+        <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li data-level="senior"><a class="q-row" href="../topics/system-design/scalability-load-balancing.html" data-qid="system-design/scalability-load-balancing">
+        <span class="q-num">20</span>
+        <span class="q-main"><span class="q-title">Масштабирование: вертикальное и горизонтальное, stateless, балансировка нагрузки L4/L7?</span><span class="q-sub"> Вертикальное масштабирование (scale up) — больше CPU/RAM на одной машине: просто, но есть потолок, растёт цена, остаётся единая точка отказа. Горизонтальное (scale out) …</span></span>
+        <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li data-level="senior"><a class="q-row" href="../topics/system-design/consistency-models-consensus.html" data-qid="system-design/consistency-models-consensus">
+        <span class="q-num">21</span>
+        <span class="q-main"><span class="q-title">Модели согласованности и консенсус: strong, eventual, кворумы, Raft?</span><span class="q-sub"> Модель согласованности — гарантия, что увидит чтение после записи в распределённой системе с репликами. От строгой к слабой: линеаризуемость (strong) → последовательная …</span></span>
+        <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li data-level="senior"><a class="q-row" href="../topics/system-design/distributed-locks-leader-election.html" data-qid="system-design/distributed-locks-leader-election">
+        <span class="q-num">22</span>
+        <span class="q-main"><span class="q-title">Распределённые блокировки и выбор лидера: Redis, PostgreSQL advisory locks, fencing tokens?</span><span class="q-sub"> Распределённая блокировка гарантирует, что операцию выполняет один экземпляр из многих: фоновая задача по расписанию, обработка одного заказа, миграция, вызов API с жёст…</span></span>
+        <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li data-level="senior"><a class="q-row" href="../topics/system-design/api-design-versioning.html" data-qid="system-design/api-design-versioning">
+        <span class="q-num">23</span>
+        <span class="q-main"><span class="q-title">Проектирование API: пагинация, идемпотентность, версионирование, обратная совместимость?</span><span class="q-sub"> Публичный API — контракт, который трудно менять: клиенты (мобильные приложения, партнёры) обновляются месяцами. Проектируйте его как продукт: последовательные имена, пре…</span></span>
+        <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li data-level="senior"><a class="q-row" href="../topics/system-design/multi-tenancy.html" data-qid="system-design/multi-tenancy">
+        <span class="q-num">24</span>
+        <span class="q-main"><span class="q-title">Multi-tenancy: как изолировать данные клиентов в SaaS на .NET?</span><span class="q-sub"> Multi-tenancy — одна система обслуживает много клиентов-организаций (тенантов), изолируя их данные, настройки и нагрузку. Главный риск — утечка данных одного тенанта дру…</span></span>
+        <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li data-level="senior"><a class="q-row" href="../topics/system-design/scaling-reads-writes.html" data-qid="system-design/scaling-reads-writes">
+        <span class="q-num">25</span>
+        <span class="q-main"><span class="q-title">Высокая нагрузка: как масштабировать чтение и запись (кэши, реплики, CQRS, очереди, шардирование)?</span><span class="q-sub"> Сначала измерьте: где узкое место (CPU приложения, БД, сеть, блокировки), какое отношение чтения к записи, какие запросы самые тяжёлые. Оптимизация запросов и индексов ч…</span></span>
+        <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li data-level="senior"><a class="q-row" href="../topics/system-design/zero-downtime-deployments-migrations.html" data-qid="system-design/zero-downtime-deployments-migrations">
+        <span class="q-num">26</span>
+        <span class="q-main"><span class="q-title">Развёртывание без простоя: rolling update, graceful shutdown, миграции БД по схеме expand/contract?</span><span class="q-sub"> Развёртывание без простоя требует, чтобы старая и новая версии работали одновременно: при rolling update часть подов уже новая, часть ещё старая — и обе ходят в одну БД …</span></span>
+        <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li data-level="senior"><a class="q-row" href="../topics/system-design/reliability-incidents.html" data-qid="system-design/reliability-incidents">
+        <span class="q-num">27</span>
+        <span class="q-main"><span class="q-title">Надёжность: SLO, error budget, отказоустойчивость, управление инцидентами и постмортемы?</span><span class="q-sub"> SLI — измеряемый показатель качества (доля успешных запросов, p99 задержки), SLO — целевое значение (99,9% за 30 дней), SLA — договорное обязательство перед клиентом со …</span></span>
+        <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li data-level="senior"><a class="q-row" href="../topics/system-design/case-url-shortener.html" data-qid="system-design/case-url-shortener">
+        <span class="q-num">28</span>
+        <span class="q-main"><span class="q-title">Разбор кейса: спроектировать сервис сокращения ссылок</span><span class="q-sub"> Классическая задача, на которой проверяют весь цикл: требования → оценки → API → хранение → генерация кодов → кэширование → аналитика → масштабирование и отказы. Ключевы…</span></span>
+        <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li data-level="senior"><a class="q-row" href="../topics/system-design/case-notification-system.html" data-qid="system-design/case-notification-system">
+        <span class="q-num">29</span>
+        <span class="q-main"><span class="q-title">Разбор кейса: система уведомлений (email, SMS, push) с гарантиями доставки</span><span class="q-sub"> Задача проверяет асинхронную архитектуру: приём запросов → очередь → обработчики по каналам → внешние провайдеры с ретраями, лимитами и отслеживанием статусов. Ключевые …</span></span>
+        <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li data-level="senior"><a class="q-row" href="../topics/system-design/senior-tech-lead-role.html" data-qid="system-design/senior-tech-lead-role">
+        <span class="q-num">30</span>
+        <span class="q-main"><span class="q-title">Чем Senior отличается от Middle: зона ответственности, влияние, техническое лидерство?</span><span class="q-sub"> Разница не в количестве известных технологий, а в масштабе ответственности и влияния: Middle самостоятельно решает поставленные задачи; Senior определяет, какие задачи р…</span></span>
+        <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li></ol>
   </section>
   <section class="lv-group" style="--cat:#3f7d1c">
     <h2><a href="../topics/testing/index.html"><svg class="icon sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6"/><path d="M10 3v6l-5 9a2 2 0 0 0 1.7 3h10.6a2 2 0 0 0 1.7-3l-5-9V3"/><path d="M7.5 15h9"/></svg>Тестирование</a><span class="lv-group-n">1</span></h2>
     <ol class="q-list">
       <li data-level="senior"><a class="q-row" href="../topics/testing/mutation-testing.html" data-qid="testing/mutation-testing">
-        <span class="q-num">17</span>
+        <span class="q-num">31</span>
         <span class="q-main"><span class="q-title">Что такое Mutation Testing?</span><span class="q-sub"> Mutation testing проверяет качество тестов, а не кода: инструмент вносит в код маленькие изменения (мутанты) — меняет &gt; на &gt;=, + на -, true на false, удаляет вызов — и з…</span></span>
         <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">4 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li></ol>
@@ -145,17 +219,17 @@
     <h2><a href="../topics/performance/index.html"><svg class="icon sm" viewBox="0 0 24 24" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>Производительность и диагностика</a><span class="lv-group-n">3</span></h2>
     <ol class="q-list">
       <li data-level="senior"><a class="q-row" href="../topics/performance/thread-starvation.html" data-qid="performance/thread-starvation">
-        <span class="q-num">18</span>
+        <span class="q-num">32</span>
         <span class="q-main"><span class="q-title">Thread starvation — как диагностировать в ASP.NET Core?</span><span class="q-sub"> Thread pool starvation — все потоки пула заняты ожиданием (заблокированы), а новые работы (обработка запросов, продолжения await) стоят в очереди. Пул добавляет потоки м…</span></span>
         <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
       <li data-level="senior"><a class="q-row" href="../topics/performance/cache-invalidation.html" data-qid="performance/cache-invalidation">
-        <span class="q-num">19</span>
+        <span class="q-num">33</span>
         <span class="q-main"><span class="q-title">Cache invalidation стратегии: TTL, eviction, distributed cache consistency?</span><span class="q-sub"> «В информатике есть две сложные вещи: инвалидация кэша и именование» (Фил Карлтон). Инвалидация — решение, когда кэшированное значение перестаёт быть верным. TTL (истече…</span></span>
         <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
       <li data-level="senior"><a class="q-row" href="../topics/performance/why-minimal-api-faster.html" data-qid="performance/why-minimal-api-faster">
-        <span class="q-num">20</span>
+        <span class="q-num">34</span>
         <span class="q-main"><span class="q-title">Как работает Minimal API быстрее обычных Controllers?</span><span class="q-sub"> Minimal API и контроллеры используют один и тот же Kestrel, конвейер middleware и endpoint routing. Разница — в том, что происходит после выбора эндпоинта. Контроллеры (…</span></span>
         <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">5 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li></ol>
@@ -164,17 +238,17 @@
     <h2><a href="../topics/teamwork/index.html"><svg class="icon sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Работа в команде и процессы</a><span class="lv-group-n">3</span></h2>
     <ol class="q-list">
       <li data-level="senior"><a class="q-row" href="../topics/teamwork/technical-debt.html" data-qid="teamwork/technical-debt">
-        <span class="q-num">21</span>
+        <span class="q-num">35</span>
         <span class="q-main"><span class="q-title">Технический долг: что это и как объяснить бизнесу необходимость рефакторинга?</span><span class="q-sub"> Технический долг — метафора Уорда Каннингема: быстрое решение сейчас — это «заём», за который потом платятся проценты в виде замедления разработки, багов и инцидентов. Д…</span></span>
         <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
       <li data-level="senior"><a class="q-row" href="../topics/teamwork/mentoring-interviews.html" data-qid="teamwork/mentoring-interviews">
-        <span class="q-num">22</span>
+        <span class="q-num">36</span>
         <span class="q-main"><span class="q-title">Менторинг джунов и проведение технических собеседований</span><span class="q-sub"> Менторинг — помочь человеку стать самостоятельным, а не решать задачи за него. Главные инструменты: вопросы вместо готовых ответов, задачи растущей сложности, регулярная…</span></span>
         <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li>
       <li data-level="senior"><a class="q-row" href="../topics/teamwork/architecture-decisions-adr-rfc.html" data-qid="teamwork/architecture-decisions-adr-rfc">
-        <span class="q-num">23</span>
+        <span class="q-num">37</span>
         <span class="q-main"><span class="q-title">Архитектурные решения в команде: RFC, ADR и как договариваться?</span><span class="q-sub"> Архитектурные решения (выбор БД, брокера, способа интеграции, границ сервисов) дорого менять — их принимают осознанно, обсуждают и документируют. RFC / Design Doc — доку…</span></span>
         <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
       </a></li></ol>

@@ -34,16 +34,76 @@
     <div>
       <h1>System Design и распределённые системы</h1>
       <p class="lead">Как проектировать системы под нагрузку: подход к system design интервью, масштабирование, согласованность и консенсус, распределённые блокировки, проектирование API, multi-tenancy, надёжность, разборы кейсов и роль Senior-инженера.</p>
-      <div class="cat-progress"><div class="bar"><i data-progress="system-design"></i></div><span data-progress-text="system-design" data-total="0"></span></div>
+      <div class="cat-progress"><div class="bar"><i data-progress="system-design"></i></div><span data-progress-text="system-design" data-total="12"></span></div>
     </div>
   </header>
   <section class="prose cat-intro"><p>Вопросы уровня <strong>Senior</strong>: здесь важны не конкретные API, а умение рассуждать о компромиссах — задержка против согласованности, простота против масштабируемости, стоимость против надёжности. Хороший ответ всегда начинается с уточнения требований и заканчивается явным перечислением trade-offs.</p>
 </section>
   <div class="lv-filter" role="group" aria-label="Фильтр по уровню">
-    <button type="button" class="lv-btn on" data-lv-filter="all">Все <b>0</b></button>
-    
+    <button type="button" class="lv-btn on" data-lv-filter="all">Все <b>12</b></button>
+    <button type="button" class="lv-btn lv-senior" data-lv-filter="senior">Senior <b>12</b></button>
   </div>
-  <ol class="q-list"></ol>
+  <ol class="q-list">
+      <li data-level="senior"><a class="q-row" href="system-design-interview.html" data-qid="system-design/system-design-interview">
+        <span class="q-num">1</span>
+        <span class="q-main"><span class="q-title">Как проходить system design интервью: требования, оценки, архитектура, компромиссы?</span><span class="q-sub"> System design интервью проверяет не «правильный ответ», а ход мысли: умение уточнить задачу, оценить масштаб, предложить простую рабочую архитектуру, найти узкие места и…</span></span>
+        <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li data-level="senior"><a class="q-row" href="scalability-load-balancing.html" data-qid="system-design/scalability-load-balancing">
+        <span class="q-num">2</span>
+        <span class="q-main"><span class="q-title">Масштабирование: вертикальное и горизонтальное, stateless, балансировка нагрузки L4/L7?</span><span class="q-sub"> Вертикальное масштабирование (scale up) — больше CPU/RAM на одной машине: просто, но есть потолок, растёт цена, остаётся единая точка отказа. Горизонтальное (scale out) …</span></span>
+        <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li data-level="senior"><a class="q-row" href="consistency-models-consensus.html" data-qid="system-design/consistency-models-consensus">
+        <span class="q-num">3</span>
+        <span class="q-main"><span class="q-title">Модели согласованности и консенсус: strong, eventual, кворумы, Raft?</span><span class="q-sub"> Модель согласованности — гарантия, что увидит чтение после записи в распределённой системе с репликами. От строгой к слабой: линеаризуемость (strong) → последовательная …</span></span>
+        <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li data-level="senior"><a class="q-row" href="distributed-locks-leader-election.html" data-qid="system-design/distributed-locks-leader-election">
+        <span class="q-num">4</span>
+        <span class="q-main"><span class="q-title">Распределённые блокировки и выбор лидера: Redis, PostgreSQL advisory locks, fencing tokens?</span><span class="q-sub"> Распределённая блокировка гарантирует, что операцию выполняет один экземпляр из многих: фоновая задача по расписанию, обработка одного заказа, миграция, вызов API с жёст…</span></span>
+        <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li data-level="senior"><a class="q-row" href="api-design-versioning.html" data-qid="system-design/api-design-versioning">
+        <span class="q-num">5</span>
+        <span class="q-main"><span class="q-title">Проектирование API: пагинация, идемпотентность, версионирование, обратная совместимость?</span><span class="q-sub"> Публичный API — контракт, который трудно менять: клиенты (мобильные приложения, партнёры) обновляются месяцами. Проектируйте его как продукт: последовательные имена, пре…</span></span>
+        <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li data-level="senior"><a class="q-row" href="multi-tenancy.html" data-qid="system-design/multi-tenancy">
+        <span class="q-num">6</span>
+        <span class="q-main"><span class="q-title">Multi-tenancy: как изолировать данные клиентов в SaaS на .NET?</span><span class="q-sub"> Multi-tenancy — одна система обслуживает много клиентов-организаций (тенантов), изолируя их данные, настройки и нагрузку. Главный риск — утечка данных одного тенанта дру…</span></span>
+        <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li data-level="senior"><a class="q-row" href="scaling-reads-writes.html" data-qid="system-design/scaling-reads-writes">
+        <span class="q-num">7</span>
+        <span class="q-main"><span class="q-title">Высокая нагрузка: как масштабировать чтение и запись (кэши, реплики, CQRS, очереди, шардирование)?</span><span class="q-sub"> Сначала измерьте: где узкое место (CPU приложения, БД, сеть, блокировки), какое отношение чтения к записи, какие запросы самые тяжёлые. Оптимизация запросов и индексов ч…</span></span>
+        <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li data-level="senior"><a class="q-row" href="zero-downtime-deployments-migrations.html" data-qid="system-design/zero-downtime-deployments-migrations">
+        <span class="q-num">8</span>
+        <span class="q-main"><span class="q-title">Развёртывание без простоя: rolling update, graceful shutdown, миграции БД по схеме expand/contract?</span><span class="q-sub"> Развёртывание без простоя требует, чтобы старая и новая версии работали одновременно: при rolling update часть подов уже новая, часть ещё старая — и обе ходят в одну БД …</span></span>
+        <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li data-level="senior"><a class="q-row" href="reliability-incidents.html" data-qid="system-design/reliability-incidents">
+        <span class="q-num">9</span>
+        <span class="q-main"><span class="q-title">Надёжность: SLO, error budget, отказоустойчивость, управление инцидентами и постмортемы?</span><span class="q-sub"> SLI — измеряемый показатель качества (доля успешных запросов, p99 задержки), SLO — целевое значение (99,9% за 30 дней), SLA — договорное обязательство перед клиентом со …</span></span>
+        <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">7 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li data-level="senior"><a class="q-row" href="case-url-shortener.html" data-qid="system-design/case-url-shortener">
+        <span class="q-num">10</span>
+        <span class="q-main"><span class="q-title">Разбор кейса: спроектировать сервис сокращения ссылок</span><span class="q-sub"> Классическая задача, на которой проверяют весь цикл: требования → оценки → API → хранение → генерация кодов → кэширование → аналитика → масштабирование и отказы. Ключевы…</span></span>
+        <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li data-level="senior"><a class="q-row" href="case-notification-system.html" data-qid="system-design/case-notification-system">
+        <span class="q-num">11</span>
+        <span class="q-main"><span class="q-title">Разбор кейса: система уведомлений (email, SMS, push) с гарантиями доставки</span><span class="q-sub"> Задача проверяет асинхронную архитектуру: приём запросов → очередь → обработчики по каналам → внешние провайдеры с ретраями, лимитами и отслеживанием статусов. Ключевые …</span></span>
+        <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li>
+      <li data-level="senior"><a class="q-row" href="senior-tech-lead-role.html" data-qid="system-design/senior-tech-lead-role">
+        <span class="q-num">12</span>
+        <span class="q-main"><span class="q-title">Чем Senior отличается от Middle: зона ответственности, влияние, техническое лидерство?</span><span class="q-sub"> Разница не в количестве известных технологий, а в масштабе ответственности и влияния: Middle самостоятельно решает поставленные задачи; Senior определяет, какие задачи р…</span></span>
+        <span class="q-side"><span class="chip lv-senior">Senior</span><span class="q-min">6 мин</span><span class="done-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+      </a></li></ol>
   <nav class="prev-next" aria-label="Соседние разделы">
     <a class="pn prev" href="../../topics/architecture/index.html"><span class="pn-dir"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>Предыдущий раздел</span><span class="pn-t">Архитектура и паттерны</span></a>
     <a class="pn next" href="../../topics/testing/index.html"><span class="pn-dir">Следующий раздел<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></span><span class="pn-t">Тестирование</span></a>
